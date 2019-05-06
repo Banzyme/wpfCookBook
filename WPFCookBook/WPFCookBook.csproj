@@ -115,7 +115,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataService\scripts\seed.sql" />
-    <Content Include="Migrations\seed.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -15,10 +15,25 @@ insert WpfCourseModule(ModuleID, Name) values (NEWID(), 'Misc');
 insert WpfCourseModule(ModuleID, Name) values (NEWID(), 'Advanced topics');
 insert WpfCourseModule(ModuleID, Name) values (NEWID(), 'References');
 
---Insert seed to module sections
+--Insert seed to module sections - Tree view header
+-- 1.BASICS
 insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
  values (NEWID(), 'Quick intro', 1);
 
+insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
+ values (NEWID(), 'XAML fundamentals', 1);
+
+insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
+ values (NEWID(), 'What is WPF?', 1);
+
+insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
+ values (NEWID(), 'Real life WPF examples', 1);
+
+insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
+ values (NEWID(), 'Tutorial - A self service insuarence signup tool', 1);
+
+
+--2.CONTROLS - Child item on tree view
 insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
  values (NEWID(), 'Introduction to WPF controls', 2);
 
@@ -35,9 +50,17 @@ insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
  insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
  values (NEWID(), 'HyperLinks', 2);
 
- --Insert seed to module sections
+ --Insert seed to module sections - Tab control
+  insert WpfCourseSectionItem(SectionItemID, Title,Subtitle, Content, WpfCourseSection_ID)
+ values (NEWID(), 'Desktop applications', 
+ 'Really? Is this even necessary?',
+ 'Although software seems to be tilting more towards mobile and web platforms. There are still many application
+ out there that run natively on desktops?',
+  1);
+
+
  insert WpfCourseSectionItem(SectionItemID, Title,Subtitle, Content, WpfCourseSection_ID)
  values (NEWID(), 'Terminology', 
  'Taming the jargon',
  '1. A control - Defines any element that the user interacts with in a WPF application',
-  2);
+  6);
