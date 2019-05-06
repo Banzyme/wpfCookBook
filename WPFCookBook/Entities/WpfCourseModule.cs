@@ -10,5 +10,6 @@ namespace WPFCookBook.Entities
     {
         public Guid ID { get; set; }
         public string Name { get; set; }
+        public IEnumerable<WpfCourseSection> ModuleSections { get; set; }
     }
 }

@@ -45,6 +45,7 @@ namespace WPFCookBook
             families.Add(family2);
 
             WPFCookMainNav.ItemsSource = families;
+            testDG.ItemsSource = courses;
         }
     }
 

@@ -3,7 +3,7 @@ namespace WPFCookBook.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class reinit : DbMigration
     {
         public override void Up()
         {
@@ -21,7 +21,9 @@ namespace WPFCookBook.Migrations
                 c => new
                     {
                         ID = c.Guid(nullable: false),
-                        Name = c.String(),
+                        Title = c.String(),
+                        Subtitle = c.String(),
+                        Content = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -30,7 +32,7 @@ namespace WPFCookBook.Migrations
                 c => new
                     {
                         ID = c.Guid(nullable: false),
-                        Name = c.String(),
+                        Title = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
             

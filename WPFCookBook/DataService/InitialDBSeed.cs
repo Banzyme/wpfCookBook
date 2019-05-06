@@ -1,26 +1,18 @@
-namespace WPFCookBook.Migrations
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using WPFCookBook.Entities;
+
+namespace WPFCookBook.DataService
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-    using WPFCookBook.Entities;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<WPFCookBook.DataService.ApplicationDBContext>
+    public class InitialDBSeed: CreateDatabaseIfNotExists<ApplicationDBContext>
     {
-        public Configuration()
+        protected override void Seed(ApplicationDBContext context)
         {
-            AutomaticMigrationsEnabled = false;
-        }
-
-        protected override void Seed(WPFCookBook.DataService.ApplicationDBContext context)
-        {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
-           
+            Console.WriteLine("I am not called 2");
             var SectItem = new WpfCourseSectionItem()
             {
                 ID = new Guid(),
@@ -30,8 +22,7 @@ namespace WPFCookBook.Migrations
             };
             context.CourseSectionItems.Add(SectItem);
 
-            var sect = new WpfCourseSection()
-            {
+            var sect = new WpfCourseSection() {
                 ID = new Guid(),
                 Title = "Getting started with buttons",
                 SectionTopics = new List<WpfCourseSectionItem> { SectItem }

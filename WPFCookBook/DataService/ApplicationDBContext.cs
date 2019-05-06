@@ -13,6 +13,7 @@ namespace WPFCookBook.DataService
     {
         public ApplicationDBContext(): base("WPFCookBookDBDev")
         {
+            Database.SetInitializer<ApplicationDBContext>(new InitialDBSeed());
         }
 
         public DbSet<WpfCourseModule> CourseModules { get; set; }
@@ -23,6 +24,8 @@ namespace WPFCookBook.DataService
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            
         }
 
         

@@ -9,6 +9,9 @@
         Height="450"
         Width="800">
     <Grid>
+        <DataGrid x:Name="testDG">
+            
+        </DataGrid>
 
         <Grid x:Name="PageContentGrid">
             <DockPanel>

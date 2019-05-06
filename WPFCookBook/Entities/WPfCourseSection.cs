@@ -9,6 +9,8 @@ namespace WPFCookBook.Entities
     public class WpfCourseSection
     {
         public Guid ID { get; set; }
-        public string Name { get; set; }
+        public string Title { get; set; }
+
+        public IEnumerable<WpfCourseSectionItem> SectionTopics { get; set; }
     }
 }
