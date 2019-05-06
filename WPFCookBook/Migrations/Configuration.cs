@@ -11,7 +11,8 @@ namespace WPFCookBook.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(WPFCookBook.DataService.ApplicationDBContext context)
@@ -23,7 +24,7 @@ namespace WPFCookBook.Migrations
            
             var SectItem = new WpfCourseSectionItem()
             {
-                ID = new Guid(),
+                
                 Title = "Creating a button",
                 Subtitle = "Getting started",
                 Content = "<Button --attrs/>"
@@ -32,7 +33,7 @@ namespace WPFCookBook.Migrations
 
             var sect = new WpfCourseSection()
             {
-                ID = new Guid(),
+                
                 Title = "Getting started with buttons",
                 SectionTopics = new List<WpfCourseSectionItem> { SectItem }
             };
@@ -40,12 +41,14 @@ namespace WPFCookBook.Migrations
 
 
             IList<WpfCourseModule> defaultModules = new List<WpfCourseModule>();
-
-            defaultModules.Add(new WpfCourseModule()
+            var mod1 = new WpfCourseModule()
             {
-                ID = new Guid(),
-                Name = "Controls"
-            });
+                Name = "Controls",
+                ModuleSections = new List<WpfCourseSection> { sect }
+            };
+            mod1.ModuleSections.Add(sect);
+
+            defaultModules.Add(mod1);
 
 
             context.CourseModules.AddRange(defaultModules);

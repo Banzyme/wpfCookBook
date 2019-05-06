@@ -24,12 +24,18 @@ namespace WPFCookBook
     public partial class MainWindow : Window
     {
         private readonly ApplicationDBContext _context = new ApplicationDBContext();
+        private ObservableCollection<WpfCourseModule> _modulesList = new ObservableCollection<WpfCourseModule>();
         public MainWindow()
         {
             InitializeComponent();
 
             List<WpfCourseModule> courses = new List<WpfCourseModule>();
+            List<WpfCourseSectionItem> sectionTopics = new List<WpfCourseSectionItem>();
+            List<WpfCourseSection> sections = new List<WpfCourseSection>();
+            sectionTopics = _context.CourseSectionItems.ToList();
+            sections = _context.CourseSections.ToList();
             courses = _context.CourseModules.ToList();
+            
 
             List<Family> families = new List<Family>();
 
@@ -44,8 +50,13 @@ namespace WPFCookBook
             family2.Members.Add(new FamilyMember() { Name = "Norma Moe", Age = 28 });
             families.Add(family2);
 
-            WPFCookMainNav.ItemsSource = families;
-            testDG.ItemsSource = courses;
+            WPFCookMainNav.ItemsSource = courses;
+
+            //testDG.ItemsSource = courses;
+        }
+        public ObservableCollection<WpfCourseModule> ModulesList
+        {
+            get { return _modulesList; }
         }
     }
 
