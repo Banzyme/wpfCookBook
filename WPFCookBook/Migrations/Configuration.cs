@@ -16,11 +16,11 @@ namespace WPFCookBook.Migrations
             
             AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
+        
         }
 
         protected override void Seed(WPFCookBook.DataService.ApplicationDBContext context)
         {
-
             var baseDir = System.AppContext.BaseDirectory.Replace("bin", string.Empty).Replace("Debug", string.Empty);
 
             context.Database.ExecuteSqlCommand(File.ReadAllText(baseDir + "\\DataService\\scripts\\seed.sql"));
