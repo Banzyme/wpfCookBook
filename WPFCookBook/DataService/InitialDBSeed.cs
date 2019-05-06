@@ -8,39 +8,12 @@ using WPFCookBook.Entities;
 
 namespace WPFCookBook.DataService
 {
-    public class InitialDBSeed: CreateDatabaseIfNotExists<ApplicationDBContext>
+    public class InitialDBSeed: DropCreateDatabaseAlways<ApplicationDBContext>
     {
         protected override void Seed(ApplicationDBContext context)
         {
-            Console.WriteLine("I am not called 2");
-            var SectItem = new WpfCourseSectionItem()
-            {
-         
-                Title = "Creating a button",
-                Subtitle = "Getting started",
-                Content = "<Button --attrs/>"
-            };
-            context.CourseSectionItems.Add(SectItem);
-
-            var sect = new WpfCourseSection() {
-               
-                Title = "Getting started with buttons",
-                SectionTopics = new List<WpfCourseSectionItem> { SectItem }
-            };
-            context.CourseSections.Add(sect);
-
-
-            IList<WpfCourseModule> defaultModules = new List<WpfCourseModule>();
-
-            defaultModules.Add(new WpfCourseModule()
-            {
-               
-                Name = "Controls"
-            });
-
-
-            context.CourseModules.AddRange(defaultModules);
-
+            context.Database.ExecuteSqlCommand(
+    "insert WpfCourseModule(ModuleID, Name) values (NEWID(), 'Basics(Getting started)')");
             base.Seed(context);
         }
     }

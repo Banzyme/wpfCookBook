@@ -13,7 +13,7 @@ namespace WPFCookBook.DataService
     {
         public ApplicationDBContext(): base("WPFCookBookDBDev")
         {
-            //Database.SetInitializer<ApplicationDBContext>(new InitialDBSeed());
+            //Database.SetInitializer(new InitialDBSeed());
         }
 
         public DbSet<WpfCourseModule> CourseModules { get; set; }
