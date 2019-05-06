@@ -3,10 +3,47 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFCookBook"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="WPF Handbook For Humans"
+        Height="450"
+        Width="800">
     <Grid>
         
+        <Grid x:Name="PageContentGrid">
+            <DockPanel>
+                <StackPanel Orientation="Vertical" DockPanel.Dock="Top"
+                            Height="100">
+                    <TextBlock 
+                               Background="White"
+                               HorizontalAlignment="Center"
+                               FontStretch="Expanded"
+                               FontWeight="ExtraBlack"
+                                FontSize="24"
+                               Text="Header section....x" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="1, 10,1,10">
+                        <TextBox Text=""
+                                 Padding="50, 10,50, 10"
+                                 HorizontalAlignment="Center" />
+                        <Button Padding="20, 10,20, 10" Content="Search" HorizontalAlignment="Center" />
+                    </StackPanel>
+           
+                </StackPanel>
+
+                
+                <StackPanel Background="BlueViolet"
+                            Width="250"
+                            DockPanel.Dock="Left">
+                    <TreeView x:Name="WPFCookMainNav"
+                              Background="Transparent"
+                              Height="Auto">
+
+                    </TreeView>
+
+                </StackPanel>
+                <StackPanel Background="Beige"
+                            DockPanel.Dock="Right" />
+
+            </DockPanel>
+        </Grid>
     </Grid>
 </Window>
