@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFCookBook.DataService;
+using WPFCookBook.Entities;
 
 namespace WPFCookBook
 {
@@ -21,11 +23,13 @@ namespace WPFCookBook
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly ApplicationDBContext _context = new ApplicationDBContext();
         public MainWindow()
         {
             InitializeComponent();
 
-            InitializeComponent();
+            List<WpfCourseModule> courses = new List<WpfCourseModule>();
+            courses = _context.CourseModules.ToList();
 
             List<Family> families = new List<Family>();
 
@@ -42,26 +46,24 @@ namespace WPFCookBook
 
             WPFCookMainNav.ItemsSource = families;
         }
+    }
 
-
-
-        public class Family
+    public class Family
+    {
+        public Family()
         {
-            public Family()
-            {
-                this.Members = new ObservableCollection<FamilyMember>();
-            }
-
-            public string Name { get; set; }
-
-            public ObservableCollection<FamilyMember> Members { get; set; }
+            this.Members = new ObservableCollection<FamilyMember>();
         }
 
-        public class FamilyMember
-        {
-            public string Name { get; set; }
+        public string Name { get; set; }
 
-            public int Age { get; set; }
-        }
+        public ObservableCollection<FamilyMember> Members { get; set; }
+    }
+
+    public class FamilyMember
+    {
+        public string Name { get; set; }
+
+        public int Age { get; set; }
     }
 }

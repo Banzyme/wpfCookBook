@@ -4,39 +4,69 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+        xmlns:self="clr-namespace:WPFCookBook"
         Title="WPF Handbook For Humans"
         Height="450"
         Width="800">
     <Grid>
-        
+
         <Grid x:Name="PageContentGrid">
             <DockPanel>
-                <StackPanel Orientation="Vertical" DockPanel.Dock="Top"
+                <StackPanel Orientation="Vertical"
+                            DockPanel.Dock="Top"
                             Height="100">
-                    <TextBlock 
-                               Background="White"
+                    <TextBlock Background="White"
                                HorizontalAlignment="Center"
                                FontStretch="Expanded"
                                FontWeight="ExtraBlack"
-                                FontSize="24"
+                               FontSize="24"
                                Text="Header section....x" />
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="1, 10,1,10">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="1, 10,1,10">
                         <TextBox Text=""
                                  Padding="50, 10,50, 10"
                                  HorizontalAlignment="Center" />
-                        <Button Padding="20, 10,20, 10" Content="Search" HorizontalAlignment="Center" />
+                        <Button Padding="20, 10,20, 10"
+                                Content="Search"
+                                HorizontalAlignment="Center" />
                     </StackPanel>
-           
+
                 </StackPanel>
 
-                
+
                 <StackPanel Background="BlueViolet"
                             Width="250"
                             DockPanel.Dock="Left">
-                    <TreeView x:Name="WPFCookMainNav"
-                              Background="Transparent"
-                              Height="Auto">
-
+                    <TreeView Name="WPFCookMainNav" Padding="1, 15, 1, 15">
+                        <TreeView.Resources>
+                            <HierarchicalDataTemplate DataType="{x:Type self:Family}" ItemsSource="{Binding Members}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source=""
+                                           Margin="0,0,5,0" />
+                                    <TextBlock Text="{Binding Name}" />
+                                    <TextBlock Text=" ["
+                                               Foreground="Blue" />
+                                    <TextBlock Text="{Binding Members.Count}"
+                                               Foreground="Blue" />
+                                    <TextBlock Text="]"
+                                               Foreground="Blue" />
+                                </StackPanel>
+                            </HierarchicalDataTemplate>
+                            <DataTemplate DataType="{x:Type self:FamilyMember}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source=""
+                                           Margin="0,0,5,0" />
+                                    <TextBlock Text="{Binding Name}" />
+                                    <TextBlock Text=" ("
+                                               Foreground="Green" />
+                                    <TextBlock Text="{Binding Age}"
+                                               Foreground="Green" />
+                                    <TextBlock Text=" years)"
+                                               Foreground="Green" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </TreeView.Resources>
                     </TreeView>
 
                 </StackPanel>
