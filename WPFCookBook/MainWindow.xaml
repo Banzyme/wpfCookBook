@@ -4,23 +4,36 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        xmlns:self="clr-namespace:WPFCookBook"
         xmlns:entities="clr-namespace:WPFCookBook.Entities"
+        xmlns:ViewModels="clr-namespace:WPFCookBook.ViewModels"
+        xmlns:views="clr-namespace:WPFCookBook.Views"
         Title="WPF Handbook For Humans"
         Height="450"
         Width="800">
+
+    <Window.DataContext>
+        <ViewModels:BaseViewModel />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type ViewModels:BasicsViewModel}">
+            <views:BasicsSection />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type ViewModels:ControlsSectionViewModel}">
+            <views:ControlsSection />
+        </DataTemplate>
+    </Window.Resources>
+
     <Grid>
-        <DataGrid x:Name="testDG">
-
-        </DataGrid>
-
-
-
-        <Grid x:Name="PageContentGrid">
+        <Grid x:Name="PageContentGrid"
+              Background="White">
             <DockPanel>
                 <StackPanel Orientation="Vertical"
                             DockPanel.Dock="Top"
-                            Height="100">
+                            Background="White"
+                            Height="100"
+                            Margin="0, 30, 0, 2">
                     <TextBlock Background="White"
                                HorizontalAlignment="Center"
                                FontStretch="Expanded"
@@ -42,11 +55,16 @@
 
 
                 <StackPanel Background="BlueViolet"
-                            Width="250"
+                            Width="320"
+                            Height="Auto"
                             DockPanel.Dock="Left">
+
 
                     <TreeView Name="WPFCookMainNav"
                               Padding="1, 15, 1, 15">
+
+
+
                         <TreeView.Resources>
                             <HierarchicalDataTemplate DataType="{x:Type entities:WpfCourseModule}"
                                                       ItemsSource="{Binding ModuleSections}">
