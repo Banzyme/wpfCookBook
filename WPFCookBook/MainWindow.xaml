@@ -71,19 +71,11 @@
                             DockPanel.Dock="Left">
 
 
-                    <TreeView x:Name="SideNavList" ItemsSource="{Binding ModulesList}"
+                    <TreeView x:Name="SideNavList"
+                              TextSearch.TextPath="Name"
+                              ItemsSource="{Binding ModulesList}"
                               SelectedValuePath="Name"
                               Padding="1, 15, 1, 15">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="SelectedItemChanged">
-                                <i:InvokeCommandAction Command="{Binding DataContext.NavigationCommand,
-                                    RelativeSource={RelativeSource FindAncestor,
-                                    AncestorType={x:Type Window}}}"
-                                                       CommandParameter="{Binding ElementName=SideNavList, Path=SelectedValue}" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-
-
 
                         <TreeView.Resources>
                             <HierarchicalDataTemplate DataType="{x:Type entities:WpfCourseModule}"
@@ -103,11 +95,22 @@
                                 </StackPanel>
                             </HierarchicalDataTemplate>
                             
-                            <DataTemplate DataType="{x:Type entities:WpfCourseSection}"
+                            <DataTemplate x:Name="allSections"  DataType="{x:Type entities:WpfCourseSection}"
                                                       >
                                 <StackPanel Orientation="Horizontal">
-                                    
-                                    <TextBlock Text="{Binding Title}" />
+
+                                    <TextBlock  x:Name="SectionTitle"
+                                               Text="{Binding Title}">
+                                                                <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseUp">
+                                <i:InvokeCommandAction Command="{Binding DataContext.NavigationCommand,
+                                    RelativeSource={RelativeSource FindAncestor,
+                                    AncestorType={x:Type Window}}}"
+                                                       CommandParameter="Something else!" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                                        
+                                    </TextBlock>
                                     <TextBlock Text=" ("
                                                Foreground="Green" />
                                     <TextBlock Text="TBA"
@@ -137,6 +140,14 @@
 
                             </DataTemplate>-->
                         </TreeView.Resources>
+                        <!--<i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding DataContext.NavigationCommand,
+                                    RelativeSource={RelativeSource FindAncestor,
+                                    AncestorType={x:Type Window}}}"
+                                                       CommandParameter="{Binding ElementName=SideNavList, Path=SelectedValue}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>-->
                     </TreeView>
 
                 </StackPanel>
