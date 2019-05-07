@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WPFCookBook.Common;
 
 namespace WPFCookBook.Entities
 {
@@ -16,5 +17,6 @@ namespace WPFCookBook.Entities
         public Guid ModuleID { get; set; }
         public string Name { get; set; }
         public ICollection<WpfCourseSection> ModuleSections { get; set; }
+        public NavCommand<string> NavCommand { get; set; }
     }
 }

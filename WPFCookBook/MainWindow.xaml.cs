@@ -35,14 +35,29 @@ namespace WPFCookBook
             sectionTopics = _context.CourseSectionItems.ToList();
             sections = _context.CourseSections.ToList();
             courses = _context.CourseModules.ToList();
-       
-            WPFCookMainNav.ItemsSource = courses;
 
-            //testDG.ItemsSource = courses;
+            //WPFCookMainNav.ItemsSource = courses;
+
+            ////testDG.ItemsSource = courses;
         }
         public ObservableCollection<WpfCourseModule> ModulesList
         {
             get { return _modulesList; }
+        }
+
+
+        private void SelectionChanged(object sender, RoutedPropertyChangedEventArgs<Object> e)
+        {
+            //Perform actions when SelectedItem changes
+            try
+            {
+                
+                MessageBox.Show(((WpfCourseSection)e.NewValue).Title.ToString());
+            }
+            catch (Exception) { 
+                // Skip
+            }
+            
         }
     }
 }

@@ -7,6 +7,7 @@
         xmlns:entities="clr-namespace:WPFCookBook.Entities"
         xmlns:ViewModels="clr-namespace:WPFCookBook.ViewModels"
         xmlns:views="clr-namespace:WPFCookBook.Views"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         Title="WPF Handbook For Humans"
         Height="450"
         Width="800">
@@ -16,6 +17,7 @@
     </Window.DataContext>
 
     <Window.Resources>
+
         <DataTemplate DataType="{x:Type ViewModels:BasicsViewModel}">
             <views:BasicsSection />
         </DataTemplate>
@@ -40,17 +42,15 @@
                                FontWeight="ExtraBlack"
                                FontSize="24"
                                Text="Header section....x" />
-                    
+
                     <Button Content="Basics"
                             Command="{Binding NavigationCommand}"
-                            CommandParameter="basics"
-                             />
+                            CommandParameter="basics" />
 
                     <Button Content="Controls"
                             Command="{Binding NavigationCommand}"
-                            CommandParameter="controls"
-                            />
-                    
+                            CommandParameter="controls" />
+
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center"
                                 Margin="1, 10,1,10">
@@ -70,32 +70,49 @@
                             Height="Auto"
                             DockPanel.Dock="Left">
 
+                    <TreeView>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding NavigationCommand}"
+                                                       CommandParameter="basics" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <TreeViewItem Header="Item1"
+                                      IsExpanded="True"
+                                      Tag="Item1" />
+                        <TreeViewItem Header="Item2"
+                                      IsExpanded="True">
+                            <TreeViewItem Header="Item21"
+                                          Tag="Item21" />
+                        </TreeViewItem>
+                    </TreeView>
 
-                    <TreeView Name="WPFCookMainNav"
+                    <TreeView ItemsSource="{Binding ModulesList}"
                               Padding="1, 15, 1, 15">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectedItemChanged">
+                                <i:InvokeCommandAction Command="{Binding DataContext.NavigationCommand,
+                                    RelativeSource={RelativeSource FindAncestor,
+                                    AncestorType={x:Type Window}}}"
+                                                       CommandParameter="finally!!" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
 
 
 
                         <TreeView.Resources>
                             <HierarchicalDataTemplate DataType="{x:Type entities:WpfCourseModule}"
                                                       ItemsSource="{Binding ModuleSections}">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source=""
-                                           Margin="0,0,5,0" />
+                                <StackPanel  Orientation="Horizontal">
+
                                     <TextBlock Text="{Binding Name}" />
-                                    <TextBlock Text=" ["
-                                               Foreground="Blue" />
-                                    <TextBlock Text="{Binding ModuleSections.Count}"
-                                               Foreground="Blue" />
-                                    <TextBlock Text="]"
-                                               Foreground="Blue" />
+
                                 </StackPanel>
                             </HierarchicalDataTemplate>
                             <HierarchicalDataTemplate DataType="{x:Type entities:WpfCourseSection}"
                                                       ItemsSource="{Binding SectionTopics}">
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source=""
-                                           Margin="0,0,5,0" />
+                                    <Image Margin="0,0,5,0" />
                                     <TextBlock Text="{Binding Title}" />
                                     <TextBlock Text=" ("
                                                Foreground="Green" />
