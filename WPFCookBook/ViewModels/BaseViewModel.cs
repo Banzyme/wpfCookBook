@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using WPFCookBook.Common;
 using WPFCookBook.DataService;
 using WPFCookBook.Entities;
+using WPFCookBook.ViewModels.basics;
 
 namespace WPFCookBook.ViewModels
 {
@@ -19,6 +20,9 @@ namespace WPFCookBook.ViewModels
         private BindableBase _CurrentViewModel;
         private BasicsViewModel basicsModule = new BasicsViewModel();
         private ControlsSectionViewModel controlsModule = new ControlsSectionViewModel();
+
+        private IntroToXamlViewModel basicsIntro = new IntroToXamlViewModel();
+        private XamlFundamentalsViewModel basicsFund = new XamlFundamentalsViewModel();
 
         public BaseViewModel()
         {
@@ -51,7 +55,15 @@ namespace WPFCookBook.ViewModels
                 switch ( treeItem.Replace(' ', '_').ToLower() )
                 {
                     case "quick_intro":
-                        CurrentViewModel = basicsModule;
+                        CurrentViewModel = basicsIntro;
+                        break;
+
+             
+
+                    case "xaml_fundamentals":
+                        CurrentViewModel = basicsFund;
+
+
                         break;
 
                     case "introduction_to_wpf_controls":
@@ -59,7 +71,7 @@ namespace WPFCookBook.ViewModels
                         break;
 
                     default:
-                        CurrentViewModel = controlsModule;
+                        CurrentViewModel = basicsModule;
                         break;
                 }
 

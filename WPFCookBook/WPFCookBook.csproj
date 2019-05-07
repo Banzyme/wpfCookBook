@@ -72,9 +72,20 @@
     <Compile Include="Common\NavCommand.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BasicsViewModel.cs" />
+    <Compile Include="ViewModels\basics\IntroToXamlViewModel.cs" />
+    <Compile Include="ViewModels\basics\XamlFundamentalsViewModel.cs" />
     <Compile Include="ViewModels\ControlsSectionViewModel.cs" />
     <Compile Include="Views\BasicsSection.xaml.cs">
       <DependentUpon>BasicsSection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\basics\Index.xaml.cs">
+      <DependentUpon>Index.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\basics\IntroToXaml.xaml.cs">
+      <DependentUpon>IntroToXaml.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\basics\XamlFundamentals.xaml.cs">
+      <DependentUpon>XamlFundamentals.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ControlsSection.xaml.cs">
       <DependentUpon>ControlsSection.xaml</DependentUpon>
@@ -97,6 +108,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\BasicsSection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\basics\Index.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\basics\IntroToXaml.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\basics\XamlFundamentals.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -137,6 +160,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
+    <Folder Include="Views\controls\" />
+    <Folder Include="Views\layout\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataService\scripts\seed.sql" />

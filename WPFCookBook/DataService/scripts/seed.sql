@@ -1,5 +1,4 @@
 --Insert seed data into modules table
-
 insert WpfCourseModule(ModuleID, Name) values (NEWID(), 'Basics(Getting started)');
 insert WpfCourseModule(ModuleID, Name) values (NEWID(), 'Controls');
 insert WpfCourseModule(ModuleID, Name) values (NEWID(), 'Layouts');
@@ -14,6 +13,7 @@ insert WpfCourseModule(ModuleID, Name) values (NEWID(), 'Graphics and Animations
 insert WpfCourseModule(ModuleID, Name) values (NEWID(), 'Misc');
 insert WpfCourseModule(ModuleID, Name) values (NEWID(), 'Advanced topics');
 insert WpfCourseModule(ModuleID, Name) values (NEWID(), 'References');
+insert WpfCourseModule(ModuleID, Name) values (NEWID(), 'FAQ');
 
 --Insert seed to module sections - Tree view header
 -- 1.BASICS
@@ -30,12 +30,12 @@ insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
  values (NEWID(), 'Real life WPF examples', 1);
 
 insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
- values (NEWID(), 'Tutorial - A self service insuarence signup tool', 1);
+ values (NEWID(), 'Tutorial - Self service insuarence', 1);
 
 
 --2.CONTROLS - Child item on tree view
 insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
- values (NEWID(), 'Introduction to WPF controls', 2);
+ values (NEWID(), 'Intro to WPF controls', 2);
 
 insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
  values (NEWID(), 'Text controls', 2);
@@ -44,11 +44,48 @@ insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
  insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
  values (NEWID(), 'Checkboxes and Radio Buttons', 2);
  insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
- values (NEWID(), 'ListViews', 2);
+ values (NEWID(), 'List Views', 2);
+
+  insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
+ values (NEWID(), 'Data Grid', 2);
+
+   insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
+ values (NEWID(), 'Tree View', 2);
+
  insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
  values (NEWID(), 'Menus and Toolbars', 2);
  insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
  values (NEWID(), 'HyperLinks', 2);
+
+  insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
+ values (NEWID(), 'Misc', 2);
+
+
+--3. Layouts
+insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
+ values (NEWID(), 'WPF Layouts overview', 3);
+
+insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
+ values (NEWID(), 'Grid Panel', 3);
+
+insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
+ values (NEWID(), 'Stack Panel', 3);
+
+insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
+ values (NEWID(), 'Dock Panel', 3);
+
+insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
+ values (NEWID(), 'Canvas panel', 3);
+
+insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
+ values (NEWID(), 'Wrap Panel', 3);
+
+ insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
+ values (NEWID(), 'Nested Layouts', 3);
+
+ insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
+ values (NEWID(), 'Tabs', 3);
+
 
  --Insert seed to module sections - Tab control
   insert WpfCourseSectionItem(SectionItemID, Title,Subtitle, Content, WpfCourseSection_ID)
