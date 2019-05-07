@@ -82,8 +82,7 @@
                                                       ItemsSource="{Binding ModuleSections}">
                                 <StackPanel  Orientation="Horizontal">
 
-                                    <Image
-                                           Margin="0,0,5,0" />
+                                    <Image Margin="0,0,5,0" />
                                     <TextBlock Text="{Binding Name}" />
                                     <TextBlock Text=" ["
                                                Foreground="Blue" />
@@ -94,22 +93,23 @@
 
                                 </StackPanel>
                             </HierarchicalDataTemplate>
-                            
-                            <DataTemplate x:Name="allSections"  DataType="{x:Type entities:WpfCourseSection}"
-                                                      >
-                                <StackPanel Orientation="Horizontal">
 
-                                    <TextBlock  x:Name="SectionTitle"
-                                               Text="{Binding Title}">
-                                                                <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseUp">
-                                <i:InvokeCommandAction Command="{Binding DataContext.NavigationCommand,
+                            <DataTemplate x:Name="allSections"
+                                          DataType="{x:Type entities:WpfCourseSection}">
+                                <StackPanel Orientation="Horizontal">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseDown">
+                                            <i:InvokeCommandAction Command="{Binding DataContext.NavigationCommand,
                                     RelativeSource={RelativeSource FindAncestor,
                                     AncestorType={x:Type Window}}}"
-                                                       CommandParameter="Something else!" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                                        
+                                                                   CommandParameter="{Binding ElementName=SectionTitle, Path=Text}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
+                                    <TextBlock  x:Name="SectionTitle"
+                                                Text="{Binding Title}">
+
+
                                     </TextBlock>
                                     <TextBlock Text=" ("
                                                Foreground="Green" />
@@ -120,25 +120,7 @@
                                 </StackPanel>
 
                             </DataTemplate>
-                            <!--<DataTemplate DataType="{x:Type entities:WpfCourseSectionItem}">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source=""
-                                           Margin="0,0,5,0" />
-                                    <TextBlock Text="{Binding Title}" />
-                                    <TextBlock Text=" ("
-                                               Foreground="Green" />
-                                    <TextBlock Text="TBA"
-                                               Foreground="Green" />
-                                    <TextBlock Text=" years)"
-                                               Foreground="Green" />
 
-                                    <Button>
-                                        <TextBlock Text="{Binding Content}" />
-                                    </Button>
-
-                                </StackPanel>
-
-                            </DataTemplate>-->
                         </TreeView.Resources>
                         <!--<i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectedItemChanged">
