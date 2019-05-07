@@ -40,6 +40,17 @@
                                FontWeight="ExtraBlack"
                                FontSize="24"
                                Text="Header section....x" />
+                    
+                    <Button Content="Basics"
+                            Command="{Binding NavigationCommand}"
+                            CommandParameter="basics"
+                             />
+
+                    <Button Content="Controls"
+                            Command="{Binding NavigationCommand}"
+                            CommandParameter="controls"
+                            />
+                    
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center"
                                 Margin="1, 10,1,10">
@@ -55,7 +66,7 @@
 
 
                 <StackPanel Background="BlueViolet"
-                            Width="320"
+                            Width="280"
                             Height="Auto"
                             DockPanel.Dock="Left">
 
@@ -123,8 +134,10 @@
                     </TreeView>
 
                 </StackPanel>
-                <StackPanel Background="Beige"
-                            DockPanel.Dock="Right" />
+
+                <Grid DockPanel.Dock="Right">
+                    <ContentControl  Content="{Binding CurrentViewModel}" />
+                </Grid>
 
             </DockPanel>
         </Grid>
