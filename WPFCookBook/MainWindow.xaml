@@ -90,14 +90,23 @@
                                                       ItemsSource="{Binding ModuleSections}">
                                 <StackPanel  Orientation="Horizontal">
 
+                                    <Image
+                                           Margin="0,0,5,0" />
                                     <TextBlock Text="{Binding Name}" />
+                                    <TextBlock Text=" ["
+                                               Foreground="Blue" />
+                                    <TextBlock Text="{Binding ModuleSections.Count}"
+                                               Foreground="Blue" />
+                                    <TextBlock Text="]"
+                                               Foreground="Blue" />
 
                                 </StackPanel>
                             </HierarchicalDataTemplate>
-                            <HierarchicalDataTemplate DataType="{x:Type entities:WpfCourseSection}"
-                                                      ItemsSource="{Binding SectionTopics}">
+                            
+                            <DataTemplate DataType="{x:Type entities:WpfCourseSection}"
+                                                      >
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Margin="0,0,5,0" />
+                                    
                                     <TextBlock Text="{Binding Title}" />
                                     <TextBlock Text=" ("
                                                Foreground="Green" />
@@ -105,15 +114,10 @@
                                                Foreground="Green" />
                                     <TextBlock Text=" years)"
                                                Foreground="Green" />
-
-                                    <Button>
-                                        <TextBlock Text="{Binding WpfCourseSectionItem.Content}" />
-                                    </Button>
-
                                 </StackPanel>
 
-                            </HierarchicalDataTemplate>
-                            <DataTemplate DataType="{x:Type entities:WpfCourseSectionItem}">
+                            </DataTemplate>
+                            <!--<DataTemplate DataType="{x:Type entities:WpfCourseSectionItem}">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source=""
                                            Margin="0,0,5,0" />
@@ -131,7 +135,7 @@
 
                                 </StackPanel>
 
-                            </DataTemplate>
+                            </DataTemplate>-->
                         </TreeView.Resources>
                     </TreeView>
 

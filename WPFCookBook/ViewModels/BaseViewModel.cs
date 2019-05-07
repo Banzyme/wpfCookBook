@@ -23,10 +23,11 @@ namespace WPFCookBook.ViewModels
         public BaseViewModel()
         {
             NavigationCommand = new NavCommand<string>(OnNav);
+            var sectionTopics = _context.CourseSectionItems.ToList();
+            var sections = _context.CourseSections.ToList();
             var modResults = _context.CourseModules.ToList();
             modResults.ForEach(item =>
            {
-               
                ModulesList.Add(item);
            });
         }
@@ -40,7 +41,7 @@ namespace WPFCookBook.ViewModels
 
         public NavCommand<string> NavigationCommand { get; private set; }
 
-        public ObservableCollection<WpfCourseModule> ModulesList { get; } = new ObservableCollection<WpfCourseModule>();
+        public ObservableCollection<WpfCourseModule> ModulesList { get; set; } = new ObservableCollection<WpfCourseModule>();
 
         private void OnNav(string treeItem)
         {
