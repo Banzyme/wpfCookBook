@@ -48,25 +48,28 @@ namespace WPFCookBook.ViewModels
 
             try
             {
+                switch ( treeItem.Replace(' ', '_').ToLower() )
+                {
+                    case "quick_intro":
+                        CurrentViewModel = basicsModule;
+                        break;
 
-                MessageBox.Show("Nav command: " + treeItem);
+                    case "introduction_to_wpf_controls":
+                        CurrentViewModel = controlsModule;
+                        break;
+
+                    default:
+                        CurrentViewModel = controlsModule;
+                        break;
+                }
+
+                //MessageBox.Show("Nav command: " + treeItem);
             }
             catch (Exception)
             {
                 // Skip
                 
             }
-
-            //switch (route)
-            //{
-            //    case "basics":
-            //        CurrentViewModel = basicsModule;
-            //        break;
-            //    case "controls":
-            //    default:
-            //        CurrentViewModel = controlsModule;
-            //        break;
-            //}
         }
     }
 }
