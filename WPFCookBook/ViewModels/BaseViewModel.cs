@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using WPFCookBook.Common;
 using WPFCookBook.DataService;
 using WPFCookBook.Entities;
@@ -25,7 +26,7 @@ namespace WPFCookBook.ViewModels
             var modResults = _context.CourseModules.ToList();
             modResults.ForEach(item =>
            {
-               item.NavCommand = NavigationCommand;
+               
                ModulesList.Add(item);
            });
         }
@@ -41,29 +42,30 @@ namespace WPFCookBook.ViewModels
 
         public ObservableCollection<WpfCourseModule> ModulesList { get; } = new ObservableCollection<WpfCourseModule>();
 
-        private void OnNav(string route)
+        private void OnNav(string treeItem)
         {
 
             try
             {
 
-                MessageBox.Show("Nav command: " + route);
+                MessageBox.Show("Nav command: " + treeItem);
             }
             catch (Exception)
             {
                 // Skip
+                
             }
 
-            switch (route)
-            {
-                case "basics":
-                    CurrentViewModel = basicsModule;
-                    break;
-                case "controls":
-                default:
-                    CurrentViewModel = controlsModule;
-                    break;
-            }
+            //switch (route)
+            //{
+            //    case "basics":
+            //        CurrentViewModel = basicsModule;
+            //        break;
+            //    case "controls":
+            //    default:
+            //        CurrentViewModel = controlsModule;
+            //        break;
+            //}
         }
     }
 }

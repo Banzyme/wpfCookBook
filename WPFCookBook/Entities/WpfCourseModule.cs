@@ -17,6 +17,6 @@ namespace WPFCookBook.Entities
         public Guid ModuleID { get; set; }
         public string Name { get; set; }
         public ICollection<WpfCourseSection> ModuleSections { get; set; }
-        public NavCommand<string> NavCommand { get; set; }
+   
     }
 }

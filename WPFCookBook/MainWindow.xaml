@@ -70,31 +70,16 @@
                             Height="Auto"
                             DockPanel.Dock="Left">
 
-                    <TreeView>
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="SelectedItemChanged">
-                                <i:InvokeCommandAction Command="{Binding NavigationCommand}"
-                                                       CommandParameter="basics" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                        <TreeViewItem Header="Item1"
-                                      IsExpanded="True"
-                                      Tag="Item1" />
-                        <TreeViewItem Header="Item2"
-                                      IsExpanded="True">
-                            <TreeViewItem Header="Item21"
-                                          Tag="Item21" />
-                        </TreeViewItem>
-                    </TreeView>
 
-                    <TreeView ItemsSource="{Binding ModulesList}"
+                    <TreeView x:Name="SideNavList" ItemsSource="{Binding ModulesList}"
+                              SelectedValuePath="Name"
                               Padding="1, 15, 1, 15">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectedItemChanged">
                                 <i:InvokeCommandAction Command="{Binding DataContext.NavigationCommand,
                                     RelativeSource={RelativeSource FindAncestor,
                                     AncestorType={x:Type Window}}}"
-                                                       CommandParameter="finally!!" />
+                                                       CommandParameter="{Binding ElementName=SideNavList, Path=SelectedValue}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
 
