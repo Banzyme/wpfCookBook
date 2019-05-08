@@ -18,6 +18,7 @@ namespace WPFCookBook.ViewModels
     {
         private readonly ApplicationDBContext _context = new ApplicationDBContext();
         private BindableBase _CurrentViewModel;
+        private IndexViewModel IndexPage = new IndexViewModel();
         private BasicsViewModel basicsModule = new BasicsViewModel();
         private ControlsSectionViewModel controlsModule = new ControlsSectionViewModel();
 
@@ -34,6 +35,9 @@ namespace WPFCookBook.ViewModels
            {
                ModulesList.Add(item);
            });
+
+            //Setup default window content
+            CurrentViewModel = IndexPage;
         }
 
 
@@ -52,13 +56,13 @@ namespace WPFCookBook.ViewModels
 
             try
             {
-                switch ( treeItem.Replace(' ', '_').ToLower() )
+                switch (treeItem.Replace(' ', '_').ToLower())
                 {
                     case "quick_intro":
                         CurrentViewModel = basicsIntro;
                         break;
 
-             
+
 
                     case "xaml_fundamentals":
                         CurrentViewModel = basicsFund;
@@ -80,7 +84,7 @@ namespace WPFCookBook.ViewModels
             catch (Exception)
             {
                 // Skip
-                
+
             }
         }
     }

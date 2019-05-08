@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <TabControl>
-            <TabItem>
+            <TabItem Header="What about XAML?">
                 <RichTextBox>
                     <FlowDocument>
                         <Paragraph FontSize="36">Xaml fundamentals</Paragraph>
@@ -19,7 +19,7 @@
                     </FlowDocument>
                 </RichTextBox>
             </TabItem>
-            <TabItem>
+            <TabItem Header="Quiz">
                 Page 2
             </TabItem>
         </TabControl>

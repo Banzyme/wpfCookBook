@@ -78,6 +78,7 @@
     <Compile Include="ViewModels\basics\IntroToXamlViewModel.cs" />
     <Compile Include="ViewModels\basics\XamlFundamentalsViewModel.cs" />
     <Compile Include="ViewModels\ControlsSectionViewModel.cs" />
+    <Compile Include="ViewModels\IndexViewModel.cs" />
     <Compile Include="Views\BasicsSection.xaml.cs">
       <DependentUpon>BasicsSection.xaml</DependentUpon>
     </Compile>
@@ -89,6 +90,9 @@
     </Compile>
     <Compile Include="Views\ControlsSection.xaml.cs">
       <DependentUpon>ControlsSection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IndexView.xaml.cs">
+      <DependentUpon>IndexView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -120,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ControlsSection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\IndexView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -6,12 +6,19 @@
              xmlns:local="clr-namespace:WPFCookBook.Views.basics"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
     <Grid>
+
         <TabControl>
-            <TabItem></TabItem>
-            <TabItem></TabItem>
-            <TabItem></TabItem>
-            <TabItem>
+
+            <TabItem Header="Introduction">
+
+            </TabItem>
+            <TabItem Header="History lesson">
+     
+            </TabItem>
+            <TabItem Header="Architecture"></TabItem>
+            <TabItem Header="A simple example">
                 <RichTextBox>
                     <FlowDocument>
                         <Paragraph FontSize="36">Lets Begin</Paragraph>
@@ -22,6 +29,9 @@
                     </FlowDocument>
                 </RichTextBox>
             </TabItem>
+
+            
+            
         </TabControl>
 
 

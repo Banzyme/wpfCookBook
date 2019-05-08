@@ -21,6 +21,10 @@
 
     <Window.Resources>
 
+        <DataTemplate DataType="{x:Type ViewModels:IndexViewModel}">
+            <views:IndexView />
+        </DataTemplate>
+
         <DataTemplate DataType="{x:Type ViewModels:BasicsViewModel}">
             <views:BasicsSection />
         </DataTemplate>
@@ -42,6 +46,7 @@
 
     <Grid>
         <Grid x:Name="PageContentGrid"
+              
               Background="White">
             <DockPanel>
                 
@@ -56,6 +61,8 @@
                                FontStretch="Expanded"
                                FontWeight="ExtraBlack"
                                FontSize="24"
+                               Foreground="Blue"
+                               FontFamily="Lucida Sans"
                                Text="WPF - The Essential Guide" />
                     
 
@@ -81,7 +88,9 @@
                             DockPanel.Dock="Left">
 
 
-                    <TreeView x:Name="SideNavList"
+                    <TreeView ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="SideNavList"
+                              BorderThickness="0"
+                              
                               TextSearch.TextPath="Name"
                               ItemsSource="{Binding ModulesList}"
                               SelectedValuePath="Name"
@@ -93,7 +102,7 @@
                                 <StackPanel  Orientation="Horizontal">
 
                                     <Image Margin="0,0,5,0" />
-                                    <TextBlock Text="{Binding Name}" />
+                                    <TextBlock FontSize="20" Text="{Binding Name}" />
                                     <TextBlock Text=" ["
                                                Foreground="Blue" />
                                     <TextBlock Text="{Binding ModuleSections.Count}"
@@ -117,16 +126,12 @@
                                     </i:Interaction.Triggers>
 
                                     <TextBlock  x:Name="SectionTitle"
-                                                Text="{Binding Title}">
+                                                FontSize="14"
+                                                Text="{Binding Title}" />
 
 
-                                    </TextBlock>
-                                    <TextBlock Text=" ("
-                                               Foreground="Green" />
-                                    <TextBlock Text="TBA"
-                                               Foreground="Green" />
-                                    <TextBlock Text=" years)"
-                                               Foreground="Green" />
+
+
                                 </StackPanel>
 
                             </DataTemplate>
@@ -146,7 +151,7 @@
                  <!--End: Side Nav-->
                 
                 <!--Content Container-->
-                <Grid DockPanel.Dock="Right">
+                <Grid Margin="0,10,1,0" DockPanel.Dock="Right">
                     <ContentControl  Content="{Binding CurrentViewModel}" />
                 </Grid>
                 <!--End: Content container-->
