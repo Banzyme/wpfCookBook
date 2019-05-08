@@ -27,7 +27,7 @@ namespace WPFCookBook.ViewModels
 
         public BaseViewModel()
         {
-            NavigationCommand = new NavCommand<string>(OnNav);
+            NavigationCommand = new CommandTemplate<string>(OnNav);
             var sectionTopics = _context.CourseSectionItems.ToList();
             var sections = _context.CourseSections.ToList();
             var modResults = _context.CourseModules.ToList();
@@ -47,7 +47,7 @@ namespace WPFCookBook.ViewModels
             set { SetProperty(ref _CurrentViewModel, value); }
         }
 
-        public NavCommand<string> NavigationCommand { get; private set; }
+        public CommandTemplate<string> NavigationCommand { get; private set; }
 
         public ObservableCollection<WpfCourseModule> ModulesList { get; set; } = new ObservableCollection<WpfCourseModule>();
 

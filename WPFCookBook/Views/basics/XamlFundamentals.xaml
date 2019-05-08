@@ -4,12 +4,53 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFCookBook.Views.basics"
+             xmlns:shared="clr-namespace:WPFCookBook.Common"
+             xmlns:fsc="clr-namespace:FsWpfControls.FsRichTextBox;assembly=FsRichTextBox" 
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
+    <UserControl.Resources>
+        <shared:XamlToFlowDocMapper x:Key="flowDocumentConverter" />
+    </UserControl.Resources>
+    
     <Grid>
         <TabControl>
             <TabItem Header="What about XAML?">
-                <RichTextBox>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0">
+                        <fsc:FsRichTextBox x:Name="EditBox"
+                                           Document="{Binding Path=DocumentXaml, Converter={StaticResource flowDocumentConverter}, Mode=TwoWay}"
+                                           Grid.Row="0"
+                                           Margin="10,10,10,5"
+                                           ToolbarBackground="#FFD2CB84"
+                                           ToolbarBorderBrush="#FFC6BE75"
+                                           ToolbarBorderThickness="1,1,1,0"
+                                           CodeControlsVisibility="Collapsed" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <Button Content="Save changes"
+                                Command="{Binding SaveDocument}"/>
+                        <Button Content="Force Update"
+                                Width="100"
+                                Margin="10,0,0,0"
+                                Click="OnForceUpdateClick" />
+                        <Button Content="Discard" />
+                    </StackPanel>
+
+
+                </Grid>
+
+
+                <!--<RichTextBox 
+                    x:Name="TextEditArea"
+                    Document="{Binding Path=DocumentXaml, Converter={StaticResource flowDocumentConverter}, Mode=TwoWay}">
+                    
                     <FlowDocument>
                         <Paragraph FontSize="36">Xaml fundamentals</Paragraph>
                         <Paragraph FontStyle="Italic"
@@ -17,11 +58,14 @@
                                    FontSize="14"
                                    Foreground="Gray">Thanks to the RichTextBox control, this FlowDocument is completely editable!</Paragraph>
                     </FlowDocument>
-                </RichTextBox>
+                    
+                </RichTextBox>-->
             </TabItem>
+
             <TabItem Header="Quiz">
                 Page 2
             </TabItem>
         </TabControl>
     </Grid>
+    
 </UserControl>

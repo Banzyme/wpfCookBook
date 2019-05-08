@@ -23,6 +23,12 @@ namespace WPFCookBook.Views.basics
         public XamlFundamentals()
         {
             InitializeComponent();
+            var test = EditBox.Document;
+        }
+
+        private void OnForceUpdateClick(object sender, RoutedEventArgs e)
+        {
+            this.EditBox.UpdateDocumentBindings();
         }
     }
 }

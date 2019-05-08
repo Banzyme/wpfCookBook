@@ -72,7 +72,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\BindableBase.cs" />
-    <Compile Include="Common\NavCommand.cs" />
+    <Compile Include="Common\CommandTemplate.cs" />
+    <Compile Include="Common\SaveFlowDocCommand.cs" />
     <Compile Include="Common\XamlToFlowDocMapper.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BasicsViewModel.cs" />
@@ -171,6 +172,12 @@
   <ItemGroup>
     <Resource Include="Assets\icon\notebook.ico" />
     <Content Include="DataService\scripts\seed.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Downloads\ricdhT-Test\FsRichTextBox\FsRichTextBox\FsRichTextBox.csproj">
+      <Project>{091ce5bc-d5c3-4752-a244-053664873941}</Project>
+      <Name>FsRichTextBox</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28809.33
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFCookBook", "WPFCookBook\WPFCookBook.csproj", "{8A95DBEF-A0DE-4103-BB80-CCF0BA923D16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FsRichTextBox", "..\..\..\Downloads\ricdhT-Test\FsRichTextBox\FsRichTextBox\FsRichTextBox.csproj", "{091CE5BC-D5C3-4752-A244-053664873941}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{8A95DBEF-A0DE-4103-BB80-CCF0BA923D16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A95DBEF-A0DE-4103-BB80-CCF0BA923D16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A95DBEF-A0DE-4103-BB80-CCF0BA923D16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{091CE5BC-D5C3-4752-A244-053664873941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{091CE5BC-D5C3-4752-A244-053664873941}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{091CE5BC-D5C3-4752-A244-053664873941}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{091CE5BC-D5C3-4752-A244-053664873941}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

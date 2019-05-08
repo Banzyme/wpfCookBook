@@ -7,17 +7,17 @@ using System.Windows.Input;
 
 namespace WPFCookBook.Common
 {
-    public class NavCommand<T> : ICommand
+    public class CommandTemplate<T> : ICommand
     {
         Action<T> _TargetExecuteMethod;
         Func<T, bool> _TargetCanExecuteMethod;
 
-        public NavCommand(Action<T> executeMethod)
+        public CommandTemplate(Action<T> executeMethod)
         {
             _TargetExecuteMethod = executeMethod;
         }
 
-        public NavCommand(Action<T> executeMethod, Func<T, bool> canExecuteMethod)
+        public CommandTemplate(Action<T> executeMethod, Func<T, bool> canExecuteMethod)
         {
             _TargetExecuteMethod = executeMethod;
             _TargetCanExecuteMethod = canExecuteMethod;
