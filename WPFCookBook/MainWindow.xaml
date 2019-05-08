@@ -44,6 +44,8 @@
         <Grid x:Name="PageContentGrid"
               Background="White">
             <DockPanel>
+                
+                <!--Window header-->
                 <StackPanel Orientation="Vertical"
                             DockPanel.Dock="Top"
                             Background="White"
@@ -54,31 +56,26 @@
                                FontStretch="Expanded"
                                FontWeight="ExtraBlack"
                                FontSize="24"
-                               Text="Header section....x" />
-
-                    <Button Content="Basics"
-                            Command="{Binding NavigationCommand}"
-                            CommandParameter="basics" />
-
-                    <Button Content="Controls"
-                            Command="{Binding NavigationCommand}"
-                            CommandParameter="controls" />
+                               Text="WPF - The Essential Guide" />
+                    
 
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center"
                                 Margin="1, 10,1,10">
                         <TextBox Text=""
-                                 Padding="50, 10,50, 10"
+                                 Padding="50, 5,50, 5"
                                  HorizontalAlignment="Center" />
-                        <Button Padding="20, 10,20, 10"
+                        <Button Padding="20, 5,20, 5"
                                 Content="Search"
                                 HorizontalAlignment="Center" />
                     </StackPanel>
+                    
 
                 </StackPanel>
+                <!--End: Window header-->
 
-
-                <StackPanel Background="BlueViolet"
+                 <!--Side Nav-->
+                <StackPanel Margin="0, 10, 1,0" 
                             Width="280"
                             Height="Auto"
                             DockPanel.Dock="Left">
@@ -146,10 +143,13 @@
                     </TreeView>
 
                 </StackPanel>
-
+                 <!--End: Side Nav-->
+                
+                <!--Content Container-->
                 <Grid DockPanel.Dock="Right">
                     <ContentControl  Content="{Binding CurrentViewModel}" />
                 </Grid>
+                <!--End: Content container-->
 
             </DockPanel>
         </Grid>
