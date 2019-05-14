@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Unity;
+using WPFCookBook.DataService.Repository;
 
 namespace WPFCookBook
 {
@@ -19,6 +20,7 @@ namespace WPFCookBook
         {
             base.OnStartup(e);
             IUnityContainer container = new UnityContainer();
+            container.RegisterType<IWpfCourseModulesRepository, WpfCourseModulesRepository>();
         }
     }
 }

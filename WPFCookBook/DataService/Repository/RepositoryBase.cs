@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WPFCookBook.DataService.Repository
 {
-    public class RepositoryBase<T> : IRepositoryBase<T> where T : class
+    public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
         private ApplicationDBContext _db { get; set; }
 

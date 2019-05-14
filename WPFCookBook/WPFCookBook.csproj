@@ -89,6 +89,9 @@
     <Compile Include="DataService\CouseSectionService.cs" />
     <Compile Include="DataService\Repository\IRepositoryBase.cs" />
     <Compile Include="DataService\Repository\RepositoryBase.cs" />
+    <Compile Include="DataService\Repository\WpfCourseModulesRepository.cs" />
+    <Compile Include="DataService\Repository\WpfCourseSectionItemRepo.cs" />
+    <Compile Include="DataService\Repository\WpfCourseSectionRepository.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BasicsViewModel.cs" />
     <Compile Include="ViewModels\basics\IntroToXamlViewModel.cs" />
