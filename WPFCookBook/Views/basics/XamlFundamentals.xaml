@@ -52,7 +52,7 @@
 
         <StackPanel >
             <Button Content="Test"
-                    Command="{Binding TestCommand}"></Button>
+                    Command="{Binding OnSaveChanges}"></Button>
         </StackPanel>
 
         <TabControl  Grid.Row="1"
@@ -68,13 +68,22 @@
                         </Grid.RowDefinitions>
 
                         <StackPanel Grid.Row="0">
-                            <TextBlock Text="{Binding Content}" />
+                            <fsc:FsRichTextBox x:Name="EditBox"
+                                               Document="{Binding Path=Content, Converter={StaticResource flowDocumentConverter}, Mode=TwoWay}"
+                                              
+                                               Grid.Row="0"
+                                               Margin="10,10,10,5"
+                                               ToolbarBackground="#FFD2CB84"
+                                               ToolbarBorderBrush="#FFC6BE75"
+                                               ToolbarBorderThickness="1,1,1,0"
+                                               CodeControlsVisibility="Collapsed" />
                         </StackPanel>
 
                         <WrapPanel Orientation="Horizontal"
                                    Grid.Row="1">
                             <Button Margin="5"
-                                    Command="{Binding DataContext.TestCommand, ElementName=fundamentalsGrid}"
+                                    Command="{Binding DataContext.OnSaveChangesCommand, ElementName=fundamentalsGrid}"
+                                    CommandParameter="{Binding ElementName=EditBox}"
                                     Content="Save changes">
 
                  

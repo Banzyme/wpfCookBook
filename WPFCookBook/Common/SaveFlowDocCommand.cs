@@ -34,7 +34,7 @@ namespace WPFCookBook.Common
             try
             {
                 // Can save to db here??
-                MessageBox.Show(this._viewModel.DocumentXaml);
+                
             }
             catch (Exception e)
             {
