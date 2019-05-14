@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Input;
 using WPFCookBook.Common;
+using WPFCookBook.Contracts;
 using WPFCookBook.DataService;
 using WPFCookBook.Entities;
 
@@ -17,14 +18,17 @@ namespace WPFCookBook.ViewModels.basics
     public class XamlFundamentalsViewModel : BindableBase
     {
         private readonly ApplicationDBContext _context = new ApplicationDBContext();
+        private ICourseSectionService _sectionService;
         private WpfCourseSection section;
         private WpfCourseSectionItem currentTopic = null;
 
         #region constructor
-        public XamlFundamentalsViewModel()
+        
+        public XamlFundamentalsViewModel(ICourseSectionService sectionService)
         {
+            _sectionService = sectionService;
             OnSaveChangesCommand = new CommandTemplate<FsRichTextBox>(OnSaveChanges);
-            section = _context.CourseSections.Include("SectionTopics").SingleOrDefault(x => x.Title.Contains("XAML Fundamentals"));
+            LoadInitialData();
         }
         #endregion
 
@@ -40,8 +44,11 @@ namespace WPFCookBook.ViewModels.basics
         }
         #endregion
 
-
         #region Private methods
+        private void LoadInitialData()
+        {
+            section = _sectionService.GetSectionByName("XAML Fundamentals");
+        }
 
         private void OnSaveChanges(FsRichTextBox EditBox)
         {

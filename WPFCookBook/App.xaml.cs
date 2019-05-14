@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Unity;
+using WPFCookBook.Contracts;
+using WPFCookBook.DataService;
 using WPFCookBook.DataService.Repository;
 
 namespace WPFCookBook
@@ -18,11 +20,9 @@ namespace WPFCookBook
         
         protected override void OnStartup(StartupEventArgs e)
         {
-            base.OnStartup(e);
-            IUnityContainer container = new UnityContainer();
-            container.RegisterType<IWpfCourseModulesRepository, WpfCourseModulesRepository>();
-            container.RegisterType<IWpfCourseSectionRepository, WpfCourseSectionRepository>();
-            container.RegisterType<IWpfCourseSectionItemRepo, WpfCourseSectionItemRepo>();
+            //base.OnStartup(e);
+
+            
         }
     }
 }

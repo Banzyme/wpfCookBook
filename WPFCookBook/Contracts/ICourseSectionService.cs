@@ -11,6 +11,7 @@ namespace WPFCookBook.Contracts
     {
         IEnumerable<WpfCourseSection> GetAllSections();
         WpfCourseSection GetSectionByID(long ID);
+        WpfCourseSection GetSectionByName(string searchStr);
         bool DeleteSection(long ID);
         bool UpdateSection(long ID, WpfCourseSection sect);
         bool AddSection(WpfCourseSection sect);

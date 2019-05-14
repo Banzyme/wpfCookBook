@@ -8,7 +8,7 @@ namespace WPFCookBook.DataService.Repository
 {
     public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
-        private ApplicationDBContext _db { get; set; }
+        protected ApplicationDBContext _db { get; set; }
 
         public RepositoryBase(ApplicationDBContext db)
         {

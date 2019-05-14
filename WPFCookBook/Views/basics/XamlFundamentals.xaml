@@ -50,11 +50,6 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <StackPanel >
-            <Button Content="Test"
-                    Command="{Binding OnSaveChanges}"></Button>
-        </StackPanel>
-
         <TabControl  Grid.Row="1"
                      ItemsSource="{Binding TopicsList}"
                      ItemTemplate="{StaticResource TabsBasicHeaderTemplate}">

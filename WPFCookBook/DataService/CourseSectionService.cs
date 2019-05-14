@@ -63,6 +63,11 @@ namespace WPFCookBook.DataService
             }
         }
 
+        public WpfCourseSection GetSectionByName(string searchStr)
+        {
+            return _repo.GetSectionWithTopics(searchStr);
+        }
+
         public bool UpdateSection(long ID, WpfCourseSection sect)
         {
             throw new NotImplementedException();

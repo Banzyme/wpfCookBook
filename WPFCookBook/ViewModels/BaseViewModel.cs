@@ -6,8 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using Unity;
 using WPFCookBook.Common;
+using WPFCookBook.Contracts;
 using WPFCookBook.DataService;
+using WPFCookBook.DataService.Repository;
 using WPFCookBook.Entities;
 using WPFCookBook.ViewModels.basics;
 
@@ -23,10 +26,20 @@ namespace WPFCookBook.ViewModels
         private ControlsSectionViewModel controlsModule = new ControlsSectionViewModel();
 
         private IntroToXamlViewModel basicsIntro = new IntroToXamlViewModel();
-        private XamlFundamentalsViewModel basicsFund = new XamlFundamentalsViewModel();
+        
+        private XamlFundamentalsViewModel basicsFund;
 
         public BaseViewModel()
         {
+            IUnityContainer container = new UnityContainer();
+            container.RegisterType<IWpfCourseModulesRepository, WpfCourseModulesRepository>();
+            container.RegisterType<IWpfCourseSectionRepository, WpfCourseSectionRepository>();
+            container.RegisterType<IWpfCourseSectionItemRepo, WpfCourseSectionItemRepo>();
+            container.RegisterType<ICourseSectionService, CourseSectionService>();
+
+            basicsFund = container.Resolve<XamlFundamentalsViewModel>();
+
+
             NavigationCommand = new CommandTemplate<string>(OnNav);
             var sectionTopics = _context.CourseSectionItems.ToList();
             var sections = _context.CourseSections.ToList();

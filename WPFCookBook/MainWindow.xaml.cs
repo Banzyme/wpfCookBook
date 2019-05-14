@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,8 +14,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Unity;
+using WPFCookBook.Contracts;
 using WPFCookBook.DataService;
+using WPFCookBook.DataService.Repository;
 using WPFCookBook.Entities;
+using WPFCookBook.ViewModels;
 
 namespace WPFCookBook
 {
@@ -23,11 +28,19 @@ namespace WPFCookBook
     /// </summary>
     public partial class MainWindow : Window
     {
+       
+        public BaseViewModel ViewModel
+        {
+            set { DataContext = value; }
+        }
+
         private readonly ApplicationDBContext _context = new ApplicationDBContext();
         private ObservableCollection<WpfCourseModule> _modulesList = new ObservableCollection<WpfCourseModule>();
         public MainWindow()
         {
             InitializeComponent();
+
+           
 
             List<WpfCourseModule> courses = new List<WpfCourseModule>();
             List<WpfCourseSectionItem> sectionTopics = new List<WpfCourseSectionItem>();
