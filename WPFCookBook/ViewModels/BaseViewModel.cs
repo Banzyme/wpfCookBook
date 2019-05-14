@@ -26,7 +26,7 @@ namespace WPFCookBook.ViewModels
         private ControlsSectionViewModel controlsModule = new ControlsSectionViewModel();
 
         private IntroToXamlViewModel basicsIntro = new IntroToXamlViewModel();
-        
+
         private XamlFundamentalsViewModel basicsFund;
 
         public BaseViewModel()
@@ -36,6 +36,7 @@ namespace WPFCookBook.ViewModels
             container.RegisterType<IWpfCourseSectionRepository, WpfCourseSectionRepository>();
             container.RegisterType<IWpfCourseSectionItemRepo, WpfCourseSectionItemRepo>();
             container.RegisterType<ICourseSectionService, CourseSectionService>();
+            container.RegisterType<ICourseSectionItemService, CourseSectionItemsService>();
 
             basicsFund = container.Resolve<XamlFundamentalsViewModel>();
 

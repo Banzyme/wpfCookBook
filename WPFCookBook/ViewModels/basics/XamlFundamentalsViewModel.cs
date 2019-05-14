@@ -17,16 +17,17 @@ namespace WPFCookBook.ViewModels.basics
 {
     public class XamlFundamentalsViewModel : BindableBase
     {
-        private readonly ApplicationDBContext _context = new ApplicationDBContext();
         private ICourseSectionService _sectionService;
+        private ICourseSectionItemService _sectItemsService;
         private WpfCourseSection section;
-        private WpfCourseSectionItem currentTopic = null;
+        private WpfCourseSectionItem currentTopic;
 
         #region constructor
         
-        public XamlFundamentalsViewModel(ICourseSectionService sectionService)
+        public XamlFundamentalsViewModel(ICourseSectionService sectionService, ICourseSectionItemService topics)
         {
             _sectionService = sectionService;
+            _sectItemsService = topics;
             OnSaveChangesCommand = new CommandTemplate<FsRichTextBox>(OnSaveChanges);
             LoadInitialData();
         }
@@ -55,16 +56,22 @@ namespace WPFCookBook.ViewModels.basics
             EditBox.UpdateDocumentBindings();
 
             currentTopic = (WpfCourseSectionItem)EditBox.DataContext;
-            PersistTwoWayPropToDB(this.currentTopic.ID, this.currentTopic.Content);
+            PersistTwoWayPropToDB(this.currentTopic.ID, this.currentTopic);
         }
 
 
-        private void PersistTwoWayPropToDB(long ID, string val)
+        private void PersistTwoWayPropToDB(long ID, WpfCourseSectionItem topic)
         {
-            // Todo: Add loader
-            var res = _context.CourseSectionItems.SingleOrDefault(x => x.ID == ID);
-            res.Content = val;
-            _context.SaveChangesAsync();
+            // Todo: Add loader / progress bar
+            var result = _sectItemsService.UpdateSectionItem(ID, topic);
+            if (result)
+            {
+                MessageBox.Show("Changes saved.");
+            }
+            else
+            {
+                MessageBox.Show("An unexpected error has occured!");
+            }
         }
 
         #endregion
