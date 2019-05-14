@@ -21,6 +21,8 @@ namespace WPFCookBook
             base.OnStartup(e);
             IUnityContainer container = new UnityContainer();
             container.RegisterType<IWpfCourseModulesRepository, WpfCourseModulesRepository>();
+            container.RegisterType<IWpfCourseSectionRepository, WpfCourseSectionRepository>();
+            container.RegisterType<IWpfCourseSectionItemRepo, WpfCourseSectionItemRepo>();
         }
     }
 }

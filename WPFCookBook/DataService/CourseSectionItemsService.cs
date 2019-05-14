@@ -3,46 +3,72 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WPFCookBook.Contracts;
+using WPFCookBook.DataService.Repository;
 using WPFCookBook.Entities;
 
 namespace WPFCookBook.DataService
 {
-    public class CourseSectionItemsService
+    public class CourseSectionItemsService : ICourseSectionItemService
     {
-        private readonly ApplicationDBContext _context = new ApplicationDBContext();
+        private  IWpfCourseSectionItemRepo _repo;
 
-        public CourseSectionItemsService()
+        public CourseSectionItemsService(IWpfCourseSectionItemRepo context)
         {
+            _repo = context;
         }
 
-        public IEnumerable<WpfCourseSection> GetAllSections()
+        public IEnumerable<WpfCourseSectionItem> GetAllSectionItems()
         {
-            return _context.CourseSections;
+            return _repo.GetAll();
         }
 
-        public WpfCourseSection GetSectionById(long ID)
+        public WpfCourseSectionItem GetSectionItemByID(long ID)
         {
-            return _context.CourseSections.FirstOrDefault(mod => mod.ID == ID);
+            return _repo.FindItemByCondition( item => item.ID == ID );
         }
 
-        public bool SaveNewSection(WpfCourseSection MOD)
+        public bool AddSectionItem(WpfCourseSectionItem item)
         {
-            var newEntry = new WpfCourseSection()
+
+            try
             {
-                Title = MOD.Title
-            };
-            _context.CourseSections.Add(newEntry);
-            _context.SaveChangesAsync();
+                _repo.Create(item);
 
-            return true;
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
         }
 
-        public bool UpdateSection(long ID, WpfCourseSection updater)
+        public bool DeleteSectionItem(long ID)
         {
-            var newSect = GetSectionById(ID);
-            newSect.Title = updater.Title;
-            _context.SaveChangesAsync();
-            return true;
+            try
+            {
+                _repo.Delete( GetSectionItemByID(ID) );
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public bool UpdateSectionItem(long ID, WpfCourseSectionItem sect)
+        {
+            try
+            {
+                _repo.Update(sect, ID);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

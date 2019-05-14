@@ -84,9 +84,12 @@
     <Compile Include="Common\CommandTemplate.cs" />
     <Compile Include="Common\SaveFlowDocCommand.cs" />
     <Compile Include="Common\XamlToFlowDocMapper.cs" />
+    <Compile Include="Contracts\ICourseModuleService.cs" />
+    <Compile Include="Contracts\ICourseSectionItemService.cs" />
+    <Compile Include="Contracts\ICourseSectionService.cs" />
     <Compile Include="DataService\CourseModulesService.cs" />
     <Compile Include="DataService\CourseSectionItemsService.cs" />
-    <Compile Include="DataService\CouseSectionService.cs" />
+    <Compile Include="DataService\CourseSectionService.cs" />
     <Compile Include="DataService\Repository\IRepositoryBase.cs" />
     <Compile Include="DataService\Repository\RepositoryBase.cs" />
     <Compile Include="DataService\Repository\WpfCourseModulesRepository.cs" />
@@ -182,7 +185,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\" />
+    <Folder Include="BusinessLogic\" />
     <Folder Include="Views\controls\" />
     <Folder Include="Views\layout\" />
   </ItemGroup>

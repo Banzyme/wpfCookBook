@@ -3,15 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WPFCookBook.Contracts;
 using WPFCookBook.Entities;
 
 namespace WPFCookBook.DataService
 {
-    public class CourseModulesService
+    public class CourseModulesService: ICourseModuleService
     {
         private readonly ApplicationDBContext _context = new ApplicationDBContext();
         public CourseModulesService()
         {
+        }
+
+        public bool AddModule(WpfCourseModule sect)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteModule(long ID)
+        {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<WpfCourseModule> GetAllModules()
@@ -22,6 +33,11 @@ namespace WPFCookBook.DataService
         public WpfCourseModule GetModuleById(long ID)
         {
             return _context.CourseModules.FirstOrDefault(mod => mod.ID == ID);
+        }
+
+        public WpfCourseModule GetModuleByID(long ID)
+        {
+            throw new NotImplementedException();
         }
 
         public bool SaveNewModule(WpfCourseModule MOD)
