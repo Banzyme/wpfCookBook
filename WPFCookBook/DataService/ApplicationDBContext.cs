@@ -28,7 +28,9 @@ namespace WPFCookBook.DataService
             // Configure relationships
             modelBuilder.Entity<WpfCourseModule>()
                   .HasMany(s => s.ModuleSections);
-                  
+
+            modelBuilder.Entity<WpfCourseSection>()
+                   .HasMany(s => s.SectionTopics);
         }
 
         

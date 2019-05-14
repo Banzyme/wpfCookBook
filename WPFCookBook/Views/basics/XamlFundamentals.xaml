@@ -5,16 +5,91 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFCookBook.Views.basics"
              xmlns:shared="clr-namespace:WPFCookBook.Common"
-             xmlns:fsc="clr-namespace:FsWpfControls.FsRichTextBox;assembly=FsRichTextBox" 
+             xmlns:fsc="clr-namespace:FsWpfControls.FsRichTextBox;assembly=FsRichTextBox"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     
     <UserControl.Resources>
         <shared:XamlToFlowDocMapper x:Key="flowDocumentConverter" />
+        <DataTemplate x:Key="TabsBasicHeaderTemplate">
+            <Label FontWeight="Bold" Content="{Binding Title}" />
+            
+        </DataTemplate>
+
+        <DataTemplate x:Key="TabsBasicContentTemplate">
+            <DataTemplate.Triggers>
+
+            </DataTemplate.Triggers>
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0"> 
+                    <TextBlock Text="{Binding Content}" />
+                </StackPanel>
+
+                <WrapPanel Orientation="Horizontal" Grid.Row="1">
+                    <Button Margin="5"
+                            Content="Save changes">
+                        
+     
+                        
+                    </Button>
+                    <Button Margin="5"  Content="Discard" />
+                </WrapPanel>
+            </Grid>
+        </DataTemplate>
     </UserControl.Resources>
     
-    <Grid>
-        <TabControl>
+    <Grid x:Name="fundamentalsGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel >
+            <Button Content="Test"
+                    Command="{Binding TestCommand}"></Button>
+        </StackPanel>
+
+        <TabControl  Grid.Row="1"
+                     ItemsSource="{Binding TopicsList}"
+                     ItemTemplate="{StaticResource TabsBasicHeaderTemplate}">
+            
+            <TabControl.ContentTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="{Binding Content}" />
+                        </StackPanel>
+
+                        <WrapPanel Orientation="Horizontal"
+                                   Grid.Row="1">
+                            <Button Margin="5"
+                                    Command="{Binding DataContext.TestCommand, ElementName=fundamentalsGrid}"
+                                    Content="Save changes">
+
+                 
+
+                            </Button>
+                            <Button Margin="5"
+                                    Content="Discard" />
+                        </WrapPanel>
+                    </Grid>
+                </DataTemplate>
+            </TabControl.ContentTemplate>
+            
+        </TabControl>
+        
+        <!--<TabControl Grid.Row="1">
             <TabItem Header="What about XAML?">
 
                 <Grid>
@@ -33,9 +108,10 @@
                                            CodeControlsVisibility="Collapsed" />
                     </StackPanel>
 
-                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                    <StackPanel Grid.Row="1"
+                                Orientation="Horizontal">
                         <Button Content="Save changes"
-                                Command="{Binding SaveDocument}"/>
+                                Command="{Binding SaveDocument}" />
                         <Button Content="Force Update"
                                 Width="100"
                                 Margin="10,0,0,0"
@@ -45,27 +121,12 @@
 
 
                 </Grid>
-
-
-                <!--<RichTextBox 
-                    x:Name="TextEditArea"
-                    Document="{Binding Path=DocumentXaml, Converter={StaticResource flowDocumentConverter}, Mode=TwoWay}">
-                    
-                    <FlowDocument>
-                        <Paragraph FontSize="36">Xaml fundamentals</Paragraph>
-                        <Paragraph FontStyle="Italic"
-                                   TextAlignment="Left"
-                                   FontSize="14"
-                                   Foreground="Gray">Thanks to the RichTextBox control, this FlowDocument is completely editable!</Paragraph>
-                    </FlowDocument>
-                    
-                </RichTextBox>-->
             </TabItem>
 
             <TabItem Header="Quiz">
                 Page 2
             </TabItem>
-        </TabControl>
+        </TabControl>-->
     </Grid>
     
 </UserControl>

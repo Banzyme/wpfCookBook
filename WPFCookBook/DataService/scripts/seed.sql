@@ -93,7 +93,7 @@ insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID)
  'Really? Is this even necessary?',
  'Although software seems to be tilting more towards mobile and web platforms. There are still many application
  out there that run natively on desktops?',
-  1);
+  2);
 
 
  insert WpfCourseSectionItem(SectionItemID, Title,Subtitle, Content, WpfCourseSection_ID)
