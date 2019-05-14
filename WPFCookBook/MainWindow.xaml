@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:entities="clr-namespace:WPFCookBook.Entities"
-        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:ViewModels="clr-namespace:WPFCookBook.ViewModels"
         xmlns:ViewModelsBasic="clr-namespace:WPFCookBook.ViewModels.basics"
         xmlns:views="clr-namespace:WPFCookBook.Views"
@@ -57,7 +57,7 @@
                                FontStretch="Expanded"
                                FontWeight="ExtraBlack"
                                FontSize="24"
-                               Foreground="Blue"
+                               Foreground="Indigo"
                                FontFamily="Lucida Sans"
                                Text="WPF - The Essential Guide" />
                     
@@ -68,7 +68,8 @@
                         <TextBox Text=""
                                  Padding="50, 5,50, 5"
                                  HorizontalAlignment="Center" />
-                        <Button Padding="20, 5,20, 5"
+                        <Button Style="{DynamicResource MaterialDesignToolButton}"
+                                Margin="5,15,0,0"
                                 Content="Search"
                                 HorizontalAlignment="Center" />
                     </StackPanel>
@@ -79,14 +80,17 @@
 
                  <!--Side Nav-->
                 <StackPanel Margin="0, 10, 1,0" 
-                            Width="280"
+                            Width="300"
+                            
                             Height="Auto"
                             DockPanel.Dock="Left">
 
 
-                    <TreeView ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="SideNavList"
+                    <TreeView ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                              ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                              x:Name="SideNavList"
                               BorderThickness="0"
-                              
+                              MaxHeight="720"
                               TextSearch.TextPath="Name"
                               ItemsSource="{Binding ModulesList}"
                               SelectedValuePath="Name"
@@ -135,6 +139,18 @@
                         </TreeView.Resources>
 
                     </TreeView>
+                    <Separator Width="100"
+                               
+                               VerticalAlignment="Center" />
+                    <StackPanel Margin="0,50,0,0" HorizontalAlignment="Center" Orientation="Vertical">
+                        <Button  Content="Add module"
+                                 Style="{DynamicResource MaterialDesignRaisedDarkButton}" />
+                        <Button Content="Add Chapter"
+                                Margin="10"
+                                Style="{DynamicResource MaterialDesignRaisedDarkButton}" />
+                        <Button Content="Add Topic"
+                                Style="{DynamicResource MaterialDesignRaisedDarkButton}" />
+                    </StackPanel>
 
                 </StackPanel>
                  <!--End: Side Nav-->

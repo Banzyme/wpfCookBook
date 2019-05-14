@@ -63,15 +63,16 @@
                         </Grid.RowDefinitions>
 
                         <StackPanel Grid.Row="0">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="800">
                             <fsc:FsRichTextBox x:Name="EditBox"
                                                Document="{Binding Path=Content, Converter={StaticResource flowDocumentConverter}, Mode=TwoWay}"
-                                              
                                                Grid.Row="0"
                                                Margin="10,10,10,5"
                                                ToolbarBackground="#FFD2CB84"
                                                ToolbarBorderBrush="#FFC6BE75"
                                                ToolbarBorderThickness="1,1,1,0"
-                                               CodeControlsVisibility="Collapsed" />
+                                                   CodeControlsVisibility="Collapsed" />
+                            </ScrollViewer>
                         </StackPanel>
 
                         <WrapPanel Orientation="Horizontal"
