@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WPFCookBook.Contracts;
+using WPFCookBook.DataService.Repository;
 using WPFCookBook.Entities;
 
 namespace WPFCookBook.DataService
@@ -11,8 +12,10 @@ namespace WPFCookBook.DataService
     public class CourseModulesService: ICourseModuleService
     {
         private readonly ApplicationDBContext _context = new ApplicationDBContext();
-        public CourseModulesService()
+        private IWpfCourseModulesRepository _modulesRepo;
+        public CourseModulesService(IWpfCourseModulesRepository moduleService)
         {
+            _modulesRepo = moduleService;
         }
 
         public bool AddModule(WpfCourseModule sect)
@@ -27,7 +30,7 @@ namespace WPFCookBook.DataService
 
         public IEnumerable<WpfCourseModule> GetAllModules()
         {
-            return _context.CourseModules;
+            return this._modulesRepo.GetAll();
         }
 
         public WpfCourseModule GetModuleById(long ID)

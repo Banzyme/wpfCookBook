@@ -13,5 +13,10 @@ namespace WPFCookBook.DataService.Repository
         public WpfCourseModulesRepository(ApplicationDBContext db) : base(db)
         {
         }
+
+        public override IEnumerable<WpfCourseModule> GetAll()
+        {
+            return _db.CourseModules.Include("ModuleSections");
+        }
     }
 }

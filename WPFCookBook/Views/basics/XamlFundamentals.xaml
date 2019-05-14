@@ -92,45 +92,6 @@
             </TabControl.ContentTemplate>
             
         </TabControl>
-        
-        <!--<TabControl Grid.Row="1">
-            <TabItem Header="What about XAML?">
-
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="0">
-                        <fsc:FsRichTextBox x:Name="EditBox"
-                                           Document="{Binding Path=DocumentXaml, Converter={StaticResource flowDocumentConverter}, Mode=TwoWay}"
-                                           Grid.Row="0"
-                                           Margin="10,10,10,5"
-                                           ToolbarBackground="#FFD2CB84"
-                                           ToolbarBorderBrush="#FFC6BE75"
-                                           ToolbarBorderThickness="1,1,1,0"
-                                           CodeControlsVisibility="Collapsed" />
-                    </StackPanel>
-
-                    <StackPanel Grid.Row="1"
-                                Orientation="Horizontal">
-                        <Button Content="Save changes"
-                                Command="{Binding SaveDocument}" />
-                        <Button Content="Force Update"
-                                Width="100"
-                                Margin="10,0,0,0"
-                                Click="OnForceUpdateClick" />
-                        <Button Content="Discard" />
-                    </StackPanel>
-
-
-                </Grid>
-            </TabItem>
-
-            <TabItem Header="Quiz">
-                Page 2
-            </TabItem>
-        </TabControl>-->
     </Grid>
     
 </UserControl>

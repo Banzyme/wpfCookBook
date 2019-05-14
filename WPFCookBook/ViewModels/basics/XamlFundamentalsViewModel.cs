@@ -31,6 +31,7 @@ namespace WPFCookBook.ViewModels.basics
             OnSaveChangesCommand = new CommandTemplate<FsRichTextBox>(OnSaveChanges);
             LoadInitialData();
         }
+
         #endregion
 
         #region Properties

@@ -19,32 +19,41 @@ namespace WPFCookBook.ViewModels
 
     public class BaseViewModel : BindableBase
     {
-        private readonly ApplicationDBContext _context = new ApplicationDBContext();
+        #region Private fields
         private BindableBase _CurrentViewModel;
-        private IndexViewModel IndexPage = new IndexViewModel();
-        private BasicsViewModel basicsModule = new BasicsViewModel();
-        private ControlsSectionViewModel controlsModule = new ControlsSectionViewModel();
+        private ICourseModuleService _modService;
 
-        private IntroToXamlViewModel basicsIntro = new IntroToXamlViewModel();
-
+        private IndexViewModel IndexPage;
+        private IntroToXamlViewModel basicsIntro;
         private XamlFundamentalsViewModel basicsFund;
+        private BasicsViewModel basicsModule;
+        #endregion
 
+        #region Constructor
         public BaseViewModel()
         {
             IUnityContainer container = new UnityContainer();
             container.RegisterType<IWpfCourseModulesRepository, WpfCourseModulesRepository>();
             container.RegisterType<IWpfCourseSectionRepository, WpfCourseSectionRepository>();
             container.RegisterType<IWpfCourseSectionItemRepo, WpfCourseSectionItemRepo>();
+
+            container.RegisterType<ICourseModuleService, CourseModulesService>();
             container.RegisterType<ICourseSectionService, CourseSectionService>();
             container.RegisterType<ICourseSectionItemService, CourseSectionItemsService>();
 
+            
+            
+            IndexPage = container.Resolve<IndexViewModel>();
+            basicsIntro = container.Resolve<IntroToXamlViewModel>();
             basicsFund = container.Resolve<XamlFundamentalsViewModel>();
+            basicsModule = container.Resolve<BasicsViewModel>();
+
+            _modService = container.Resolve<CourseModulesService>();
+
 
 
             NavigationCommand = new CommandTemplate<string>(OnNav);
-            var sectionTopics = _context.CourseSectionItems.ToList();
-            var sections = _context.CourseSections.ToList();
-            var modResults = _context.CourseModules.ToList();
+            var modResults = _modService.GetAllModules().ToList();
             modResults.ForEach(item =>
            {
                ModulesList.Add(item);
@@ -53,8 +62,10 @@ namespace WPFCookBook.ViewModels
             //Setup default window content
             CurrentViewModel = IndexPage;
         }
+        #endregion
 
 
+        #region Properties
         public BindableBase CurrentViewModel
         {
             get { return _CurrentViewModel; }
@@ -64,7 +75,11 @@ namespace WPFCookBook.ViewModels
         public CommandTemplate<string> NavigationCommand { get; private set; }
 
         public ObservableCollection<WpfCourseModule> ModulesList { get; set; } = new ObservableCollection<WpfCourseModule>();
+        #endregion
 
+
+
+        #region Private methods
         private void OnNav(string treeItem)
         {
 
@@ -84,9 +99,6 @@ namespace WPFCookBook.ViewModels
 
                         break;
 
-                    case "introduction_to_wpf_controls":
-                        CurrentViewModel = controlsModule;
-                        break;
 
                     default:
                         CurrentViewModel = basicsModule;
@@ -101,5 +113,7 @@ namespace WPFCookBook.ViewModels
 
             }
         }
+        #endregion
+
     }
 }

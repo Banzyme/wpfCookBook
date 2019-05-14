@@ -29,10 +29,6 @@
             <views:BasicsSection />
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type ViewModels:ControlsSectionViewModel}">
-            <views:ControlsSection />
-        </DataTemplate>
-
         <DataTemplate DataType="{x:Type ViewModelsBasic:IntroToXamlViewModel}">
             <viewsBasic:IntroToXaml />
         </DataTemplate>
@@ -137,14 +133,7 @@
                             </DataTemplate>
 
                         </TreeView.Resources>
-                        <!--<i:Interaction.Triggers>
-                            <i:EventTrigger EventName="SelectedItemChanged">
-                                <i:InvokeCommandAction Command="{Binding DataContext.NavigationCommand,
-                                    RelativeSource={RelativeSource FindAncestor,
-                                    AncestorType={x:Type Window}}}"
-                                                       CommandParameter="{Binding ElementName=SideNavList, Path=SelectedValue}" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>-->
+
                     </TreeView>
 
                 </StackPanel>

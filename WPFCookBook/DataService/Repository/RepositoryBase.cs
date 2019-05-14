@@ -38,7 +38,7 @@ namespace WPFCookBook.DataService.Repository
             return _db.Set<T>().Where(expression);
         }
 
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             return _db.Set<T>();
         }

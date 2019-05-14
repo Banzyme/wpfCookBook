@@ -28,37 +28,11 @@ namespace WPFCookBook
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly ApplicationDBContext _context = new ApplicationDBContext();
-        private ObservableCollection<WpfCourseModule> _modulesList = new ObservableCollection<WpfCourseModule>();
 
         public MainWindow()
         {
             InitializeComponent();
-
-            List<WpfCourseModule> courses = new List<WpfCourseModule>();
-            List<WpfCourseSectionItem> sectionTopics = new List<WpfCourseSectionItem>();
-            List<WpfCourseSection> sections = new List<WpfCourseSection>();
-            sectionTopics = _context.CourseSectionItems.ToList();
-            sections = _context.CourseSections.ToList();
-            courses = _context.CourseModules.ToList();
-        }
-        public ObservableCollection<WpfCourseModule> ModulesList
-        {
-            get { return _modulesList; }
         }
 
-
-        private void SelectionChanged(object sender, RoutedPropertyChangedEventArgs<Object> e)
-        {
-            //Perform actions when SelectedItem changes
-            try
-            {
-                MessageBox.Show(((WpfCourseSection)e.NewValue).Title.ToString());
-            }
-            catch (Exception) { 
-                // Skip
-            }
-            
-        }
     }
 }
