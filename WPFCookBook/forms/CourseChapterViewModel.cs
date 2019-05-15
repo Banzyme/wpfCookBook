@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using WPFCookBook.Common;
 using WPFCookBook.Contracts;
 using WPFCookBook.Entities;
@@ -25,6 +26,7 @@ namespace WPFCookBook.forms
 
             OnSaveChapterCommand = new CommandTemplate<object>(OnSaveChapter);
             OnDeleteSectionCommand = new CommandTemplate<long>(onDeleteChapter);
+            OnUpdateSectionCommand = new CommandTemplate<object>(onUpdateChapter);
         }
 
         public string NewChapterTitle { get; set; }
@@ -39,6 +41,7 @@ namespace WPFCookBook.forms
         public ObservableCollection<WpfCourseModule> ModulesList { get; set; }
         public CommandTemplate<object> OnSaveChapterCommand { get; private set; }
         public CommandTemplate<long> OnDeleteSectionCommand { get; private set; }
+        public CommandTemplate<object> OnUpdateSectionCommand { get; private set; }
 
         private void LoadInitialData()
         {
@@ -71,13 +74,27 @@ namespace WPFCookBook.forms
             // TODO: Error dialog
         }
 
+        private void onUpdateChapter(object sectionID)
+        {
+            var datagrid = (DataGrid)sectionID;
+
+            MessageBox.Show($"{ datagrid.SelectedValue }");
+            //bool result = _chaptersRepo.UpdateSection((long)sectionID, "");
+
+            //if (result == true)
+            //{
+            //    Refresh(NewChapterTitle);
+            //    MessageBox.Show($"Successfully updated chapter.");
+            //}
+        }
+
         private void onDeleteChapter(long sectionID)
         {
             var res = MessageBox.Show("Are you sure you want to delete?", "Confirm delete", MessageBoxButton.YesNo);
 
             if (res == MessageBoxResult.Yes)
             {
-                bool result = _chaptersRepo.DeleteSection((long)sectionID);
+                bool result = _chaptersRepo.DeleteSection(sectionID);
                 if (result)
                 {
                     RemoveEntryFromCollection(_chaptersList, (item) => item.ID == sectionID);

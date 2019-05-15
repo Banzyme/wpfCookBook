@@ -70,18 +70,43 @@
                   HorizontalAlignment="Center"
                   Height="550"
                   AutoGenerateColumns="False"
-                  ItemsSource="{Binding ChaptersList}">
+                  
+                  ItemsSource="{Binding ChaptersList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }">
 
             <DataGrid.Columns>
-                <DataGridComboBoxColumn Header="Module" />
-                <DataGridTextColumn Header="Module"
-                                    Binding="{Binding Title}" />
+
+
+                <DataGridTemplateColumn Header="Module">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <ComboBox x:Name="modulesCombo"
+                                          Background="AliceBlue"
+                                          ItemsSource="{Binding ElementName=ChapterViewGrid, Path=DataContext.ModulesList}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBox Text="{Binding Name}" />
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
+                <DataGridTextColumn x:Name="chapterTitleCol" Header="Module"
+                                    Binding="{Binding Title, Mode=TwoWay}" />
 
                 <DataGridTemplateColumn Header="Actions">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Button Margin="3" Content="Update" />
+                            <StackPanel  Orientation="Horizontal">
+                                <Button Margin="3"
+                                        CommandParameter="{Binding ElementName=chaptersDataGrid}"
+                                        Command="{Binding ElementName=ChapterViewGrid, Path=DataContext.OnUpdateSectionCommand}"
+                                        Content="Update">
+                                </Button>
                                 <Button Content="Delete"
                                         CommandParameter="{Binding ID}"
                                         Command="{Binding ElementName=ChapterViewGrid, Path=DataContext.OnDeleteSectionCommand}" />

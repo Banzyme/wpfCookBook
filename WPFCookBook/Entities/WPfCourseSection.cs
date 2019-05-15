@@ -22,7 +22,7 @@ namespace WPFCookBook.Entities
             get { return _title; }
             set
             {
-                SetProperty(ref _title, value);
+                SetProperty(ref _title, value, "Title");
             }
         }
 
@@ -31,7 +31,7 @@ namespace WPFCookBook.Entities
             get { return _sectionTopics; }
             set
             {
-                SetProperty(ref _sectionTopics, value);
+                SetProperty(ref _sectionTopics, value, "SectionTopics");
             }
         }
     }
