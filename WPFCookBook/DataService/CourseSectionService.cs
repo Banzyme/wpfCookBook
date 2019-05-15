@@ -49,7 +49,17 @@ namespace WPFCookBook.DataService
 
         public bool DeleteSection(long ID)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var itemToDelete = _repo.FindItemByCondition(item => item.ID == ID);
+                _repo.Delete(itemToDelete);
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public IEnumerable<WpfCourseSection> GetAllSections()

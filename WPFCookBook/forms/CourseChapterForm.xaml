@@ -15,7 +15,7 @@
                     Value="Gray" />
         </Style>
     </UserControl.Resources>
-    <Grid>
+    <Grid x:Name="ChapterViewGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -82,7 +82,9 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <Button Margin="3" Content="Update" />
-                                <Button Content="Delete" />
+                                <Button Content="Delete"
+                                        CommandParameter="{Binding ID}"
+                                        Command="{Binding ElementName=ChapterViewGrid, Path=DataContext.OnDeleteSectionCommand}" />
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

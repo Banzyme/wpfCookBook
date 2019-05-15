@@ -24,6 +24,7 @@ namespace WPFCookBook.forms
             LoadInitialData();
 
             OnSaveChapterCommand = new CommandTemplate<object>(OnSaveChapter);
+            OnDeleteSectionCommand = new CommandTemplate<long>(onDeleteChapter);
         }
 
         public string NewChapterTitle { get; set; }
@@ -37,6 +38,7 @@ namespace WPFCookBook.forms
         }
         public ObservableCollection<WpfCourseModule> ModulesList { get; set; }
         public CommandTemplate<object> OnSaveChapterCommand { get; private set; }
+        public CommandTemplate<long> OnDeleteSectionCommand { get; private set; }
 
         private void LoadInitialData()
         {
@@ -47,9 +49,10 @@ namespace WPFCookBook.forms
             NewChapterTitle = "";
         }
 
-        private void Refresh()
+        private void Refresh(string sectName)
         {
-            //_chaptersList = new ObservableCollection<WpfCourseSection>(_chaptersRepo.GetAllSections());
+            var newEntry = _chaptersRepo.GetSectionByName(sectName);
+            _chaptersList.Add(newEntry);
         }
 
         private void OnSaveChapter(object module)
@@ -60,12 +63,41 @@ namespace WPFCookBook.forms
 
             if (result == true)
             {
-                Refresh();
+                Refresh(NewChapterTitle);
                 MessageBox.Show($"Successfully added {NewChapterTitle}, to module: {selectedModule.Name}");
             }
 
 
             // TODO: Error dialog
+        }
+
+        private void onDeleteChapter(long sectionID)
+        {
+            var res = MessageBox.Show("Are you sure you want to delete?", "Confirm delete", MessageBoxButton.YesNo);
+
+            if (res == MessageBoxResult.Yes)
+            {
+                bool result = _chaptersRepo.DeleteSection((long)sectionID);
+                if (result)
+                {
+                    RemoveEntryFromCollection(_chaptersList, (item) => item.ID == sectionID);
+                }
+            }
+
+        }
+
+
+        private void RemoveEntryFromCollection<T>(ObservableCollection<T> collection, Func<T, bool> condition)
+        {
+            try
+            {
+                collection.Remove(collection.Where(condition).Single());
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
