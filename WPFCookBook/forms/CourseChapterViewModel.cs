@@ -24,9 +24,32 @@ namespace WPFCookBook.forms
             _modService = mods;
             LoadInitialData();
 
-            OnSaveChapterCommand = new CommandTemplate<object>(OnSaveChapter);
+            OnSaveChapterCommand = new RelayCommand(OnSaveChapter, o => true );
             OnDeleteSectionCommand = new CommandTemplate<long>(onDeleteChapter);
-            OnUpdateSectionCommand = new CommandTemplate<object>(onUpdateChapter);
+            OnUpdateSectionCommand = new RelayCommand(onUpdateChapter, o => true);
+        }
+
+        public bool CanSave(object section)
+        {
+            if (section == null)
+                return true;
+
+            try
+            {
+                var updateBtn = (Button)section;
+                if (updateBtn.Visibility == Visibility.Visible)
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+
+               // skip
+            }
+
+
+            return true;
         }
 
         public string NewChapterTitle { get; set; }
@@ -39,9 +62,10 @@ namespace WPFCookBook.forms
             }
         }
         public ObservableCollection<WpfCourseModule> ModulesList { get; set; }
-        public CommandTemplate<object> OnSaveChapterCommand { get; private set; }
+        public RelayCommand OnSaveChapterCommand { get; private set; }
         public CommandTemplate<long> OnDeleteSectionCommand { get; private set; }
-        public CommandTemplate<object> OnUpdateSectionCommand { get; private set; }
+        public RelayCommand OnUpdateSectionCommand { get; private set; }
+        public event Action<WpfCourseSection> EditChapterRequested = delegate { };
 
         private void LoadInitialData()
         {
@@ -69,24 +93,15 @@ namespace WPFCookBook.forms
                 Refresh(NewChapterTitle);
                 MessageBox.Show($"Successfully added {NewChapterTitle}, to module: {selectedModule.Name}");
             }
-
-
             // TODO: Error dialog
         }
 
-        private void onUpdateChapter(object sectionID)
+
+
+        private void onUpdateChapter(object obj)
         {
-            OnPropertyChanged("ChapterList");
-            //var datagrid = (DataGrid)sectionID;
-
-            MessageBox.Show($"{ sectionID }");
-            //bool result = _chaptersRepo.UpdateSection((long)sectionID, "");
-
-            //if (result == true)
-            //{
-            //    Refresh(NewChapterTitle);
-            //    MessageBox.Show($"Successfully updated chapter.");
-            //}
+            var selectedSection = (WpfCourseSection)obj;
+            EditChapterRequested(selectedSection);
         }
 
         private void onDeleteChapter(long sectionID)

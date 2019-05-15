@@ -29,6 +29,7 @@ namespace WPFCookBook.ViewModels
         private XamlFundamentalsViewModel basicsFund;
         private BasicsViewModel basicsModule;
         private CourseChapterFormViewModel chapterForm;
+        private EditChapterViewModel editChapter;
         #endregion
 
         #region Constructor
@@ -50,6 +51,7 @@ namespace WPFCookBook.ViewModels
             basicsFund = container.Resolve<XamlFundamentalsViewModel>();
             basicsModule = container.Resolve<BasicsViewModel>();
             chapterForm = container.Resolve<CourseChapterFormViewModel>();
+            editChapter = container.Resolve<EditChapterViewModel>();
 
             _modService = container.Resolve<CourseModulesService>();
 
@@ -64,6 +66,8 @@ namespace WPFCookBook.ViewModels
 
             //Setup default window content
             CurrentViewModel = IndexPage;
+
+            chapterForm.EditChapterRequested += SwitchToEditChapterPage;
         }
         #endregion
 
@@ -117,6 +121,12 @@ namespace WPFCookBook.ViewModels
                 // Skip
 
             }
+        }
+
+        public void SwitchToEditChapterPage(WpfCourseSection section)
+        {
+            editChapter.SetSelectedChapter(section);
+            CurrentViewModel = editChapter;
         }
         #endregion
 

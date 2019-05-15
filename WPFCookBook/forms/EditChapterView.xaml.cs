@@ -16,24 +16,13 @@ using System.Windows.Shapes;
 namespace WPFCookBook.forms
 {
     /// <summary>
-    /// Interaction logic for CourseChapterForm.xaml
+    /// Interaction logic for EditChapterView.xaml
     /// </summary>
-    public partial class CourseChapterForm : UserControl
+    public partial class EditChapterView : UserControl
     {
-        public CourseChapterForm()
+        public EditChapterView()
         {
             InitializeComponent();
-        }
-
-        public object GetControlInstance(string name)
-        {
-            
-            return FindName(name);
-        }
-
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

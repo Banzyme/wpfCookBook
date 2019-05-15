@@ -88,6 +88,7 @@
     </ApplicationDefinition>
     <Compile Include="Common\BindableBase.cs" />
     <Compile Include="Common\CommandTemplate.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SaveFlowDocCommand.cs" />
     <Compile Include="Common\XamlToFlowDocMapper.cs" />
     <Compile Include="Contracts\ICourseModuleService.cs" />
@@ -111,6 +112,10 @@
     <Compile Include="forms\CourseTopicForm.xaml.cs">
       <DependentUpon>CourseTopicForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="forms\EditChapterView.xaml.cs">
+      <DependentUpon>EditChapterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="forms\EditChapterViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BasicsViewModel.cs" />
     <Compile Include="ViewModels\basics\IntroToXamlViewModel.cs" />
@@ -137,6 +142,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="forms\CourseTopicForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="forms\EditChapterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

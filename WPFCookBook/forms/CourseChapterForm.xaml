@@ -20,7 +20,9 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+
         <StackPanel Grid.Row="0"
                     HorizontalAlignment="Stretch"
                     Height="100"
@@ -63,6 +65,10 @@
                     Command="{Binding OnSaveChapterCommand}"
                     CommandParameter="{Binding ElementName=modulesCombo, Path=SelectedValue}"
                     Content="Save" />
+            
+            <Button Visibility="Collapsed" x:Name="UpdateChapterButton"
+                    Margin="0,5,0,20"
+                    Content="Update chapter" />
 
         </WrapPanel>
         <DataGrid Grid.Row="2"
@@ -70,7 +76,6 @@
                   HorizontalAlignment="Center"
                   Height="550"
                   AutoGenerateColumns="False"
-                  
                   ItemsSource="{Binding ChaptersList }">
 
             <DataGrid.Columns>
@@ -95,7 +100,8 @@
                 </DataGridTemplateColumn>
 
 
-                <DataGridTextColumn x:Name="chapterTitleCol" Header="Chapter Name"
+                <DataGridTextColumn x:Name="chapterTitleCol"
+                                    Header="Chapter Name"
                                     Binding="{Binding Title}" />
 
                 <DataGridTemplateColumn Header="Actions">
@@ -118,5 +124,10 @@
 
         </DataGrid>
 
+        <WrapPanel x:Name="updateChapterForm" Visibility="Collapsed">
+            <GroupBox Header="Update chapter">
+                <TextBox Text="{Binding Title}" />
+            </GroupBox>
+        </WrapPanel>
     </Grid>
 </UserControl>

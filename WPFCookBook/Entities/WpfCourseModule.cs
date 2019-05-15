@@ -22,13 +22,13 @@ namespace WPFCookBook.Entities
             get { return _name; }
             set
             {
-                SetProperty(ref _name, value);
+                SetProperty(ref _name, value, "Name");
             }
         }
         public ICollection<WpfCourseSection> ModuleSections
         {
             get { return _moduleSections; }
-            set { SetProperty(ref _moduleSections, value); }
+            set { SetProperty(ref _moduleSections, value, "ModuleSections"); }
         }
 
     }

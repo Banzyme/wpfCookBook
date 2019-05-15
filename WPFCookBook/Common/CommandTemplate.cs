@@ -28,7 +28,6 @@ namespace WPFCookBook.Common
             CanExecuteChanged(this, EventArgs.Empty);
         }
 
-        #region ICommand Members
 
         bool ICommand.CanExecute(object parameter)
         {
@@ -47,6 +46,7 @@ namespace WPFCookBook.Common
             return false;
         }
 
+
         public event EventHandler CanExecuteChanged = delegate { };
 
         void ICommand.Execute(object parameter)
@@ -56,7 +56,5 @@ namespace WPFCookBook.Common
                 _TargetExecuteMethod((T)parameter);
             }
         }
-
-        #endregion
     }
 }
