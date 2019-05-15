@@ -32,6 +32,21 @@ namespace WPFCookBook.DataService
             };
         }
 
+        public bool AddSectionWithRawSql(long moduleId, string sectionTitle)
+        {
+            try
+            {
+                _repo.InsertSectionWithRawSql(moduleId, sectionTitle);
+                return true;
+            }
+            catch (Exception e)
+            {
+                // Todo: Log appropriately;
+                System.Console.WriteLine(e.Message);
+                return false;
+            };
+        }
+
         public bool DeleteSection(long ID)
         {
             throw new NotImplementedException();

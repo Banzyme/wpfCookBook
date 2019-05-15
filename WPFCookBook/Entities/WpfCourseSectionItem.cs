@@ -10,9 +10,9 @@ using WPFCookBook.Common;
 
 namespace WPFCookBook.Entities
 {
-    public class WpfCourseSectionItem : INotifyPropertyChanged
+    public class WpfCourseSectionItem : BindableBase
     {
-        public string Content { get; set; }
+        private string _content;
 
         public long ID { get; set; }
         public Guid SectionItemID { get; set; }
@@ -20,25 +20,14 @@ namespace WPFCookBook.Entities
 
         public string Subtitle { get; set; }
 
-        //public string Content
-        //{
-        //    get { return _content; }
-        //    set
-        //    {
-
-        //        _content = value;
-        //        NotifyPropertyChanged("Content");
-        //    }
-        //}
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void NotifyPropertyChanged(String propName)
+        public string Content
         {
-            if (PropertyChanged != null)
+            get { return _content; }
+            set
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(propName));
+                SetProperty(ref _content, value);
             }
         }
+
     }
 }

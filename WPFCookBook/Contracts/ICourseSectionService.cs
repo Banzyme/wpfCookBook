@@ -15,5 +15,6 @@ namespace WPFCookBook.Contracts
         bool DeleteSection(long ID);
         bool UpdateSection(long ID, WpfCourseSection sect);
         bool AddSection(WpfCourseSection sect);
+        bool AddSectionWithRawSql(long moduleId, string sectionTitle);
     }
 }

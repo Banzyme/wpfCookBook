@@ -19,11 +19,11 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" HorizontalAlignment="Stretch"
+        <StackPanel Grid.Row="0"
+                    HorizontalAlignment="Stretch"
                     Height="100"
-                    
                     Margin="10,10,0,0"
                     Width="780">
             <materialDesign:Card Padding="32"
@@ -31,33 +31,65 @@
                 <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}">Add a new chapter</TextBlock>
             </materialDesign:Card>
         </StackPanel>
-        <WrapPanel Orientation="Vertical" HorizontalAlignment="Center" Grid.Row="1">
+        <WrapPanel Orientation="Vertical"
+                   HorizontalAlignment="Center"
+                   Grid.Row="1">
             <StackPanel Orientation="Horizontal">
-            <GroupBox>
-                <StackPanel>
-                    <Label Style="{StaticResource LightInputLabel}" Content="Title" />
-                    <TextBox Width="300"/>
-                </StackPanel>
-            </GroupBox>
+                <GroupBox>
+                    <StackPanel>
+                        <Label Style="{StaticResource LightInputLabel}"
+                               Content="Title" />
+                        <TextBox x:Name="newChapterTextBox"
+                                 Text="{Binding NewChapterTitle, Mode=TwoWay}"
+                                 Width="300" />
+                    </StackPanel>
+                </GroupBox>
 
-            <GroupBox>
-                <StackPanel>
-                    <Label Content="Add to module" />
-                    <ComboBox>
-                        <ComboBoxItem>ComboBox Item #1</ComboBoxItem>
-                        <ComboBoxItem IsSelected="True">ComboBox Item #2</ComboBoxItem>
-                    </ComboBox>
-                </StackPanel>
-            </GroupBox>
+                <GroupBox>
+                    <StackPanel>
+                        <Label Content="Add to module" />
+                        <ComboBox x:Name="modulesCombo"
+                                  ItemsSource="{Binding ModulesList}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBox Text="{Binding Name}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                </GroupBox>
             </StackPanel>
-            <Button Content="Save" />
-            
+            <Button x:Name="SaveChapterButton"
+                    Command="{Binding OnSaveChapterCommand}"
+                    CommandParameter="{Binding ElementName=modulesCombo, Path=SelectedValue}"
+                    Content="Save" />
+
         </WrapPanel>
-        <DataGrid Grid.Row="2" x:Name="chaptersDataGrid"
+        <DataGrid Grid.Row="2"
+                  x:Name="chaptersDataGrid"
                   HorizontalAlignment="Center"
                   Height="550"
-                  ItemsSource="{Binding ChaptersList}"
-                  SelectionChanged="DataGrid_SelectionChanged" />
+                  AutoGenerateColumns="False"
+                  ItemsSource="{Binding ChaptersList}">
+
+            <DataGrid.Columns>
+                <DataGridComboBoxColumn Header="Module" />
+                <DataGridTextColumn Header="Module"
+                                    Binding="{Binding Title}" />
+
+                <DataGridTemplateColumn Header="Actions">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Margin="3" Content="Update" />
+                                <Button Content="Delete" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
 
     </Grid>
 </UserControl>

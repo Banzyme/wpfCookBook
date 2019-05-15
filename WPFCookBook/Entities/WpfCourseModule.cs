@@ -9,14 +9,27 @@ using WPFCookBook.Common;
 
 namespace WPFCookBook.Entities
 {
-    public class WpfCourseModule
+    public class WpfCourseModule : BindableBase
     {
-        
+        private string _name;
+        private ICollection<WpfCourseSection> _moduleSections;
+
         [Key]
         public long ID { get; set; }
         public Guid ModuleID { get; set; }
-        public string Name { get; set; }
-        public ICollection<WpfCourseSection> ModuleSections { get; set; }
-   
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                SetProperty(ref _name, value);
+            }
+        }
+        public ICollection<WpfCourseSection> ModuleSections
+        {
+            get { return _moduleSections; }
+            set { SetProperty(ref _moduleSections, value); }
+        }
+
     }
 }
