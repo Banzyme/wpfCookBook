@@ -9,6 +9,7 @@
         xmlns:ViewModels="clr-namespace:WPFCookBook.ViewModels"
         xmlns:ViewModelsBasic="clr-namespace:WPFCookBook.ViewModels.basics"
         xmlns:views="clr-namespace:WPFCookBook.Views"
+        xmlns:forms="clr-namespace:WPFCookBook.forms"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:viewsBasic="clr-namespace:WPFCookBook.Views.basics"
         Title="WPF Handbook For Humans"
@@ -35,6 +36,10 @@
 
         <DataTemplate DataType="{x:Type ViewModelsBasic:XamlFundamentalsViewModel}">
             <viewsBasic:XamlFundamentals />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type forms:CourseChapterFormViewModel}">
+            <forms:CourseChapterForm />
         </DataTemplate>
 
 
@@ -140,15 +145,21 @@
 
                     </TreeView>
                     <Separator Width="100"
-                               
+                               Foreground="DeepPink"
                                VerticalAlignment="Center" />
                     <StackPanel Margin="0,50,0,0" HorizontalAlignment="Center" Orientation="Vertical">
                         <Button  Content="Add module"
+                                 Command="{Binding NavigationCommand}"
+                                 CommandParameter="add_module_form"
                                  Style="{DynamicResource MaterialDesignRaisedDarkButton}" />
                         <Button Content="Add Chapter"
                                 Margin="10"
+                                Command="{Binding NavigationCommand}"
+                                CommandParameter="add_chapter_form"
                                 Style="{DynamicResource MaterialDesignRaisedDarkButton}" />
                         <Button Content="Add Topic"
+                                Command="{Binding NavigationCommand}"
+                                CommandParameter="add_topic_form"
                                 Style="{DynamicResource MaterialDesignRaisedDarkButton}" />
                     </StackPanel>
 

@@ -12,6 +12,7 @@ using WPFCookBook.Contracts;
 using WPFCookBook.DataService;
 using WPFCookBook.DataService.Repository;
 using WPFCookBook.Entities;
+using WPFCookBook.forms;
 using WPFCookBook.ViewModels.basics;
 
 namespace WPFCookBook.ViewModels
@@ -27,6 +28,7 @@ namespace WPFCookBook.ViewModels
         private IntroToXamlViewModel basicsIntro;
         private XamlFundamentalsViewModel basicsFund;
         private BasicsViewModel basicsModule;
+        private CourseChapterFormViewModel chapterForm;
         #endregion
 
         #region Constructor
@@ -47,6 +49,7 @@ namespace WPFCookBook.ViewModels
             basicsIntro = container.Resolve<IntroToXamlViewModel>();
             basicsFund = container.Resolve<XamlFundamentalsViewModel>();
             basicsModule = container.Resolve<BasicsViewModel>();
+            chapterForm = container.Resolve<CourseChapterFormViewModel>();
 
             _modService = container.Resolve<CourseModulesService>();
 
@@ -95,8 +98,10 @@ namespace WPFCookBook.ViewModels
 
                     case "xaml_fundamentals":
                         CurrentViewModel = basicsFund;
+                        break;
 
-
+                    case "add_chapter_form":
+                        CurrentViewModel = chapterForm;
                         break;
 
 

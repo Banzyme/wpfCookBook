@@ -101,6 +101,16 @@
     <Compile Include="DataService\Repository\WpfCourseModulesRepository.cs" />
     <Compile Include="DataService\Repository\WpfCourseSectionItemRepo.cs" />
     <Compile Include="DataService\Repository\WpfCourseSectionRepository.cs" />
+    <Compile Include="forms\CourseChapterForm.xaml.cs">
+      <DependentUpon>CourseChapterForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="forms\CourseChapterViewModel.cs" />
+    <Compile Include="forms\CourseModuleForm.xaml.cs">
+      <DependentUpon>CourseModuleForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="forms\CourseTopicForm.xaml.cs">
+      <DependentUpon>CourseTopicForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BasicsViewModel.cs" />
     <Compile Include="ViewModels\basics\IntroToXamlViewModel.cs" />
@@ -118,6 +128,18 @@
     <Compile Include="Views\IndexView.xaml.cs">
       <DependentUpon>IndexView.xaml</DependentUpon>
     </Compile>
+    <Page Include="forms\CourseChapterForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="forms\CourseModuleForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="forms\CourseTopicForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
