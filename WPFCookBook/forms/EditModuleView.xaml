@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WPFCookBook.forms.EditChapterView"
+﻿<UserControl x:Class="WPFCookBook.forms.EditModuleView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -13,10 +13,11 @@
         </Grid.RowDefinitions>
 
 
-        <Grid x:Name="updateChapterGrid"
-              HorizontalAlignment="Center"
-              DataContext="{Binding CurrentChapter}"
-              VerticalAlignment="Center">
+        <Grid x:Name="grid1"
+              HorizontalAlignment="Left"
+              DataContext="{Binding SelectedModule}"
+              Margin="10,10,0,0"
+              VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -27,53 +28,34 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Label Content="Chapter name:"
+            <Label Content="Module Name:"
                    Grid.Column="0"
-                   HorizontalAlignment="Center"
+                   HorizontalAlignment="Left"
                    Margin="3"
                    Grid.Row="0"
                    VerticalAlignment="Center" />
-            <TextBox x:Name="firstNameTextBox"
+            <TextBox x:Name="moduleNameTextBox"
                      Grid.Column="1"
-                     HorizontalAlignment="Center"
+                     HorizontalAlignment="Left"
+                     Height="23"
                      Margin="3"
                      Grid.Row="0"
-                     Text="{Binding Title, ValidatesOnNotifyDataErrors=True}"
-                     VerticalAlignment="Stretch"
-                     Width="300" />
-            <StackPanel Grid.Row="1" Margin="20" Orientation="Horizontal">
-            <Label Content="Module"
-               
-                   
-                   Margin="3"
-                   />
-            <ComboBox x:Name="modulesCombo"
-                      Width="300"
-                      Background="AliceBlue"
-                      ItemsSource="{Binding ElementName=ChapterViewGrid, Path=DataContext.ModulesList}">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBox Text="{Binding Name}" />
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-            </StackPanel>
-
+                     Text="{Binding Name, ValidatesOnNotifyDataErrors=True}"
+                     VerticalAlignment="Center"
+                     Width="120" />
         </Grid>
-        <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+        <Grid Grid.Row="1">
             <Button Content="Save changes"
-                    Command="{Binding UpdateChapterCommand}"
+                    Command="{Binding UpdateModuleCommand}"
                     HorizontalAlignment="Left"
                     Margin="25,5,0,0"
                     VerticalAlignment="Top"
-                    Padding="5"
-                    Width="Auto" />
+                    Width="75" />
             <Button Content="Cancel"
                     Command="{Binding CancelCommand}"
                     HorizontalAlignment="Left"
                     Margin="150,5,0,0"
                     VerticalAlignment="Top"
-                    Padding="5"
                     Width="75" />
         </Grid>
 

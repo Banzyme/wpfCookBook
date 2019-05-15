@@ -25,7 +25,9 @@ namespace WPFCookBook.forms
             newModule = "";
         }
 
+        public event Action<WpfCourseModule> EditModuleRequested = delegate { };
         public RelayCommand AddModuleCommand { get; private set; }
+        public RelayCommand UpdateModuleCommand { get; private set; }
         public ObservableCollection<WpfCourseModule> ModulesList
         {
             get { return _modulesList; }
@@ -46,17 +48,24 @@ namespace WPFCookBook.forms
         private void InitialiseCommands()
         {
             AddModuleCommand = new RelayCommand(OnModuleAdd, CanAddModule);
+            UpdateModuleCommand = new RelayCommand(OnUpdate, o => true);
         }
 
         private void OnModuleAdd(object param)
         {
             var newModule = new WpfCourseModule();
-            MessageBox.Show($"Adding new module {NewModuleName}");
+            MessageBox.Show($"Adding new module: {NewModuleName}");
         }
 
         private bool CanAddModule(object param)
         {
             return true;
+        }
+
+        private void OnUpdate(object param)
+        {
+            var selectedModule = (WpfCourseModule)param;
+            EditModuleRequested(selectedModule);
         }
 
 

@@ -91,11 +91,5 @@
 
         </DataGrid>
 
-        <WrapPanel x:Name="updateChapterForm"
-                   Visibility="Collapsed">
-            <GroupBox Header="Update chapter">
-                <TextBox Text="{Binding Title}" />
-            </GroupBox>
-        </WrapPanel>
     </Grid>
 </UserControl>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,7 @@ namespace WPFCookBook.ViewModels
         private CourseChapterFormViewModel chapterForm;
         private EditChapterViewModel editChapter;
         private CourseModuleListViewModel moduleForm;
+        private EditModuleViewModel editModule;
         #endregion
 
         #region Constructor
@@ -54,12 +56,16 @@ namespace WPFCookBook.ViewModels
             chapterForm = container.Resolve<CourseChapterFormViewModel>();
             editChapter = container.Resolve<EditChapterViewModel>();
             moduleForm = container.Resolve<CourseModuleListViewModel>();
+            editModule = container.Resolve<EditModuleViewModel>();
 
             _modService = container.Resolve<CourseModulesService>();
 
 
 
             NavigationCommand = new CommandTemplate<string>(OnNav);
+
+            
+
             var modResults = _modService.GetAllModules().ToList();
             modResults.ForEach(item =>
            {
@@ -70,6 +76,7 @@ namespace WPFCookBook.ViewModels
             CurrentViewModel = IndexPage;
 
             chapterForm.EditChapterRequested += SwitchToEditChapterPage;
+            moduleForm.EditModuleRequested += SwitchToEditModulePage;
         }
         #endregion
 
@@ -133,6 +140,12 @@ namespace WPFCookBook.ViewModels
         {
             editChapter.SetSelectedChapter(section);
             CurrentViewModel = editChapter;
+        }
+
+        private void SwitchToEditModulePage(WpfCourseModule mod)
+        {
+            editModule.SetSelectedModule(mod);
+            CurrentViewModel = editModule;
         }
         #endregion
 

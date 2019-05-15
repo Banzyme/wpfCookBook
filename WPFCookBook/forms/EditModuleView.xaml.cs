@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WPFCookBook.forms
 {
     /// <summary>
-    /// Interaction logic for CourseTopicForm.xaml
+    /// Interaction logic for EditModuleView.xaml
     /// </summary>
-    public partial class CourseTopicForm : UserControl
+    public partial class EditModuleView : UserControl
     {
-        public CourseTopicForm()
+        public EditModuleView()
         {
             InitializeComponent();
         }

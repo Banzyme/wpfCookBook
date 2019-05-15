@@ -50,6 +50,10 @@
             <forms:CourseModuleListView />
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type forms:EditModuleViewModel}">
+            <forms:EditModuleView />
+        </DataTemplate>
+
 
     </Window.Resources>
 
@@ -164,10 +168,6 @@
                                 Margin="10"
                                 Command="{Binding NavigationCommand}"
                                 CommandParameter="add_chapter_form"
-                                Style="{DynamicResource MaterialDesignRaisedDarkButton}" />
-                        <Button Content="Add Topic"
-                                Command="{Binding NavigationCommand}"
-                                CommandParameter="add_topic_form"
                                 Style="{DynamicResource MaterialDesignRaisedDarkButton}" />
                     </StackPanel>
 
