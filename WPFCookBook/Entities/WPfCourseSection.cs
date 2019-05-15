@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -9,8 +10,10 @@ using WPFCookBook.Common;
 
 namespace WPFCookBook.Entities
 {
-    public class WpfCourseSection : BindableBase
+    public class WpfCourseSection : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+
         private string _title;
         private ICollection<WpfCourseSectionItem> _sectionTopics;
 
@@ -22,7 +25,8 @@ namespace WPFCookBook.Entities
             get { return _title; }
             set
             {
-                SetProperty(ref _title, value, "Title");
+                _title = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("Title"));
             }
         }
 
@@ -31,7 +35,8 @@ namespace WPFCookBook.Entities
             get { return _sectionTopics; }
             set
             {
-                SetProperty(ref _sectionTopics, value, "SectionTopics");
+                _sectionTopics = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("SectionTopics"));
             }
         }
     }

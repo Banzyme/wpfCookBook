@@ -76,9 +76,10 @@ namespace WPFCookBook.forms
 
         private void onUpdateChapter(object sectionID)
         {
-            var datagrid = (DataGrid)sectionID;
+            OnPropertyChanged("ChapterList");
+            //var datagrid = (DataGrid)sectionID;
 
-            MessageBox.Show($"{ datagrid.SelectedValue }");
+            MessageBox.Show($"{ sectionID }");
             //bool result = _chaptersRepo.UpdateSection((long)sectionID, "");
 
             //if (result == true)

@@ -71,7 +71,7 @@
                   Height="550"
                   AutoGenerateColumns="False"
                   
-                  ItemsSource="{Binding ChaptersList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }">
+                  ItemsSource="{Binding ChaptersList }">
 
             <DataGrid.Columns>
 
@@ -95,15 +95,15 @@
                 </DataGridTemplateColumn>
 
 
-                <DataGridTextColumn x:Name="chapterTitleCol" Header="Module"
-                                    Binding="{Binding Title, Mode=TwoWay}" />
+                <DataGridTextColumn x:Name="chapterTitleCol" Header="Chapter Name"
+                                    Binding="{Binding Title}" />
 
                 <DataGridTemplateColumn Header="Actions">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel  Orientation="Horizontal">
                                 <Button Margin="3"
-                                        CommandParameter="{Binding ElementName=chaptersDataGrid}"
+                                        CommandParameter="{Binding}"
                                         Command="{Binding ElementName=ChapterViewGrid, Path=DataContext.OnUpdateSectionCommand}"
                                         Content="Update">
                                 </Button>
