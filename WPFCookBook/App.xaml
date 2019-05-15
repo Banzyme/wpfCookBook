@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:WPFCookBook"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         <!--Material UI-->
+        <!--Material UI-->
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
