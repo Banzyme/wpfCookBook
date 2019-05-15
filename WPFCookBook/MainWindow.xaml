@@ -46,6 +46,10 @@
             <forms:EditChapterView />
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type forms:CourseModuleListViewModel}">
+            <forms:CourseModuleListView />
+        </DataTemplate>
+
 
     </Window.Resources>
 
@@ -154,7 +158,7 @@
                     <StackPanel Margin="0,50,0,0" HorizontalAlignment="Center" Orientation="Vertical">
                         <Button  Content="Add module"
                                  Command="{Binding NavigationCommand}"
-                                 CommandParameter="add_module_form"
+                                 CommandParameter="add_modules_form"
                                  Style="{DynamicResource MaterialDesignRaisedDarkButton}" />
                         <Button Content="Add Chapter"
                                 Margin="10"

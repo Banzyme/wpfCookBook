@@ -106,12 +106,14 @@
       <DependentUpon>CourseChapterForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="forms\CourseChapterViewModel.cs" />
-    <Compile Include="forms\CourseModuleForm.xaml.cs">
-      <DependentUpon>CourseModuleForm.xaml</DependentUpon>
+    <Compile Include="forms\CourseModuleListView.xaml.cs">
+      <DependentUpon>CourseModuleListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="forms\CourseModuleListViewModel.cs" />
     <Compile Include="forms\CourseTopicForm.xaml.cs">
       <DependentUpon>CourseTopicForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="forms\CourseTopicFormViewModel.cs" />
     <Compile Include="forms\EditChapterView.xaml.cs">
       <DependentUpon>EditChapterView.xaml</DependentUpon>
     </Compile>
@@ -137,7 +139,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="forms\CourseModuleForm.xaml">
+    <Page Include="forms\CourseModuleListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

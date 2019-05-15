@@ -30,6 +30,7 @@ namespace WPFCookBook.ViewModels
         private BasicsViewModel basicsModule;
         private CourseChapterFormViewModel chapterForm;
         private EditChapterViewModel editChapter;
+        private CourseModuleListViewModel moduleForm;
         #endregion
 
         #region Constructor
@@ -52,6 +53,7 @@ namespace WPFCookBook.ViewModels
             basicsModule = container.Resolve<BasicsViewModel>();
             chapterForm = container.Resolve<CourseChapterFormViewModel>();
             editChapter = container.Resolve<EditChapterViewModel>();
+            moduleForm = container.Resolve<CourseModuleListViewModel>();
 
             _modService = container.Resolve<CourseModulesService>();
 
@@ -106,6 +108,10 @@ namespace WPFCookBook.ViewModels
 
                     case "add_chapter_form":
                         CurrentViewModel = chapterForm;
+                        break;
+
+                    case "add_modules_form":
+                        CurrentViewModel = moduleForm;
                         break;
 
 
