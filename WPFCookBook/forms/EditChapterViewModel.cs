@@ -27,6 +27,8 @@ namespace WPFCookBook.forms
             set { SetProperty(ref _selectedChapter, value);  }
         }
 
+        public event Action MasterRefresh = delegate { };
+
         public event Action NaivigateBackHome = delegate { };
         public RelayCommandAsync<object> UpdateChapterCommand { get; private set; }
 
@@ -45,6 +47,7 @@ namespace WPFCookBook.forms
             {
                 MessageBox.Show($"Successfully updated...: {updatedChapter.Title}");
             }
+            MasterRefresh();
             NaivigateBackHome();
         }
 

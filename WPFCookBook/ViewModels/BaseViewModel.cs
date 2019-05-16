@@ -74,7 +74,10 @@ namespace WPFCookBook.ViewModels
             moduleForm.EditModuleRequested += SwitchToEditModulePage;
             moduleForm.MasterRefresh += RefreshMainWindowCollections;
             editModule.NaivigateBackHome += GotoIndexPage;
+            editModule.MasterRefresh += RefreshMainWindowCollections;
+
             editChapter.NaivigateBackHome += GotoIndexPage;
+            editChapter.MasterRefresh += RefreshMainWindowCollections;
 
             // Commdands init
             NavigationCommand = new CommandTemplate<string>(OnNav);

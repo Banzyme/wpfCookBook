@@ -22,6 +22,7 @@ namespace WPFCookBook.forms
 
         }
 
+        public event Action MasterRefresh = delegate { };
         public event Action NaivigateBackHome = delegate { };
         public RelayCommandAsync<object> UpdateModuleCommand { get; private set; }
         public RelayCommand CancelCommand { get; private set; }
@@ -43,6 +44,8 @@ namespace WPFCookBook.forms
             if (result == true)
             {
                 MessageBox.Show($"Successfullly updated module: {updated.Name}");
+               
+                MasterRefresh();
                 NaivigateBackHome();
             }
         }
