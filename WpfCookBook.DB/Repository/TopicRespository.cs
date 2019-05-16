@@ -21,7 +21,7 @@ namespace WpfCookBook.DB.Repository
 
         public bool InsertTopicContentWithRawSql(string title, string content, long sectionId, string subTitle = "Not provided")
         {
-            string sql = "insert WpfCourseSectionItem(SectionItemID, Title, Subtitle, Content, WpfCourseSection_ID) values()";
+            string sql = "insert TopicDao(SectionItemID, Title, Subtitle, Content, ChapterDao_ID) values({0}, {1}, {2}, {3}, {4})";
 
 
             Guid randomGuid = new Guid();

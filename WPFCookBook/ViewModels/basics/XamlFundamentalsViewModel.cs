@@ -21,7 +21,9 @@ namespace WPFCookBook.ViewModels.basics
         private ICourseSectionItemService _sectItemsService;
         private ChapterDao section;
         private TopicDao currentTopic;
+        private TopicDao _newTopic;
         private ObservableCollection<TopicDao> _topicsList;
+        private Grid NewTopicForm;
 
         #region constructor
 
@@ -30,7 +32,8 @@ namespace WPFCookBook.ViewModels.basics
             _sectionService = sectionService;
             _sectItemsService = topics;
             OnSaveChangesCommand = new RelayCommandAsync< FsRichTextBox>(OnSaveChanges);
-            AddTabItemCommand = new RelayCommand(OnAddTabItem);
+            AddTabItemCommand = new RelayCommandAsync<object>(OnAddTabItem);
+            SaveTopicCommand = new RelayCommand(ShowAddTopicForm);
             LoadInitialData();
         }
 
@@ -38,7 +41,8 @@ namespace WPFCookBook.ViewModels.basics
 
         #region Properties
         public RelayCommandAsync<FsRichTextBox> OnSaveChangesCommand { get; private set; }
-        public RelayCommand AddTabItemCommand { get; private set; }
+        public RelayCommandAsync<object> AddTabItemCommand { get; private set; }
+        public RelayCommand SaveTopicCommand { get; private set; }
         public ObservableCollection<TopicDao> TopicsList
         {
             get
@@ -50,11 +54,18 @@ namespace WPFCookBook.ViewModels.basics
                 SetProperty(ref _topicsList, value, "TopicsList");
             }
         }
+
+        public TopicDao NewTopic
+        {
+            get { return _newTopic; }
+            set { SetProperty(ref _newTopic, value, "NewTopic"); }
+        }
         #endregion
 
         #region Private methods
         private void LoadInitialData()
         {
+            _newTopic = new TopicDao();
             section = _sectionService.GetSectionByName("XAML Fundamentals");
             _topicsList = new ObservableCollection<TopicDao>(section.SectionTopics.ToList());
         }
@@ -82,14 +93,46 @@ namespace WPFCookBook.ViewModels.basics
             }
         }
 
-        private void OnAddTabItem(object param)
+        private void RefreshTopics(TopicDao NewEntry)
         {
-            var tab = (TabControl)param;
-            MessageBox.Show("Adding new tab item...");
-            var newTopic = new TopicDao();
-            newTopic.Title = "This is a test";
-            _topicsList.Add(newTopic);
+            _topicsList.Add(NewEntry);
             OnPropertyChanged("TopicsList");
+        }
+
+        private async Task OnAddTabItem(object param)
+        {
+            var entry = (TopicDao)param;
+            TopicDao savedtopic = null;
+
+            bool result = _sectItemsService.AddTopicToChapterSql(entry, section.ID);
+            if (result)
+            {
+                savedtopic = await _sectItemsService.GetTopicByName(entry.Title);
+                
+                if(savedtopic != null)
+                    MessageBox.Show($"Added new tab item...with tittle: {savedtopic.ID} - {savedtopic.Title}");
+            }
+           
+            // Update tabitems and collapse form
+            RefreshTopics(savedtopic);
+            if(NewTopicForm != null)
+                NewTopicForm.Visibility = Visibility.Collapsed;
+        }
+
+        private void ShowAddTopicForm(object arg)
+        {
+            try
+            {
+                var grid = (Grid)arg;
+                grid.Visibility = Visibility.Visible;
+                NewTopicForm = grid;
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show($"Error parsing args: {e.Message}");
+            }
+
         }
         #endregion
 

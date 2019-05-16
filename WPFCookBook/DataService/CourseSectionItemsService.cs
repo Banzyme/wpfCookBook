@@ -29,6 +29,11 @@ namespace WPFCookBook.DataService
             return await _repo.FindItemByCondition( item => item.ID == ID );
         }
 
+        public async Task<TopicDao> GetTopicByName(string name)
+        {
+            return await _repo.FindItemByCondition(item => item.Title == name);
+        }
+
         public async Task<bool> AddSectionItem(TopicDao item)
         {
 
@@ -44,6 +49,22 @@ namespace WPFCookBook.DataService
                 return false;
             }
         }
+
+        public bool AddTopicToChapterSql(TopicDao topic, long ChapterId)
+        {
+            try
+            {
+                var res = _repo.InsertTopicContentWithRawSql(topic.Title, topic.Content, ChapterId, topic.Subtitle);
+                return res? true: false;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Failed add section item to topic: {e.Message} - \n {e.InnerException} - \n {e.StackTrace}");
+                return false;
+            }
+        }
+
+
 
         public async Task<bool> DeleteSectionItem(long ID)
         {

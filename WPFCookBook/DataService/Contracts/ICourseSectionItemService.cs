@@ -9,8 +9,10 @@ namespace WPFCookBook.DataService.Contracts
     {
         IEnumerable<TopicDao> GetAllSectionItems();
         Task<TopicDao> GetSectionItemByID(long ID);
+        Task<TopicDao> GetTopicByName(string name);
         Task<bool> DeleteSectionItem(long ID);
         Task<bool> UpdateSectionItem(long ID, TopicDao sect);
         Task<bool> AddSectionItem(TopicDao sect);
+        bool AddTopicToChapterSql(TopicDao topic, long ChapterId);
     }
 }
