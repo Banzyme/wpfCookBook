@@ -49,6 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDBContext.cs" />
+    <Compile Include="Dao\ChapterDao.cs" />
+    <Compile Include="Dao\ModuleDao.cs" />
+    <Compile Include="Dao\TopicDao.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Base\IRepositoryBase.cs" />
