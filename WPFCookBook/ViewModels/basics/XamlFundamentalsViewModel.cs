@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using WpfCookBook.DB.Dao;
@@ -28,6 +29,7 @@ namespace WPFCookBook.ViewModels.basics
             _sectionService = sectionService;
             _sectItemsService = topics;
             OnSaveChangesCommand = new RelayCommandAsync< FsRichTextBox>(OnSaveChanges);
+            AddTabItemCommand = new RelayCommand(OnAddTabItem);
             LoadInitialData();
         }
 
@@ -35,6 +37,7 @@ namespace WPFCookBook.ViewModels.basics
 
         #region Properties
         public RelayCommandAsync<FsRichTextBox> OnSaveChangesCommand { get; private set; }
+        public RelayCommand AddTabItemCommand { get; private set; }
         public ObservableCollection<TopicDao> TopicsList
         {
             get
@@ -74,6 +77,13 @@ namespace WPFCookBook.ViewModels.basics
             }
         }
 
+        private void OnAddTabItem(object param)
+        {
+            MessageBox.Show("Adding new tab item...");
+            var tab = (TabControl)param;
+            TabItem newTab = new TabItem();
+            newTab.Header = "Testing..";
+        }
         #endregion
 
     }

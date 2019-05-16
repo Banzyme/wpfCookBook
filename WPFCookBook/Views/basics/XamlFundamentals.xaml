@@ -51,6 +51,7 @@
         </Grid.RowDefinitions>
 
         <TabControl  Grid.Row="1"
+                     x:Name="TopicsTabCtrl"
                      ItemsSource="{Binding TopicsList}"
                      ItemTemplate="{StaticResource TabsBasicHeaderTemplate}">
             
@@ -87,6 +88,10 @@
                             </Button>
                             <Button Margin="5"
                                     Content="Discard" />
+                            <Button Command="{Binding DataContext.AddTabItemCommand, ElementName=fundamentalsGrid}"
+                                    HorizontalAlignment="Right"
+                                    CommandParameter="{Binding ElementName=TopicsTabCtrl}"
+                                    Content="Add new page" />
                         </WrapPanel>
                     </Grid>
                 </DataTemplate>
