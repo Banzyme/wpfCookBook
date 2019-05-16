@@ -13,7 +13,7 @@ namespace WPFCookBook.Contracts
         WpfCourseSection GetSectionByID(long ID);
         WpfCourseSection GetSectionByName(string searchStr);
         bool DeleteSection(long ID);
-        bool UpdateSection(long ID, string sect);
+        bool UpdateSection(WpfCourseSection updatedSection);
         bool AddSection(WpfCourseSection sect);
         bool AddSectionWithRawSql(long moduleId, string sectionTitle);
     }

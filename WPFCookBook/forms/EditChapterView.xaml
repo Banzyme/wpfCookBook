@@ -33,7 +33,7 @@
                    Margin="3"
                    Grid.Row="0"
                    VerticalAlignment="Center" />
-            <TextBox x:Name="firstNameTextBox"
+            <TextBox x:Name="chapterTitleTextBox"
                      Grid.Column="1"
                      HorizontalAlignment="Center"
                      Margin="3"
@@ -63,6 +63,7 @@
         <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
             <Button Content="Save changes"
                     Command="{Binding UpdateChapterCommand}"
+                    CommandParameter="{Binding ElementName=updateChapterGrid, Path=DataContext}"
                     HorizontalAlignment="Left"
                     Margin="25,5,0,0"
                     VerticalAlignment="Top"

@@ -5,15 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using WPFCookBook.Common;
+using WPFCookBook.Contracts;
 using WPFCookBook.Entities;
 
 namespace WPFCookBook.forms
 {
     public class EditChapterViewModel : BindableBase
     {
+        private ICourseSectionService _sectionService;
         private WpfCourseSection _selectedChapter;
-        public EditChapterViewModel()
+
+        public EditChapterViewModel(ICourseSectionService sectService)
         {
+            _sectionService = sectService;
             UpdateChapterCommand = new RelayCommand(SaveChanges, canSaveChanges);
         }
 
@@ -23,6 +27,7 @@ namespace WPFCookBook.forms
             set { SetProperty(ref _selectedChapter, value);  }
         }
 
+        public event Action NaivigateBackHome = delegate { };
         public RelayCommand UpdateChapterCommand { get; private set; }
 
         public void SetSelectedChapter(WpfCourseSection sect)
@@ -33,7 +38,14 @@ namespace WPFCookBook.forms
 
         private void SaveChanges(object param)
         {
-            MessageBox.Show("Updateing..." + param);
+            var updatedChapter = (WpfCourseSection)param;
+            bool result = _sectionService.UpdateSection(updatedChapter);
+
+            if (result==true)
+            {
+                MessageBox.Show($"Successfully updated...: {updatedChapter.Title}");
+            }
+            NaivigateBackHome();
         }
 
         private bool canSaveChanges(object param)

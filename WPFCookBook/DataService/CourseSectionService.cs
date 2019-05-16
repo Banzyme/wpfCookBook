@@ -93,13 +93,11 @@ namespace WPFCookBook.DataService
             return _repo.GetSectionWithTopics(searchStr);
         }
 
-        public bool UpdateSection(long ID, string NewName)
+        public bool UpdateSection(WpfCourseSection UpdatedSect)
         {
-            var existing = GetSectionByID(ID);
-            existing.Title = NewName;
             try
             {
-                _repo.Update(existing, ID);
+                _repo.Update(UpdatedSect, UpdatedSect.ID);
                 return true;
             }
             catch (Exception)
