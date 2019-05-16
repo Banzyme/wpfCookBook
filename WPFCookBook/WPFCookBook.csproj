@@ -38,6 +38,12 @@
     <ApplicationIcon>Assets\icon\notebook.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
@@ -87,17 +93,12 @@
     <Compile Include="Common\SaveFlowDocCommand.cs" />
     <Compile Include="Common\WpfCookBookUtils.cs" />
     <Compile Include="Common\XamlToFlowDocMapper.cs" />
-    <Compile Include="Contracts\ICourseModuleService.cs" />
-    <Compile Include="Contracts\ICourseSectionItemService.cs" />
-    <Compile Include="Contracts\ICourseSectionService.cs" />
+    <Compile Include="DataService\Contracts\ICourseModuleService.cs" />
+    <Compile Include="DataService\Contracts\ICourseSectionItemService.cs" />
+    <Compile Include="DataService\Contracts\ICourseSectionService.cs" />
     <Compile Include="DataService\CourseModulesService.cs" />
     <Compile Include="DataService\CourseSectionItemsService.cs" />
     <Compile Include="DataService\CourseSectionService.cs" />
-    <Compile Include="DataService\Repository\IRepositoryBase.cs" />
-    <Compile Include="DataService\Repository\RepositoryBase.cs" />
-    <Compile Include="DataService\Repository\WpfCourseModulesRepository.cs" />
-    <Compile Include="DataService\Repository\WpfCourseSectionItemRepo.cs" />
-    <Compile Include="DataService\Repository\WpfCourseSectionRepository.cs" />
     <Compile Include="forms\CourseChapterForm.xaml.cs">
       <DependentUpon>CourseChapterForm.xaml</DependentUpon>
     </Compile>
@@ -155,11 +156,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataService\ApplicationDBContext.cs" />
-    <Compile Include="DataService\InitialDBSeed.cs" />
-    <Compile Include="Entities\WpfCourseModule.cs" />
-    <Compile Include="Entities\WpfCourseSection.cs" />
-    <Compile Include="Entities\WpfCourseSectionItem.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -182,7 +178,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -218,12 +213,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\icon\notebook.ico" />
-    <Content Include="DataService\scripts\seed.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Downloads\ricdhT-Test\FsRichTextBox\FsRichTextBox\FsRichTextBox.csproj">
       <Project>{091ce5bc-d5c3-4752-a244-053664873941}</Project>
       <Name>FsRichTextBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WpfCookBook.DB\WpfCookBook.DB.csproj">
+      <Project>{50184ca7-0d51-4d56-abf0-59437c986930}</Project>
+      <Name>WpfCookBook.DB</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

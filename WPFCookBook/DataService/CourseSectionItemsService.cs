@@ -4,32 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using WPFCookBook.Contracts;
-using WPFCookBook.DataService.Repository;
-using WPFCookBook.Entities;
+using WpfCookBook.DB.Dao;
+using WpfCookBook.DB.Repository;
+using WPFCookBook.DataService.Contracts;
 
 namespace WPFCookBook.DataService
 {
     public class CourseSectionItemsService : ICourseSectionItemService
     {
-        private  IWpfCourseSectionItemRepo _repo;
+        private ITopicRepository _repo;
 
-        public CourseSectionItemsService(IWpfCourseSectionItemRepo context)
+        public CourseSectionItemsService(ITopicRepository context)
         {
             _repo = context;
         }
 
-        public IEnumerable<WpfCourseSectionItem> GetAllSectionItems()
+        public IEnumerable<TopicDao> GetAllSectionItems()
         {
             return _repo.GetAll();
         }
 
-        public async Task<WpfCourseSectionItem> GetSectionItemByID(long ID)
+        public async Task<TopicDao> GetSectionItemByID(long ID)
         {
             return await _repo.FindItemByCondition( item => item.ID == ID );
         }
 
-        public async Task<bool> AddSectionItem(WpfCourseSectionItem item)
+        public async Task<bool> AddSectionItem(TopicDao item)
         {
 
             try
@@ -59,7 +59,7 @@ namespace WPFCookBook.DataService
             }
         }
 
-        public async Task<bool> UpdateSectionItem(long ID, WpfCourseSectionItem sect)
+        public async Task<bool> UpdateSectionItem(long ID, TopicDao sect)
         {
             try
             {

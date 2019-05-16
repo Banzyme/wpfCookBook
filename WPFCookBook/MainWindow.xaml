@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        xmlns:entities="clr-namespace:WPFCookBook.Entities"
+        xmlns:entities="clr-namespace:WpfCookBook.DB.Dao;assembly=WpfCookBook.DB"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:ViewModels="clr-namespace:WPFCookBook.ViewModels"
         xmlns:ViewModelsBasic="clr-namespace:WPFCookBook.ViewModels.basics"
@@ -114,7 +114,7 @@
                               Padding="1, 15, 1, 15">
 
                         <TreeView.Resources>
-                            <HierarchicalDataTemplate DataType="{x:Type entities:WpfCourseModule}"
+                            <HierarchicalDataTemplate DataType="{x:Type entities:ModuleDao}"
                                                       ItemsSource="{Binding ModuleSections}">
                                 <StackPanel  Orientation="Horizontal">
 
@@ -131,7 +131,7 @@
                             </HierarchicalDataTemplate>
 
                             <DataTemplate x:Name="allSections"
-                                          DataType="{x:Type entities:WpfCourseSection}">
+                                          DataType="{x:Type entities:ChapterDao}">
                                 <StackPanel Orientation="Horizontal">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="MouseDown">

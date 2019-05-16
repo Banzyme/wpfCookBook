@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using WpfCookBook.DB.Dao;
 using WPFCookBook.Common;
-using WPFCookBook.Contracts;
-using WPFCookBook.Entities;
+using WPFCookBook.DataService.Contracts;
 
 namespace WPFCookBook.forms
 {
@@ -16,7 +16,7 @@ namespace WPFCookBook.forms
     {
         private ICourseSectionService _chaptersRepo;
         private ICourseModuleService _modService;
-        private ObservableCollection<WpfCourseSection> _chaptersList;
+        private ObservableCollection<ChapterDao> _chaptersList;
 
         public CourseChapterFormViewModel(ICourseSectionService chaptersRepo, ICourseModuleService mods)
         {
@@ -53,7 +53,7 @@ namespace WPFCookBook.forms
         }
 
         public string NewChapterTitle { get; set; }
-        public ObservableCollection<WpfCourseSection> ChaptersList
+        public ObservableCollection<ChapterDao> ChaptersList
         {
             get { return _chaptersList; }
             set
@@ -61,18 +61,18 @@ namespace WPFCookBook.forms
                 SetProperty(ref _chaptersList, value, "ChapterList");
             }
         }
-        public ObservableCollection<WpfCourseModule> ModulesList { get; set; }
+        public ObservableCollection<ModuleDao> ModulesList { get; set; }
         public RelayCommand OnSaveChapterCommand { get; private set; }
         public RelayCommandAsync<object> OnDeleteSectionCommand { get; private set; }
         public RelayCommand OnUpdateSectionCommand { get; private set; }
-        public event Action<WpfCourseSection> EditChapterRequested = delegate { };
+        public event Action<ChapterDao> EditChapterRequested = delegate { };
 
         private void LoadInitialData()
         {
             var result = _chaptersRepo.GetAllSections();
             var modules = _modService.GetAllModules().ToList();
-            _chaptersList = new ObservableCollection<WpfCourseSection>(result);
-            ModulesList = new ObservableCollection<WpfCourseModule>(modules);
+            _chaptersList = new ObservableCollection<ChapterDao>(result);
+            ModulesList = new ObservableCollection<ModuleDao>(modules);
             NewChapterTitle = "";
         }
 
@@ -84,7 +84,7 @@ namespace WPFCookBook.forms
 
         private void OnSaveChapter(object module)
         {
-            var selectedModule = (WpfCourseModule)module;
+            var selectedModule = (ModuleDao)module;
 
             bool result = _chaptersRepo.AddSectionWithRawSql(selectedModule.ID, NewChapterTitle);
 
@@ -100,7 +100,7 @@ namespace WPFCookBook.forms
 
         private void onUpdateChapter(object obj)
         {
-            var selectedSection = (WpfCourseSection)obj;
+            var selectedSection = (ChapterDao)obj;
             EditChapterRequested(selectedSection);
         }
 

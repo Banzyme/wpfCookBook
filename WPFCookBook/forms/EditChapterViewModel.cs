@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WpfCookBook.DB.Dao;
 using WPFCookBook.Common;
-using WPFCookBook.Contracts;
-using WPFCookBook.Entities;
+using WPFCookBook.DataService.Contracts;
 
 namespace WPFCookBook.forms
 {
     public class EditChapterViewModel : BindableBase
     {
         private ICourseSectionService _sectionService;
-        private WpfCourseSection _selectedChapter;
+        private ChapterDao _selectedChapter;
 
         public EditChapterViewModel(ICourseSectionService sectService)
         {
@@ -21,7 +21,7 @@ namespace WPFCookBook.forms
             UpdateChapterCommand = new RelayCommandAsync<object>(SaveChanges, canSaveChanges);
         }
 
-        public WpfCourseSection CurrentChapter
+        public ChapterDao CurrentChapter
         {
             get { return _selectedChapter;  }
             set { SetProperty(ref _selectedChapter, value);  }
@@ -32,7 +32,7 @@ namespace WPFCookBook.forms
         public event Action NaivigateBackHome = delegate { };
         public RelayCommandAsync<object> UpdateChapterCommand { get; private set; }
 
-        public void SetSelectedChapter(WpfCourseSection sect)
+        public void SetSelectedChapter(ChapterDao sect)
         {
             if(sect != null)
                 _selectedChapter = sect;
@@ -40,7 +40,7 @@ namespace WPFCookBook.forms
 
         private async Task SaveChanges(object param)
         {
-            var updatedChapter = (WpfCourseSection)param;
+            var updatedChapter = (ChapterDao)param;
             bool result = await _sectionService.UpdateSection(updatedChapter);
 
             if (result==true)

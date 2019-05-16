@@ -5,16 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WpfCookBook.DB.Dao;
 using WPFCookBook.Common;
-using WPFCookBook.Contracts;
-using WPFCookBook.Entities;
+using WPFCookBook.DataService.Contracts;
 
 namespace WPFCookBook.forms
 {
     public class CourseModuleListViewModel : BindableBase
     {
         private ICourseModuleService _modulesService;
-        private ObservableCollection<WpfCourseModule> _modulesList;
+        private ObservableCollection<ModuleDao> _modulesList;
         private string newModule;
 
         public CourseModuleListViewModel(ICourseModuleService modService)
@@ -27,12 +27,12 @@ namespace WPFCookBook.forms
 
         // Used to signal state changes due to chiled actions
         public event Action MasterRefresh = delegate { };
-        public event Action<WpfCourseModule> EditModuleRequested = delegate { };
+        public event Action<ModuleDao> EditModuleRequested = delegate { };
 
         public RelayCommandAsync<object> AddModuleCommand { get; private set; }
         public RelayCommand UpdateModuleCommand { get; private set; }
         public RelayCommandAsync<object> DeleteModuleCommand { get; private set; }
-        public ObservableCollection<WpfCourseModule> ModulesList
+        public ObservableCollection<ModuleDao> ModulesList
         {
             get { return _modulesList; }
             set { SetProperty(ref _modulesList, value); }
@@ -46,7 +46,7 @@ namespace WPFCookBook.forms
         private void LoadIntialData()
         {
             var result = _modulesService.GetAllModules();
-            _modulesList = new ObservableCollection<WpfCourseModule>(result);
+            _modulesList = new ObservableCollection<ModuleDao>(result);
         }
 
         private void InitialiseCommands()
@@ -65,7 +65,7 @@ namespace WPFCookBook.forms
 
         private async Task OnModuleAdd(object param)
         {
-            var newModule = new WpfCourseModule();
+            var newModule = new ModuleDao();
             newModule.Name = NewModuleName;
 
             var result = await _modulesService.AddModule(newModule);
@@ -84,7 +84,7 @@ namespace WPFCookBook.forms
 
         private void OnUpdate(object param)
         {
-            var selectedModule = (WpfCourseModule)param;
+            var selectedModule = (ModuleDao)param;
             EditModuleRequested(selectedModule);
         }
 

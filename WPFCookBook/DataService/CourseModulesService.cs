@@ -4,17 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using WPFCookBook.Contracts;
-using WPFCookBook.DataService.Repository;
-using WPFCookBook.Entities;
+using WpfCookBook.DB.Dao;
+using WpfCookBook.DB.Repository;
+using WPFCookBook.DataService.Contracts;
 
 namespace WPFCookBook.DataService
 {
     public class CourseModulesService : ICourseModuleService
     {
-        private readonly ApplicationDBContext _context = new ApplicationDBContext();
-        private IWpfCourseModulesRepository _modulesRepo;
-        public CourseModulesService(IWpfCourseModulesRepository moduleService)
+        private IModuleRepository _modulesRepo;
+        public CourseModulesService(IModuleRepository moduleService)
         {
             _modulesRepo = moduleService;
         }
@@ -36,12 +35,12 @@ namespace WPFCookBook.DataService
             }
         }
 
-        public IEnumerable<WpfCourseModule> GetAllModules()
+        public IEnumerable<ModuleDao> GetAllModules()
         {
             return _modulesRepo.GetAll();
         }
 
-        public async Task<WpfCourseModule> GetModuleByID(long ID)
+        public async Task<ModuleDao> GetModuleByID(long ID)
         {
             try
             {
@@ -55,11 +54,11 @@ namespace WPFCookBook.DataService
             };
         }
 
-        public async Task<bool> AddModule(WpfCourseModule MOD)
+        public async Task<bool> AddModule(ModuleDao MOD)
         {
             try
             {
-                WpfCourseModule newEntry = MOD;
+                ModuleDao newEntry = MOD;
                 newEntry.ModuleID = new Guid(); ;
                 await _modulesRepo.Create(MOD);
                 return true;
@@ -71,7 +70,7 @@ namespace WPFCookBook.DataService
             }
         }
 
-        public async Task<WpfCourseModule> FindModuleByName(string searchStr)
+        public async Task<ModuleDao> FindModuleByName(string searchStr)
         {
             try
             {
@@ -85,7 +84,7 @@ namespace WPFCookBook.DataService
             }
         }
 
-        public async Task<bool> UpdateModule(long ID, WpfCourseModule updater)
+        public async Task<bool> UpdateModule(long ID, ModuleDao updater)
         {
             try
             {

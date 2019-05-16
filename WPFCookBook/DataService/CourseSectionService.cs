@@ -4,22 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using WPFCookBook.Contracts;
-using WPFCookBook.DataService.Repository;
-using WPFCookBook.Entities;
+using WpfCookBook.DB.Dao;
+using WpfCookBook.DB.Repository;
+using WPFCookBook.DataService.Contracts;
 
 namespace WPFCookBook.DataService
 {
     public class CourseSectionService: ICourseSectionService
     {
-        private IWpfCourseSectionRepository _repo;
+        private IChapterRepository _repo;
 
-        public CourseSectionService(IWpfCourseSectionRepository repo)
+        public CourseSectionService(IChapterRepository repo)
         {
             _repo = repo;
         }
 
-        public async Task<bool> AddSection(WpfCourseSection sect)
+        public async Task<bool> AddSection(ChapterDao sect)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace WPFCookBook.DataService
             }
         }
 
-        public IEnumerable<WpfCourseSection> GetAllSections()
+        public IEnumerable<ChapterDao> GetAllSections()
         {
             try
             {
@@ -78,7 +78,7 @@ namespace WPFCookBook.DataService
             }
         }
 
-        public async Task<WpfCourseSection> GetSectionByID(long ID)
+        public async Task<ChapterDao> GetSectionByID(long ID)
         {
             try
             {
@@ -91,12 +91,12 @@ namespace WPFCookBook.DataService
             }
         }
 
-        public  WpfCourseSection GetSectionByName(string searchStr)
+        public  ChapterDao GetSectionByName(string searchStr)
         {
-            return _repo.GetSectionWithTopics(searchStr);
+            return _repo.GetTopicsForChapter(searchStr);
         }
 
-        public async Task<bool> UpdateSection(WpfCourseSection UpdatedSect)
+        public async Task<bool> UpdateSection(ChapterDao UpdatedSect)
         {
             try
             {

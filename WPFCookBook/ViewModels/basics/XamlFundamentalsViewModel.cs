@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Input;
+using WpfCookBook.DB.Dao;
 using WPFCookBook.Common;
-using WPFCookBook.Contracts;
-using WPFCookBook.DataService;
-using WPFCookBook.Entities;
+using WPFCookBook.DataService.Contracts;
 
 namespace WPFCookBook.ViewModels.basics
 {
@@ -19,8 +18,8 @@ namespace WPFCookBook.ViewModels.basics
     {
         private ICourseSectionService _sectionService;
         private ICourseSectionItemService _sectItemsService;
-        private WpfCourseSection section;
-        private WpfCourseSectionItem currentTopic;
+        private ChapterDao section;
+        private TopicDao currentTopic;
 
         #region constructor
         
@@ -36,11 +35,11 @@ namespace WPFCookBook.ViewModels.basics
 
         #region Properties
         public RelayCommandAsync<FsRichTextBox> OnSaveChangesCommand { get; private set; }
-        public ObservableCollection<WpfCourseSectionItem> TopicsList
+        public ObservableCollection<TopicDao> TopicsList
         {
             get
             {
-                ObservableCollection<WpfCourseSectionItem> result = new ObservableCollection<WpfCourseSectionItem>(section.SectionTopics.ToList());
+                ObservableCollection<TopicDao> result = new ObservableCollection<TopicDao>(section.SectionTopics.ToList());
                 return result;
             }
         }
@@ -56,12 +55,12 @@ namespace WPFCookBook.ViewModels.basics
         {
             EditBox.UpdateDocumentBindings();
 
-            currentTopic = (WpfCourseSectionItem)EditBox.DataContext;
+            currentTopic = (TopicDao)EditBox.DataContext;
             await PersistTwoWayPropToDB(this.currentTopic.ID, this.currentTopic);
         }
 
 
-        private async Task PersistTwoWayPropToDB(long ID, WpfCourseSectionItem topic)
+        private async Task PersistTwoWayPropToDB(long ID, TopicDao topic)
         {
             // Todo: Add loader / progress bar
             var result = await _sectItemsService.UpdateSectionItem(ID, topic);

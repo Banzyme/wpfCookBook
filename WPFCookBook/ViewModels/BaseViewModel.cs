@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 using Unity;
+using WpfCookBook.DB.Dao;
+using WpfCookBook.DB.Repository;
 using WPFCookBook.Common;
-using WPFCookBook.Contracts;
 using WPFCookBook.DataService;
-using WPFCookBook.DataService.Repository;
-using WPFCookBook.Entities;
+using WPFCookBook.DataService.Contracts;
 using WPFCookBook.forms;
 using WPFCookBook.ViewModels.basics;
 
@@ -23,7 +19,7 @@ namespace WPFCookBook.ViewModels
     {
         #region Private fields
         private BindableBase _CurrentViewModel;
-        public ObservableCollection<WpfCourseModule> _modulesList;
+        public ObservableCollection<ModuleDao> _modulesList;
         private ICourseModuleService _modService;
 
         private IndexViewModel IndexPage;
@@ -40,9 +36,9 @@ namespace WPFCookBook.ViewModels
         public BaseViewModel()
         {
             IUnityContainer container = new UnityContainer();
-            container.RegisterType<IWpfCourseModulesRepository, WpfCourseModulesRepository>();
-            container.RegisterType<IWpfCourseSectionRepository, WpfCourseSectionRepository>();
-            container.RegisterType<IWpfCourseSectionItemRepo, WpfCourseSectionItemRepo>();
+            container.RegisterType<IModuleRepository, ModuleRepository>();
+            container.RegisterType<IChapterRepository, ChapterRepository>();
+            container.RegisterType<ITopicRepository, TopicRespository>();
 
             container.RegisterType<ICourseModuleService, CourseModulesService>();
             container.RegisterType<ICourseSectionService, CourseSectionService>();
@@ -88,7 +84,7 @@ namespace WPFCookBook.ViewModels
         private void LoadViewData()
         {
             var modResults = _modService.GetAllModules().ToList();
-            _modulesList = new ObservableCollection<WpfCourseModule>(modResults);
+            _modulesList = new ObservableCollection<ModuleDao>(modResults);
         }
 
         #region Properties
@@ -100,7 +96,7 @@ namespace WPFCookBook.ViewModels
 
         public CommandTemplate<string> NavigationCommand { get; private set; }
 
-        public ObservableCollection<WpfCourseModule> ModulesList
+        public ObservableCollection<ModuleDao> ModulesList
         {
             get { return _modulesList;  }
             set { SetProperty(ref _modulesList, value, "ModulesList");  }
@@ -152,7 +148,7 @@ namespace WPFCookBook.ViewModels
 
         public void RefreshMainWindowCollections()
         {
-            _modulesList = new ObservableCollection<WpfCourseModule>(_modService.GetAllModules().ToList() );
+            _modulesList = new ObservableCollection<ModuleDao>(_modService.GetAllModules().ToList() );
             OnPropertyChanged("ModulesList");
         }
 
@@ -161,13 +157,13 @@ namespace WPFCookBook.ViewModels
             CurrentViewModel = IndexPage;
         }
 
-        public void SwitchToEditChapterPage(WpfCourseSection section)
+        public void SwitchToEditChapterPage(ChapterDao section)
         {
             editChapter.SetSelectedChapter(section);
             CurrentViewModel = editChapter;
         }
 
-        private void SwitchToEditModulePage(WpfCourseModule mod)
+        private void SwitchToEditModulePage(ModuleDao mod)
         {
             editModule.SetSelectedModule(mod);
             CurrentViewModel = editModule;
