@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFCookBook", "WPFCookBook\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FsRichTextBox", "..\..\..\Downloads\ricdhT-Test\FsRichTextBox\FsRichTextBox\FsRichTextBox.csproj", "{091CE5BC-D5C3-4752-A244-053664873941}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCookBook.DataAccess", "WpfCookBook.DataAccess\WpfCookBook.DataAccess.csproj", "{17BD02D5-38AD-4A39-A929-95B44C3D3D5E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCookBook.DB", "WpfCookBook.DB\WpfCookBook.DB.csproj", "{50184CA7-0D51-4D56-ABF0-59437C986930}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{091CE5BC-D5C3-4752-A244-053664873941}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{091CE5BC-D5C3-4752-A244-053664873941}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{091CE5BC-D5C3-4752-A244-053664873941}.Release|Any CPU.Build.0 = Release|Any CPU
-		{17BD02D5-38AD-4A39-A929-95B44C3D3D5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{17BD02D5-38AD-4A39-A929-95B44C3D3D5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{17BD02D5-38AD-4A39-A929-95B44C3D3D5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{17BD02D5-38AD-4A39-A929-95B44C3D3D5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50184CA7-0D51-4D56-ABF0-59437C986930}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50184CA7-0D51-4D56-ABF0-59437C986930}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50184CA7-0D51-4D56-ABF0-59437C986930}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50184CA7-0D51-4D56-ABF0-59437C986930}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
