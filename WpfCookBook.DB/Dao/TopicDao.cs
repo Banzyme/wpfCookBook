@@ -27,5 +27,11 @@ namespace WpfCookBook.DB.Dao
 
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
+
+        public override string ToString()
+        {
+            string topic = $"Chapter: [ {ID}, \n {Title}, \n {Subtitle}. \n Document: { Content }. \n";
+            return topic;
+        }
     }
 }

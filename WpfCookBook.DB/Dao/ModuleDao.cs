@@ -43,5 +43,11 @@ namespace WpfCookBook.DB.Dao
             if(!string.IsNullOrEmpty(propertyName))
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public override string ToString()
+        {
+            string module = $"Chapter: [ {ID}, \n {Name}, \n With topics: { string.Join(" / \n", ModuleSections) }. \n";
+            return module;
+        }
     }
 }

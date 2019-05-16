@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using WpfCookBook.DB.Dao;
 
 namespace WpfCookBook.DB
 {
@@ -14,9 +11,9 @@ namespace WpfCookBook.DB
             //Database.SetInitializer(new InitialDBSeed());
         }
 
-        public DbSet<WpfCourseModule> CourseModules { get; set; }
-        public DbSet<WpfCourseSection> CourseSections { get; set; }
-        public DbSet<WpfCourseSectionItem> CourseSectionItems { get; set; }
+        public DbSet<ModuleDao> CourseModules { get; set; }
+        public DbSet<ChapterDao> CourseSections { get; set; }
+        public DbSet<TopicDao> CourseSectionItems { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -24,10 +21,10 @@ namespace WpfCookBook.DB
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
             // Configure relationships
-            modelBuilder.Entity<WpfCourseModule>()
+            modelBuilder.Entity<ModuleDao>()
                   .HasMany(s => s.ModuleSections);
 
-            modelBuilder.Entity<WpfCourseSection>()
+            modelBuilder.Entity<ChapterDao>()
                    .HasMany(s => s.SectionTopics);
         }
 
