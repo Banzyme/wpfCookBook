@@ -30,7 +30,7 @@ namespace WPFCookBook.DataService.Repository
 
         public async Task<T> FindItemByCondition(System.Linq.Expressions.Expression<Func<T, bool>> expression)
         {
-            return await _db.Set<T>().FindAsync(expression);
+            return _db.Set<T>().Where(expression).First();
         }
 
         public IEnumerable<T> FindItemsByCondition(System.Linq.Expressions.Expression<Func<T, bool>> expression)

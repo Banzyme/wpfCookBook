@@ -18,7 +18,7 @@ namespace WPFCookBook.forms
         public EditChapterViewModel(ICourseSectionService sectService)
         {
             _sectionService = sectService;
-            UpdateChapterCommand = new RelayCommand(SaveChanges, canSaveChanges);
+            UpdateChapterCommand = new RelayCommandAsync<object>(SaveChanges, canSaveChanges);
         }
 
         public WpfCourseSection CurrentChapter
@@ -28,7 +28,7 @@ namespace WPFCookBook.forms
         }
 
         public event Action NaivigateBackHome = delegate { };
-        public RelayCommand UpdateChapterCommand { get; private set; }
+        public RelayCommandAsync<object> UpdateChapterCommand { get; private set; }
 
         public void SetSelectedChapter(WpfCourseSection sect)
         {
@@ -36,10 +36,10 @@ namespace WPFCookBook.forms
                 _selectedChapter = sect;
         }
 
-        private void SaveChanges(object param)
+        private async Task SaveChanges(object param)
         {
             var updatedChapter = (WpfCourseSection)param;
-            bool result = _sectionService.UpdateSection(updatedChapter);
+            bool result = await _sectionService.UpdateSection(updatedChapter);
 
             if (result==true)
             {

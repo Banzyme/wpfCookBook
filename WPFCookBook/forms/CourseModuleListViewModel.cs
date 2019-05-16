@@ -29,9 +29,9 @@ namespace WPFCookBook.forms
         public event Action MasterRefresh = delegate { };
         public event Action<WpfCourseModule> EditModuleRequested = delegate { };
 
-        public RelayCommand AddModuleCommand { get; private set; }
+        public RelayCommandAsync<object> AddModuleCommand { get; private set; }
         public RelayCommand UpdateModuleCommand { get; private set; }
-        public RelayCommand DeleteModuleCommand { get; private set; }
+        public RelayCommandAsync<object> DeleteModuleCommand { get; private set; }
         public ObservableCollection<WpfCourseModule> ModulesList
         {
             get { return _modulesList; }
@@ -51,28 +51,28 @@ namespace WPFCookBook.forms
 
         private void InitialiseCommands()
         {
-            AddModuleCommand = new RelayCommand(OnModuleAdd, CanAddModule);
+            AddModuleCommand = new RelayCommandAsync<object>(OnModuleAdd, CanAddModule);
             UpdateModuleCommand = new RelayCommand(OnUpdate, o => true);
-            DeleteModuleCommand = new RelayCommand(onDeleteModule, o=> true);
+            DeleteModuleCommand = new RelayCommandAsync<object>(onDeleteModule, o=> true);
         }
 
-        private void RefreshModList(string name)
+        private async Task RefreshModList(string name)
         {
-            var entry = _modulesService.FindModuleByName(name);
+            var entry = await _modulesService.FindModuleByName(name);
             _modulesList.Add(entry);
             newModule = "";
         }
 
-        private void OnModuleAdd(object param)
+        private async Task OnModuleAdd(object param)
         {
             var newModule = new WpfCourseModule();
             newModule.Name = NewModuleName;
 
-            var result = _modulesService.AddModule(newModule);
+            var result = await _modulesService.AddModule(newModule);
             if (result == true)
             {
                 MessageBox.Show($"Adding new module: {NewModuleName}");
-                RefreshModList(NewModuleName);
+                await RefreshModList(NewModuleName);
                 MasterRefresh();
             }
         }
@@ -88,14 +88,14 @@ namespace WPFCookBook.forms
             EditModuleRequested(selectedModule);
         }
 
-        private void onDeleteModule(object ID)
+        private async Task onDeleteModule(object ID)
         {
             long ModuleID = (long)ID;
             var res = MessageBox.Show("Are you sure you want to delete?", "Confirm delete", MessageBoxButton.YesNo);
 
             if (res == MessageBoxResult.Yes)
             {
-                bool result = _modulesService.DeleteModule(ModuleID);
+                bool result = await _modulesService.DeleteModule(ModuleID);
                 if (result)
                 {
                     WpfCookBookUtils.RemoveEntryFromCollection( _modulesList , (item) => item.ID == ModuleID);

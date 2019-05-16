@@ -31,14 +31,14 @@ namespace WPFCookBook.DataService
             catch (Exception e)
             {
 
-                MessageBox.Show($"Failed to delete module: {e.Message}");
+                MessageBox.Show($"Failed to delete module: {e.Message} \n \n {e.InnerException} \n \n {e.StackTrace}");
                 return false;
             }
         }
 
         public IEnumerable<WpfCourseModule> GetAllModules()
         {
-            return this._modulesRepo.GetAll();
+            return _modulesRepo.GetAll();
         }
 
         public async Task<WpfCourseModule> GetModuleByID(long ID)

@@ -28,14 +28,14 @@ namespace WPFCookBook.ViewModels.basics
         {
             _sectionService = sectionService;
             _sectItemsService = topics;
-            OnSaveChangesCommand = new CommandTemplate<FsRichTextBox>(OnSaveChanges);
+            OnSaveChangesCommand = new RelayCommandAsync< FsRichTextBox>(OnSaveChanges);
             LoadInitialData();
         }
 
         #endregion
 
         #region Properties
-        public CommandTemplate<FsRichTextBox> OnSaveChangesCommand { get; private set; }
+        public RelayCommandAsync<FsRichTextBox> OnSaveChangesCommand { get; private set; }
         public ObservableCollection<WpfCourseSectionItem> TopicsList
         {
             get
@@ -52,20 +52,20 @@ namespace WPFCookBook.ViewModels.basics
             section = _sectionService.GetSectionByName("XAML Fundamentals");
         }
 
-        private void OnSaveChanges(FsRichTextBox EditBox)
+        private async Task OnSaveChanges(FsRichTextBox EditBox)
         {
             EditBox.UpdateDocumentBindings();
 
             currentTopic = (WpfCourseSectionItem)EditBox.DataContext;
-            PersistTwoWayPropToDB(this.currentTopic.ID, this.currentTopic);
+            await PersistTwoWayPropToDB(this.currentTopic.ID, this.currentTopic);
         }
 
 
-        private void PersistTwoWayPropToDB(long ID, WpfCourseSectionItem topic)
+        private async Task PersistTwoWayPropToDB(long ID, WpfCourseSectionItem topic)
         {
             // Todo: Add loader / progress bar
-            var result = _sectItemsService.UpdateSectionItem(ID, topic);
-            if (result)
+            var result = await _sectItemsService.UpdateSectionItem(ID, topic);
+            if (result == true)
             {
                 MessageBox.Show("Changes saved.");
             }

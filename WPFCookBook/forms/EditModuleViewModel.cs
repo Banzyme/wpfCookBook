@@ -18,12 +18,12 @@ namespace WPFCookBook.forms
         public EditModuleViewModel(ICourseModuleService moduleServie)
         {
             _moduleService = moduleServie;
-            UpdateModuleCommand = new RelayCommand(OnUpdateModule, CanUpdateModule);
+            UpdateModuleCommand = new RelayCommandAsync<object>(OnUpdateModule, CanUpdateModule);
 
         }
 
         public event Action NaivigateBackHome = delegate { };
-        public RelayCommand UpdateModuleCommand { get; private set; }
+        public RelayCommandAsync<object> UpdateModuleCommand { get; private set; }
         public RelayCommand CancelCommand { get; private set; }
         public WpfCourseModule SelectedModule
         {
@@ -36,10 +36,10 @@ namespace WPFCookBook.forms
             _selectedModule = module;
         }
 
-        private void OnUpdateModule(object param)
+        private async Task OnUpdateModule(object param)
         {
             WpfCourseModule updated = (WpfCourseModule)param;
-            bool result = _moduleService.UpdateModule(updated.ID, updated);
+            bool result = await _moduleService.UpdateModule(updated.ID, updated);
             if (result == true)
             {
                 MessageBox.Show($"Successfullly updated module: {updated.Name}");

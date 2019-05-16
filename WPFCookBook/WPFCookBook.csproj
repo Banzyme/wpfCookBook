@@ -89,6 +89,7 @@
     <Compile Include="Common\BindableBase.cs" />
     <Compile Include="Common\CommandTemplate.cs" />
     <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Common\RelayCommandAsync.cs" />
     <Compile Include="Common\SaveFlowDocCommand.cs" />
     <Compile Include="Common\WpfCookBookUtils.cs" />
     <Compile Include="Common\XamlToFlowDocMapper.cs" />

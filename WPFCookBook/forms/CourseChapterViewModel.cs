@@ -25,7 +25,7 @@ namespace WPFCookBook.forms
             LoadInitialData();
 
             OnSaveChapterCommand = new RelayCommand(OnSaveChapter, o => true );
-            OnDeleteSectionCommand = new CommandTemplate<long>(onDeleteChapter);
+            OnDeleteSectionCommand = new RelayCommandAsync<object>(onDeleteChapter);
             OnUpdateSectionCommand = new RelayCommand(onUpdateChapter, o => true);
         }
 
@@ -63,7 +63,7 @@ namespace WPFCookBook.forms
         }
         public ObservableCollection<WpfCourseModule> ModulesList { get; set; }
         public RelayCommand OnSaveChapterCommand { get; private set; }
-        public CommandTemplate<long> OnDeleteSectionCommand { get; private set; }
+        public RelayCommandAsync<object> OnDeleteSectionCommand { get; private set; }
         public RelayCommand OnUpdateSectionCommand { get; private set; }
         public event Action<WpfCourseSection> EditChapterRequested = delegate { };
 
@@ -104,14 +104,15 @@ namespace WPFCookBook.forms
             EditChapterRequested(selectedSection);
         }
 
-        private void onDeleteChapter(long sectionID)
+        private async Task onDeleteChapter(object ID)
         {
+            long sectionID = (long)ID;
             var res = MessageBox.Show("Are you sure you want to delete?", "Confirm delete", MessageBoxButton.YesNo);
 
             if (res == MessageBoxResult.Yes)
             {
-                bool result = _chaptersRepo.DeleteSection(sectionID);
-                if (result)
+                bool result = await _chaptersRepo.DeleteSection(sectionID);
+                if (result == true)
                 {
                     RemoveEntryFromCollection(_chaptersList, (item) => item.ID == sectionID);
                 }

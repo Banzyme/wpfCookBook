@@ -57,10 +57,11 @@ namespace WPFCookBook.DataService
                 await _repo.Delete(itemToDelete);
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                MessageBox.Show($"Failed to delete chapter: {e.Message}. \n {e.StackTrace}");
+                return false;
             }
         }
 
