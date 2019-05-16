@@ -11,6 +11,7 @@ namespace WPFCookBook.Contracts
     {
         IEnumerable<WpfCourseModule> GetAllModules();
         WpfCourseModule GetModuleByID(long ID);
+        WpfCourseModule FindModuleByName(string searchStr);
         bool DeleteModule(long ID);
         bool UpdateModule(long ID, WpfCourseModule sect);
         bool AddModule(WpfCourseModule sect);

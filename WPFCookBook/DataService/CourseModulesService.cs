@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using WPFCookBook.Contracts;
 using WPFCookBook.DataService.Repository;
 using WPFCookBook.Entities;
 
 namespace WPFCookBook.DataService
 {
-    public class CourseModulesService: ICourseModuleService
+    public class CourseModulesService : ICourseModuleService
     {
         private readonly ApplicationDBContext _context = new ApplicationDBContext();
         private IWpfCourseModulesRepository _modulesRepo;
@@ -18,14 +19,21 @@ namespace WPFCookBook.DataService
             _modulesRepo = moduleService;
         }
 
-        public bool AddModule(WpfCourseModule sect)
-        {
-            throw new NotImplementedException();
-        }
 
         public bool DeleteModule(long ID)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var toDelete = GetModuleByID(ID);
+                _modulesRepo.Delete(toDelete);
+                return true;
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show($"Failed to delete module: {e.Message}");
+                return false;
+            }
         }
 
         public IEnumerable<WpfCourseModule> GetAllModules()
@@ -40,19 +48,46 @@ namespace WPFCookBook.DataService
 
         public WpfCourseModule GetModuleByID(long ID)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var module = _modulesRepo.FindItemByCondition(o => o.ID == ID);
+                return module;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Failed to fetch single module: {e.Message}");
+                return null;
+            };
         }
 
-        public bool SaveNewModule(WpfCourseModule MOD)
+        public bool AddModule(WpfCourseModule MOD)
         {
-            var newEntry = new WpfCourseModule()
+            try
             {
-                Name = MOD.Name
-            };
-            _context.CourseModules.Add(newEntry);
-            _context.SaveChangesAsync();
+                WpfCourseModule newEntry = MOD;
+                newEntry.ModuleID = new Guid(); ;
+                _modulesRepo.Create(MOD);
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Error saving: {MOD.Name} due to: {e.Message}");
+                return false;
+            }
+        }
 
-            return true;
+        public WpfCourseModule FindModuleByName(string searchStr)
+        {
+            try
+            {
+                var result = _modulesRepo.FindItemByCondition(o => o.Name.Contains(searchStr));
+                return result;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
         }
 
         public bool UpdateModule(long ID, WpfCourseModule updater)

@@ -28,6 +28,7 @@ namespace WPFCookBook.forms
         public event Action<WpfCourseModule> EditModuleRequested = delegate { };
         public RelayCommand AddModuleCommand { get; private set; }
         public RelayCommand UpdateModuleCommand { get; private set; }
+        public RelayCommand DeleteModuleCommand { get; private set; }
         public ObservableCollection<WpfCourseModule> ModulesList
         {
             get { return _modulesList; }
@@ -36,7 +37,7 @@ namespace WPFCookBook.forms
         public string NewModuleName
         {
             get { return newModule; }
-            set { SetProperty(ref newModule, value); }
+            set { SetProperty(ref newModule, value, "ModulesList"); }
         }
 
         private void LoadIntialData()
@@ -49,12 +50,27 @@ namespace WPFCookBook.forms
         {
             AddModuleCommand = new RelayCommand(OnModuleAdd, CanAddModule);
             UpdateModuleCommand = new RelayCommand(OnUpdate, o => true);
+            DeleteModuleCommand = new RelayCommand(onDeleteModule, o=> true);
+        }
+
+        private void RefreshModList(string name)
+        {
+            var entry = _modulesService.FindModuleByName(name);
+            _modulesList.Add(entry);
+            NewModuleName = "";
         }
 
         private void OnModuleAdd(object param)
         {
             var newModule = new WpfCourseModule();
-            MessageBox.Show($"Adding new module: {NewModuleName}");
+            newModule.Name = NewModuleName;
+
+            var result = _modulesService.AddModule(newModule);
+            if (result == true)
+            {
+                MessageBox.Show($"Adding new module: {NewModuleName}");
+                RefreshModList(NewModuleName);
+            }
         }
 
         private bool CanAddModule(object param)
@@ -66,6 +82,22 @@ namespace WPFCookBook.forms
         {
             var selectedModule = (WpfCourseModule)param;
             EditModuleRequested(selectedModule);
+        }
+
+        private void onDeleteModule(object ID)
+        {
+            long ModuleID = (long)ID;
+            var res = MessageBox.Show("Are you sure you want to delete?", "Confirm delete", MessageBoxButton.YesNo);
+
+            if (res == MessageBoxResult.Yes)
+            {
+                bool result = _modulesService.DeleteModule(ModuleID);
+                if (result)
+                {
+                    WpfCookBookUtils.RemoveEntryFromCollection( _modulesList , (item) => item.ID == ModuleID);
+                }
+            }
+
         }
 
 

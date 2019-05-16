@@ -90,6 +90,7 @@
     <Compile Include="Common\CommandTemplate.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SaveFlowDocCommand.cs" />
+    <Compile Include="Common\WpfCookBookUtils.cs" />
     <Compile Include="Common\XamlToFlowDocMapper.cs" />
     <Compile Include="Contracts\ICourseModuleService.cs" />
     <Compile Include="Contracts\ICourseSectionItemService.cs" />
