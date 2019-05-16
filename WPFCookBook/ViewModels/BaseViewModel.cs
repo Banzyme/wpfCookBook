@@ -77,6 +77,7 @@ namespace WPFCookBook.ViewModels
 
             chapterForm.EditChapterRequested += SwitchToEditChapterPage;
             moduleForm.EditModuleRequested += SwitchToEditModulePage;
+            editModule.NaivigateBackHome += GotoIndexPage;
         }
         #endregion
 
@@ -134,6 +135,11 @@ namespace WPFCookBook.ViewModels
                 // Skip
 
             }
+        }
+
+        public void GotoIndexPage()
+        {
+            CurrentViewModel = IndexPage;
         }
 
         public void SwitchToEditChapterPage(WpfCourseSection section)

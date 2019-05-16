@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
 
-        <Grid x:Name="grid1"
+        <Grid x:Name="selectedModuleGrid"
               HorizontalAlignment="Left"
               DataContext="{Binding SelectedModule}"
               Margin="10,10,0,0"
@@ -42,21 +42,22 @@
                      Grid.Row="0"
                      Text="{Binding Name, ValidatesOnNotifyDataErrors=True}"
                      VerticalAlignment="Center"
-                     Width="120" />
+                     Width="Auto" />
         </Grid>
         <Grid Grid.Row="1">
             <Button Content="Save changes"
+                    CommandParameter="{Binding ElementName=selectedModuleGrid, Path=DataContext}"
                     Command="{Binding UpdateModuleCommand}"
                     HorizontalAlignment="Left"
                     Margin="25,5,0,0"
                     VerticalAlignment="Top"
-                    Width="75" />
+                    Width="Auto" />
             <Button Content="Cancel"
                     Command="{Binding CancelCommand}"
                     HorizontalAlignment="Left"
                     Margin="150,5,0,0"
                     VerticalAlignment="Top"
-                    Width="75" />
+                    Width="Auto" />
         </Grid>
 
     </Grid>

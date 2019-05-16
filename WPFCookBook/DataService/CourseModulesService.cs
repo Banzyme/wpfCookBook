@@ -92,10 +92,20 @@ namespace WPFCookBook.DataService
 
         public bool UpdateModule(long ID, WpfCourseModule updater)
         {
-            var newMod = GetModuleById(ID);
-            newMod.Name = updater.Name;
-            _context.SaveChangesAsync();
-            return true;
+            try
+            {
+                var newMod = GetModuleById(ID);
+                newMod.Name = updater.Name;
+
+                _modulesRepo.Update(newMod, ID);
+               
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
         }
     }
 }
