@@ -150,6 +150,7 @@ namespace WPFCookBook.ViewModels
         public void RefreshMainWindowCollections()
         {
             _modulesList = new ObservableCollection<WpfCourseModule>(_modService.GetAllModules().ToList() );
+            OnPropertyChanged("ModulesList");
         }
 
         public void GotoIndexPage()

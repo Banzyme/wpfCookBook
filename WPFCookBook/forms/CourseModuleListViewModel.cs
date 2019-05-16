@@ -96,9 +96,10 @@ namespace WPFCookBook.forms
             if (res == MessageBoxResult.Yes)
             {
                 bool result = await _modulesService.DeleteModule(ModuleID);
-                if (result)
+                if (result == true)
                 {
                     WpfCookBookUtils.RemoveEntryFromCollection( _modulesList , (item) => item.ID == ModuleID);
+                    MasterRefresh();
                 }
             }
 
