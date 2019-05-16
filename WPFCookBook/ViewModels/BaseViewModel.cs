@@ -23,6 +23,7 @@ namespace WPFCookBook.ViewModels
     {
         #region Private fields
         private BindableBase _CurrentViewModel;
+        public ObservableCollection<WpfCourseModule> _modulesList;
         private ICourseModuleService _modService;
 
         private IndexViewModel IndexPage;
@@ -61,26 +62,30 @@ namespace WPFCookBook.ViewModels
             _modService = container.Resolve<CourseModulesService>();
 
 
-
-            NavigationCommand = new CommandTemplate<string>(OnNav);
-
+            // Initial data load
+            LoadViewData();
             
-
-            var modResults = _modService.GetAllModules().ToList();
-            modResults.ForEach(item =>
-           {
-               ModulesList.Add(item);
-           });
 
             //Setup default window content
             CurrentViewModel = IndexPage;
 
+            // Child events - handlers
             chapterForm.EditChapterRequested += SwitchToEditChapterPage;
             moduleForm.EditModuleRequested += SwitchToEditModulePage;
+            moduleForm.MasterRefresh += RefreshMainWindowCollections;
             editModule.NaivigateBackHome += GotoIndexPage;
+
+            // Commdands init
+            NavigationCommand = new CommandTemplate<string>(OnNav);
+
         }
         #endregion
 
+        private void LoadViewData()
+        {
+            var modResults = _modService.GetAllModules().ToList();
+            _modulesList = new ObservableCollection<WpfCourseModule>(modResults);
+        }
 
         #region Properties
         public BindableBase CurrentViewModel
@@ -91,7 +96,11 @@ namespace WPFCookBook.ViewModels
 
         public CommandTemplate<string> NavigationCommand { get; private set; }
 
-        public ObservableCollection<WpfCourseModule> ModulesList { get; set; } = new ObservableCollection<WpfCourseModule>();
+        public ObservableCollection<WpfCourseModule> ModulesList
+        {
+            get { return _modulesList;  }
+            set { SetProperty(ref _modulesList, value, "ModulesList");  }
+        }
         #endregion
 
 
@@ -135,6 +144,11 @@ namespace WPFCookBook.ViewModels
                 // Skip
 
             }
+        }
+
+        public void RefreshMainWindowCollections()
+        {
+            _modulesList = new ObservableCollection<WpfCourseModule>(_modService.GetAllModules().ToList() );
         }
 
         public void GotoIndexPage()

@@ -25,7 +25,10 @@ namespace WPFCookBook.forms
             newModule = "";
         }
 
+        // Used to signal state changes due to chiled actions
+        public event Action MasterRefresh = delegate { };
         public event Action<WpfCourseModule> EditModuleRequested = delegate { };
+
         public RelayCommand AddModuleCommand { get; private set; }
         public RelayCommand UpdateModuleCommand { get; private set; }
         public RelayCommand DeleteModuleCommand { get; private set; }
@@ -37,7 +40,7 @@ namespace WPFCookBook.forms
         public string NewModuleName
         {
             get { return newModule; }
-            set { SetProperty(ref newModule, value, "ModulesList"); }
+            set { SetProperty(ref newModule, value, "NewModuleName"); }
         }
 
         private void LoadIntialData()
@@ -57,7 +60,7 @@ namespace WPFCookBook.forms
         {
             var entry = _modulesService.FindModuleByName(name);
             _modulesList.Add(entry);
-            NewModuleName = "";
+            newModule = "";
         }
 
         private void OnModuleAdd(object param)
@@ -70,6 +73,7 @@ namespace WPFCookBook.forms
             {
                 MessageBox.Show($"Adding new module: {NewModuleName}");
                 RefreshModList(NewModuleName);
+                MasterRefresh();
             }
         }
 

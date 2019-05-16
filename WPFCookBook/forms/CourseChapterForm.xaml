@@ -75,6 +75,7 @@
                   x:Name="chaptersDataGrid"
                   HorizontalAlignment="Center"
                   Height="550"
+                  IsReadOnly="True"
                   AutoGenerateColumns="False"
                   ItemsSource="{Binding ChaptersList }">
 
