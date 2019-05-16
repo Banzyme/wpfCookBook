@@ -10,9 +10,9 @@ namespace WPFCookBook.Contracts
     public interface ICourseSectionItemService
     {
         IEnumerable<WpfCourseSectionItem> GetAllSectionItems();
-        WpfCourseSectionItem GetSectionItemByID(long ID);
-        bool DeleteSectionItem(long ID);
-        bool UpdateSectionItem(long ID, WpfCourseSectionItem sect);
-        bool AddSectionItem(WpfCourseSectionItem sect);
+        Task<WpfCourseSectionItem> GetSectionItemByID(long ID);
+        Task<bool> DeleteSectionItem(long ID);
+        Task<bool> UpdateSectionItem(long ID, WpfCourseSectionItem sect);
+        Task<bool> AddSectionItem(WpfCourseSectionItem sect);
     }
 }

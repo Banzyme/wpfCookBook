@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using WPFCookBook.Contracts;
 using WPFCookBook.DataService.Repository;
 using WPFCookBook.Entities;
@@ -23,32 +24,32 @@ namespace WPFCookBook.DataService
             return _repo.GetAll();
         }
 
-        public WpfCourseSectionItem GetSectionItemByID(long ID)
+        public async Task<WpfCourseSectionItem> GetSectionItemByID(long ID)
         {
-            return _repo.FindItemByCondition( item => item.ID == ID );
+            return await _repo.FindItemByCondition( item => item.ID == ID );
         }
 
-        public bool AddSectionItem(WpfCourseSectionItem item)
+        public async Task<bool> AddSectionItem(WpfCourseSectionItem item)
         {
 
             try
             {
-                _repo.Create(item);
+                await _repo.Create(item);
 
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
+                MessageBox.Show($"Failed to save document: {e.Message}");
                 return false;
             }
         }
 
-        public bool DeleteSectionItem(long ID)
+        public async Task<bool> DeleteSectionItem(long ID)
         {
             try
             {
-                _repo.Delete( GetSectionItemByID(ID) );
+                await _repo.Delete( await GetSectionItemByID(ID) );
                 return true;
             }
             catch (Exception)
@@ -58,15 +59,16 @@ namespace WPFCookBook.DataService
             }
         }
 
-        public bool UpdateSectionItem(long ID, WpfCourseSectionItem sect)
+        public async Task<bool> UpdateSectionItem(long ID, WpfCourseSectionItem sect)
         {
             try
             {
-                _repo.Update(sect, ID);
+                await _repo.Update(sect, ID);
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                MessageBox.Show($"Failed to update document: {e.Message}");
                 return false;
             }
         }

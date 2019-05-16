@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using WPFCookBook.Contracts;
 using WPFCookBook.DataService.Repository;
 using WPFCookBook.Entities;
@@ -18,16 +19,17 @@ namespace WPFCookBook.DataService
             _repo = repo;
         }
 
-        public bool AddSection(WpfCourseSection sect)
+        public async Task<bool> AddSection(WpfCourseSection sect)
         {
             try
             {
-                _repo.Create(sect);
+                await _repo.Create(sect);
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 // Todo: Log appropriately;
+                MessageBox.Show($"Failed to add section: {e.Message}");
                 return false;
             };
         }
@@ -42,17 +44,17 @@ namespace WPFCookBook.DataService
             catch (Exception e)
             {
                 // Todo: Log appropriately;
-                System.Console.WriteLine(e.Message);
+                MessageBox.Show($"Failed to add section with raw sql: {e.Message}");
                 return false;
             };
         }
 
-        public bool DeleteSection(long ID)
+        public async Task<bool> DeleteSection(long ID)
         {
             try
             {
-                var itemToDelete = _repo.FindItemByCondition(item => item.ID == ID);
-                _repo.Delete(itemToDelete);
+                var itemToDelete = await _repo.FindItemByCondition(item => item.ID == ID);
+                await _repo.Delete(itemToDelete);
                 return true;
             }
             catch (Exception)
@@ -75,11 +77,11 @@ namespace WPFCookBook.DataService
             }
         }
 
-        public WpfCourseSection GetSectionByID(long ID)
+        public async Task<WpfCourseSection> GetSectionByID(long ID)
         {
             try
             {
-                return _repo.FindItemByCondition(item => item.ID == ID);
+                return await _repo.FindItemByCondition(item => item.ID == ID);
             }
             catch (Exception)
             {
@@ -88,16 +90,16 @@ namespace WPFCookBook.DataService
             }
         }
 
-        public WpfCourseSection GetSectionByName(string searchStr)
+        public  WpfCourseSection GetSectionByName(string searchStr)
         {
             return _repo.GetSectionWithTopics(searchStr);
         }
 
-        public bool UpdateSection(WpfCourseSection UpdatedSect)
+        public async Task<bool> UpdateSection(WpfCourseSection UpdatedSect)
         {
             try
             {
-                _repo.Update(UpdatedSect, UpdatedSect.ID);
+                await _repo.Update(UpdatedSect, UpdatedSect.ID);
                 return true;
             }
             catch (Exception)

@@ -10,11 +10,11 @@ namespace WPFCookBook.DataService.Repository
     public interface IRepositoryBase<T>
     {
         IEnumerable<T> GetAll();
-        T FindItemByCondition(Expression<Func<T, bool>> expression);
+        Task<T> FindItemByCondition(Expression<Func<T, bool>> expression);
         IEnumerable<T> FindItemsByCondition(Expression<Func<T, bool>> expression);
-        void Create(T entity);
-        void Update(T entity, long ID);
-        void Delete(T entity);
+        Task Create(T entity);
+        Task Update(T entity, long ID);
+        Task Delete(T entity);
         void Save();
     }
 }

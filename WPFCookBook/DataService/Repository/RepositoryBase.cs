@@ -15,22 +15,22 @@ namespace WPFCookBook.DataService.Repository
             _db = db;
         }
 
-        public void Create(T entity)
+        public async Task Create(T entity)
         {
             _db.Set<T>().Add(entity);
-            _db.SaveChangesAsync();
+            await _db.SaveChangesAsync();
         }
 
-        public void Delete(T entity)
+        public async Task Delete(T entity)
         {
 
             _db.Set<T>().Remove(entity);
-            _db.SaveChangesAsync();
+            await _db.SaveChangesAsync();
         }
 
-        public T FindItemByCondition(System.Linq.Expressions.Expression<Func<T, bool>> expression)
+        public async Task<T> FindItemByCondition(System.Linq.Expressions.Expression<Func<T, bool>> expression)
         {
-            return _db.Set<T>().Where(expression).First<T>();
+            return await _db.Set<T>().FindAsync(expression);
         }
 
         public IEnumerable<T> FindItemsByCondition(System.Linq.Expressions.Expression<Func<T, bool>> expression)
@@ -48,11 +48,11 @@ namespace WPFCookBook.DataService.Repository
             _db.SaveChanges();
         }
 
-        public void Update(T entity, long ID)
+        public async Task Update(T entity, long ID)
         {
             T existing = _db.Set<T>().Find(ID);
             _db.Entry(existing).CurrentValues.SetValues(entity);
-            _db.SaveChangesAsync();
+            await _db.SaveChangesAsync();
         }
     }
 }

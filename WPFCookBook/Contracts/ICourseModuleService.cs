@@ -10,10 +10,10 @@ namespace WPFCookBook.Contracts
     public interface ICourseModuleService
     {
         IEnumerable<WpfCourseModule> GetAllModules();
-        WpfCourseModule GetModuleByID(long ID);
-        WpfCourseModule FindModuleByName(string searchStr);
-        bool DeleteModule(long ID);
-        bool UpdateModule(long ID, WpfCourseModule sect);
-        bool AddModule(WpfCourseModule sect);
+        Task<WpfCourseModule> GetModuleByID(long ID);
+        Task<WpfCourseModule> FindModuleByName(string searchStr);
+        Task<bool> DeleteModule(long ID);
+        Task<bool> UpdateModule(long ID, WpfCourseModule sect);
+        Task<bool> AddModule(WpfCourseModule sect);
     }
 }

@@ -20,12 +20,12 @@ namespace WPFCookBook.DataService
         }
 
 
-        public bool DeleteModule(long ID)
+        public async Task<bool> DeleteModule(long ID)
         {
             try
             {
-                var toDelete = GetModuleByID(ID);
-                _modulesRepo.Delete(toDelete);
+                var toDelete = await GetModuleByID(ID);
+                await _modulesRepo.Delete(toDelete);
                 return true;
             }
             catch (Exception e)
@@ -41,17 +41,12 @@ namespace WPFCookBook.DataService
             return this._modulesRepo.GetAll();
         }
 
-        public WpfCourseModule GetModuleById(long ID)
-        {
-            return _context.CourseModules.FirstOrDefault(mod => mod.ID == ID);
-        }
-
-        public WpfCourseModule GetModuleByID(long ID)
+        public async Task<WpfCourseModule> GetModuleByID(long ID)
         {
             try
             {
                 var module = _modulesRepo.FindItemByCondition(o => o.ID == ID);
-                return module;
+                return await module;
             }
             catch (Exception e)
             {
@@ -60,13 +55,13 @@ namespace WPFCookBook.DataService
             };
         }
 
-        public bool AddModule(WpfCourseModule MOD)
+        public async Task<bool> AddModule(WpfCourseModule MOD)
         {
             try
             {
                 WpfCourseModule newEntry = MOD;
                 newEntry.ModuleID = new Guid(); ;
-                _modulesRepo.Create(MOD);
+                await _modulesRepo.Create(MOD);
                 return true;
             }
             catch (Exception e)
@@ -76,11 +71,11 @@ namespace WPFCookBook.DataService
             }
         }
 
-        public WpfCourseModule FindModuleByName(string searchStr)
+        public async Task<WpfCourseModule> FindModuleByName(string searchStr)
         {
             try
             {
-                var result = _modulesRepo.FindItemByCondition(o => o.Name.Contains(searchStr));
+                var result = await _modulesRepo.FindItemByCondition(o => o.Name.Contains(searchStr));
                 return result;
             }
             catch (Exception)
@@ -90,14 +85,14 @@ namespace WPFCookBook.DataService
             }
         }
 
-        public bool UpdateModule(long ID, WpfCourseModule updater)
+        public async Task<bool> UpdateModule(long ID, WpfCourseModule updater)
         {
             try
             {
-                var newMod = GetModuleById(ID);
+                var newMod =await GetModuleByID(ID);
                 newMod.Name = updater.Name;
 
-                _modulesRepo.Update(newMod, ID);
+                await _modulesRepo.Update(newMod, ID);
                
                 return true;
             }
