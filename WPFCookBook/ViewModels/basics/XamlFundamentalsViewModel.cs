@@ -21,9 +21,10 @@ namespace WPFCookBook.ViewModels.basics
         private ICourseSectionItemService _sectItemsService;
         private ChapterDao section;
         private TopicDao currentTopic;
+        private ObservableCollection<TopicDao> _topicsList;
 
         #region constructor
-        
+
         public XamlFundamentalsViewModel(ICourseSectionService sectionService, ICourseSectionItemService topics)
         {
             _sectionService = sectionService;
@@ -42,8 +43,11 @@ namespace WPFCookBook.ViewModels.basics
         {
             get
             {
-                ObservableCollection<TopicDao> result = new ObservableCollection<TopicDao>(section.SectionTopics.ToList());
-                return result;
+                return _topicsList;
+            }
+            set
+            {
+                SetProperty(ref _topicsList, value, "TopicsList");
             }
         }
         #endregion
@@ -52,6 +56,7 @@ namespace WPFCookBook.ViewModels.basics
         private void LoadInitialData()
         {
             section = _sectionService.GetSectionByName("XAML Fundamentals");
+            _topicsList = new ObservableCollection<TopicDao>(section.SectionTopics.ToList());
         }
 
         private async Task OnSaveChanges(FsRichTextBox EditBox)
@@ -79,10 +84,12 @@ namespace WPFCookBook.ViewModels.basics
 
         private void OnAddTabItem(object param)
         {
-            MessageBox.Show("Adding new tab item...");
             var tab = (TabControl)param;
-            TabItem newTab = new TabItem();
-            newTab.Header = "Testing..";
+            MessageBox.Show("Adding new tab item...");
+            var newTopic = new TopicDao();
+            newTopic.Title = "This is a test";
+            _topicsList.Add(newTopic);
+            OnPropertyChanged("TopicsList");
         }
         #endregion
 
