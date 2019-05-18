@@ -124,7 +124,7 @@
 
                 <ScrollViewer Height="500">
                     <StackPanel>
-                        <TreeView ScrollViewer.VerticalScrollBarVisibility="Auto"
+                        <TreeView ScrollViewer.VerticalScrollBarVisibility="Hidden"
                                   ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                                   x:Name="SideNavList"
                                   BorderThickness="0"

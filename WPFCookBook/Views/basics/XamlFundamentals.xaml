@@ -14,9 +14,10 @@
     <UserControl.Resources>
         <shared:XamlToFlowDocMapper x:Key="flowDocumentConverter" />
         <DataTemplate x:Key="TabsBasicHeaderTemplate">
-            <Label FontWeight="Bold"
-                   Content="{Binding Title}" />
-
+            <Grid>
+                    <Label FontWeight="Bold"
+                           Content="{Binding Title}" />
+                </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="TabsBasicContentTemplate">
@@ -72,10 +73,11 @@
                                           MaxHeight="800">
                                 <fsc:FsRichTextBox x:Name="EditBox"
                                                    Document="{Binding Path=Content, Converter={StaticResource flowDocumentConverter}, Mode=TwoWay}"
+                                                   MinHeight="400"
                                                    Grid.Row="0"
                                                    Margin="10,10,10,5"
-                                                   ToolbarBackground="#FFD2CB84"
-                                                   ToolbarBorderBrush="#FFC6BE75"
+                                                   ToolbarBackground="WhiteSmoke"
+                                                   ToolbarBorderBrush="{DynamicResource PrimaryHueMidBrush}"
                                                    ToolbarBorderThickness="1,1,1,0"
                                                    CodeControlsVisibility="Collapsed" />
                             </ScrollViewer>
