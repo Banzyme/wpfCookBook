@@ -21,6 +21,11 @@ namespace WpfCookBook.DB.Repository
         {
         }
 
+        public override IEnumerable<ChapterDao> GetAll()
+        {
+            return _db.CourseSections.Include("ParentModule");
+        }
+
 
         /// <summary>
         /// Retrives all topics for a given chapter

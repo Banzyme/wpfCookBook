@@ -18,8 +18,7 @@ namespace WPFCookBook.forms
         private ICourseSectionService _chaptersRepo;
         private ICourseModuleService _modService;
         private ObservableCollection<ChapterDao> _chaptersList;
-        private ModuleDao _currentModule;
-        private ObservableCollection<ChapterDto> _chaptersWithModules;
+
 
         public CourseChapterFormViewModel(ICourseSectionService chaptersRepo, ICourseModuleService mods)
         {
