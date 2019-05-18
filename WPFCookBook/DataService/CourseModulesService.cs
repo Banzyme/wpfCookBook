@@ -40,6 +40,11 @@ namespace WPFCookBook.DataService
             return _modulesRepo.GetAll();
         }
 
+        public Task<List<ModuleDao>> GetAllModulesAsync()
+        {
+            return _modulesRepo.GetAllAsync();
+        }
+
         public async Task<ModuleDao> GetModuleByID(long ID)
         {
             try

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +41,11 @@ namespace WpfCookBook.DB.Repository.Base
         public virtual IEnumerable<T> GetAll()
         {
             return _db.Set<T>();
+        }
+
+        public async virtual Task<List<T>> GetAllAsync()
+        {
+            return await _db.Set<T>().ToListAsync();
         }
 
         public void Save()

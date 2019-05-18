@@ -15,6 +15,7 @@ namespace WpfCookBook.DB.Repository.Base
         /// </summary>
         /// <returns></returns>
         IEnumerable<T> GetAll();
+        Task<List<T>> GetAllAsync();
         Task<T> FindItemByCondition(Expression<Func<T, bool>> expression);
         IEnumerable<T> FindItemsByCondition(Expression<Func<T, bool>> expression);
         Task Create(T entity);

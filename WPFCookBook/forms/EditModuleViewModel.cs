@@ -44,9 +44,8 @@ namespace WPFCookBook.forms
             bool result = await _moduleService.UpdateModule(updated.ID, updated);
             if (result == true)
             {
-                MessageBox.Show($"Successfullly updated module: {updated.Name}");
-               
                 MasterRefresh();
+                MessageBox.Show($"Successfullly updated module: {updated.Name}");
                 NaivigateBackHome();
             }
         }

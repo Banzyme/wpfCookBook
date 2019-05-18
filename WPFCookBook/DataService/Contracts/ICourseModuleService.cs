@@ -10,6 +10,7 @@ namespace WPFCookBook.DataService.Contracts
     public interface ICourseModuleService
     {
         IEnumerable<ModuleDao> GetAllModules();
+        Task<List<ModuleDao>> GetAllModulesAsync();
         Task<ModuleDao> GetModuleByID(long ID);
         Task<ModuleDao> FindModuleByName(string searchStr);
         Task<bool> DeleteModule(long ID);

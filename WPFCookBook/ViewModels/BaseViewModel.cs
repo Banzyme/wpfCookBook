@@ -147,9 +147,9 @@ namespace WPFCookBook.ViewModels
             }
         }
 
-        public void RefreshMainWindowCollections()
+        public async void RefreshMainWindowCollections()
         {
-            _modulesList = new ObservableCollection<ModuleDao>(_modService.GetAllModules().ToList() );
+            _modulesList = new ObservableCollection<ModuleDao>( await _modService.GetAllModulesAsync() );
             OnPropertyChanged("ModulesList");
         }
 
