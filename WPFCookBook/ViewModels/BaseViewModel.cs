@@ -67,6 +67,7 @@ namespace WPFCookBook.ViewModels
 
             // Child events - handlers
             chapterForm.EditChapterRequested += SwitchToEditChapterPage;
+            chapterForm.MasterRefresh += RefreshMainWindowCollections;
             moduleForm.EditModuleRequested += SwitchToEditModulePage;
             moduleForm.MasterRefresh += RefreshMainWindowCollections;
             editModule.NaivigateBackHome += GotoIndexPage;

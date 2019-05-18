@@ -51,7 +51,8 @@ namespace WPFCookBook.forms
 
             return true;
         }
-
+        // Used to signal state changes due to chiled actions
+        public event Action MasterRefresh = delegate { };
         public string NewChapterTitle { get; set; }
         public ObservableCollection<ChapterDao> ChaptersList
         {
@@ -91,6 +92,7 @@ namespace WPFCookBook.forms
             if (result == true)
             {
                 Refresh(NewChapterTitle);
+                MasterRefresh();
                 MessageBox.Show($"Successfully added {NewChapterTitle}, to module: {selectedModule.Name}");
             }
             // TODO: Error dialog
@@ -114,6 +116,7 @@ namespace WPFCookBook.forms
                 bool result = await _chaptersRepo.DeleteSection(sectionID);
                 if (result == true)
                 {
+                    MasterRefresh();
                     RemoveEntryFromCollection(_chaptersList, (item) => item.ID == sectionID);
                 }
             }

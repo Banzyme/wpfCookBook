@@ -39,7 +39,8 @@ namespace WpfCookBook.DB.Dao
 
         public override string ToString()
         {
-            string chapter = $"Chapter: [ {ID}, \n {Title}, \n With topics: { string.Join("\n", SectionTopics ) }";
+            string topics = SectionTopics != null ? string.Join(" / \n", SectionTopics) : "<Not provided>";
+            string chapter = $"Chapter: [ {ID}, \n {Title}, \n With topics: { topics }";
             return chapter;
         }
     }

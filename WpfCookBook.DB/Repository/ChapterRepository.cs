@@ -40,7 +40,7 @@ namespace WpfCookBook.DB.Repository
         public bool InsertSectionWithRawSql(long moduleId, string newChapter)
         {
             Guid randomGuid = new Guid();
-            string sql = "insert WpfCourseSection(SectionID, Title, WpfCourseModule_ID) values({0}, {1}, {2})";
+            string sql = "insert ChapterDao(SectionID, Title, ModuleDao_ID) values({0}, {1}, {2})";
             int rowsAffected = _db.Database.ExecuteSqlCommand(sql, randomGuid, newChapter, moduleId);
 
             return rowsAffected == 0 ? false : true;

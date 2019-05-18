@@ -129,9 +129,7 @@
                                   x:Name="SideNavList"
                                   BorderThickness="0"
                                   MaxHeight="800"
-                                  TextSearch.TextPath="Name"
                                   ItemsSource="{Binding ModulesList}"
-                                  SelectedValuePath="Name"
                                   Padding="1, 15, 1, 15">
 
                             <TreeView.Resources>
@@ -154,23 +152,21 @@
 
                                 <DataTemplate x:Name="allSections"
                                               DataType="{x:Type entities:ChapterDao}">
+                                    
                                     <StackPanel Orientation="Horizontal">
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="MouseDown">
-                                                <i:InvokeCommandAction Command="{Binding DataContext.NavigationCommand,
-                                    RelativeSource={RelativeSource FindAncestor,
-                                    AncestorType={x:Type Window}}}"
-                                                                       CommandParameter="{Binding ElementName=SectionTitle, Path=Text}" />
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="MouseDown">
+                                                    <i:InvokeCommandAction
+                                                        Command="{Binding DataContext.NavigationCommand,
+                                                                          RelativeSource={RelativeSource FindAncestor,
+                                                                          AncestorType={x:Type Window}}}"
+                                                        CommandParameter="{Binding ElementName=SectionTitle, Path=Text}" />
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
 
                                         <TextBlock  x:Name="SectionTitle"
                                                     FontSize="14"
                                                     Text="{Binding Title}" />
-
-
-
-
                                     </StackPanel>
 
                                 </DataTemplate>
