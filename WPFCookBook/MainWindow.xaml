@@ -61,12 +61,24 @@
     <Grid>
         <Grid x:Name="PageContentGrid"
               Background="White">
-            <DockPanel>
-                
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="2" />
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="2" />
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
                 <!--Window header-->
-                <StackPanel Orientation="Vertical"
-                            DockPanel.Dock="Top"
+                <WrapPanel Orientation="Vertical"
+                            Grid.Row="0"
+                            Grid.ColumnSpan="3"
                             Background="White"
+                           HorizontalAlignment="Center"
                             Height="100"
                             Margin="0, 30, 0, 2">
                     <TextBlock Background="White"
@@ -74,10 +86,11 @@
                                FontStretch="Expanded"
                                FontWeight="ExtraBlack"
                                FontSize="24"
+                               TextWrapping="Wrap"
                                Foreground="Indigo"
                                FontFamily="Lucida Sans"
                                Text="WPF - The Essential Guide" />
-                    
+
 
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center"
@@ -90,100 +103,116 @@
                                 Content="Search"
                                 HorizontalAlignment="Center" />
                     </StackPanel>
-                    
 
-                </StackPanel>
+
+                </WrapPanel>
                 <!--End: Window header-->
 
-                 <!--Side Nav-->
-                <StackPanel Margin="0, 10, 1,2" 
+            <GridSplitter Grid.Row="1"
+                          Height="2"
+                          Grid.ColumnSpan="3"
+                          HorizontalAlignment="Stretch" />
+
+            <!--Side Nav-->
+                <StackPanel Margin="0, 10, 1,2"
                             Width="Auto"
                             Orientation="Vertical"
                             MinHeight="900"
-                            DockPanel.Dock="Left">
+                            Grid.Row="2"
+                            Grid.Column="0">
 
                     <ScrollViewer Height="800">
                         <StackPanel>
-                    <TreeView ScrollViewer.VerticalScrollBarVisibility="Auto" 
-                              ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                              x:Name="SideNavList"
-                              BorderThickness="0"
-                              MaxHeight="720"
-                              TextSearch.TextPath="Name"
-                              ItemsSource="{Binding ModulesList}"
-                              SelectedValuePath="Name"
-                              Padding="1, 15, 1, 15">
+                            <TreeView ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                                      x:Name="SideNavList"
+                                      BorderThickness="0"
+                                      MaxHeight="720"
+                                      TextSearch.TextPath="Name"
+                                      ItemsSource="{Binding ModulesList}"
+                                      SelectedValuePath="Name"
+                                      Padding="1, 15, 1, 15">
 
-                        <TreeView.Resources>
-                            <HierarchicalDataTemplate DataType="{x:Type entities:ModuleDao}"
-                                                      ItemsSource="{Binding ModuleSections}">
-                                <StackPanel  Orientation="Horizontal">
+                                <TreeView.Resources>
+                                    <HierarchicalDataTemplate DataType="{x:Type entities:ModuleDao}"
+                                                              ItemsSource="{Binding ModuleSections}">
+                                        <StackPanel  Orientation="Horizontal">
 
-                                    <Image Margin="0,0,5,0" />
-                                    <TextBlock FontSize="20" Text="{Binding Name}" />
-                                    <TextBlock Text=" ["
-                                               Foreground="Blue" />
-                                    <TextBlock Text="{Binding ModuleSections.Count}"
-                                               Foreground="Blue" />
-                                    <TextBlock Text="]"
-                                               Foreground="Blue" />
+                                            <Image Margin="0,0,5,0" />
+                                            <TextBlock FontSize="20"
+                                                       Text="{Binding Name}" />
+                                            <TextBlock Text=" ["
+                                                       Foreground="Blue" />
+                                            <TextBlock Text="{Binding ModuleSections.Count}"
+                                                       Foreground="Blue" />
+                                            <TextBlock Text="]"
+                                                       Foreground="Blue" />
 
-                                </StackPanel>
-                            </HierarchicalDataTemplate>
+                                        </StackPanel>
+                                    </HierarchicalDataTemplate>
 
-                            <DataTemplate x:Name="allSections"
-                                          DataType="{x:Type entities:ChapterDao}">
-                                <StackPanel Orientation="Horizontal">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="MouseDown">
-                                            <i:InvokeCommandAction Command="{Binding DataContext.NavigationCommand,
+                                    <DataTemplate x:Name="allSections"
+                                                  DataType="{x:Type entities:ChapterDao}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="MouseDown">
+                                                    <i:InvokeCommandAction Command="{Binding DataContext.NavigationCommand,
                                     RelativeSource={RelativeSource FindAncestor,
                                     AncestorType={x:Type Window}}}"
-                                                                   CommandParameter="{Binding ElementName=SectionTitle, Path=Text}" />
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
+                                                                           CommandParameter="{Binding ElementName=SectionTitle, Path=Text}" />
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
 
-                                    <TextBlock  x:Name="SectionTitle"
-                                                FontSize="14"
-                                                Text="{Binding Title}" />
-
-
+                                            <TextBlock  x:Name="SectionTitle"
+                                                        FontSize="14"
+                                                        Text="{Binding Title}" />
 
 
-                                </StackPanel>
 
-                            </DataTemplate>
 
-                        </TreeView.Resources>
+                                        </StackPanel>
 
-                    </TreeView>
-                    <Separator Width="100"
-                               Foreground="DeepPink"
-                               VerticalAlignment="Center" />
-                    <StackPanel Margin="0,50,0,0" HorizontalAlignment="Center" Orientation="Vertical">
-                        <Button  Content="Add module"
-                                 Command="{Binding NavigationCommand}"
-                                 CommandParameter="add_modules_form"
-                                 Style="{DynamicResource MaterialDesignRaisedDarkButton}" />
-                        <Button Content="Add Chapter"
-                                Margin="10"
-                                Command="{Binding NavigationCommand}"
-                                CommandParameter="add_chapter_form"
-                                Style="{DynamicResource MaterialDesignRaisedDarkButton}" />
-                    </StackPanel>
+                                    </DataTemplate>
+
+                                </TreeView.Resources>
+
+                            </TreeView>
+                            <Separator Width="100"
+                                       Foreground="DeepPink"
+                                       VerticalAlignment="Center" />
+                            <StackPanel Margin="0,50,0,0"
+                                        HorizontalAlignment="Center"
+                                        Orientation="Vertical">
+                                <Button  Content="Add module"
+                                         Command="{Binding NavigationCommand}"
+                                         CommandParameter="add_modules_form"
+                                         Style="{DynamicResource MaterialDesignRaisedDarkButton}" />
+                                <Button Content="Add Chapter"
+                                        Margin="10"
+                                        Command="{Binding NavigationCommand}"
+                                        CommandParameter="add_chapter_form"
+                                        Style="{DynamicResource MaterialDesignRaisedDarkButton}" />
+                            </StackPanel>
                         </StackPanel>
                     </ScrollViewer>
 
                 </StackPanel>
-                 <!--End: Side Nav-->
-                
-                <!--Content Container-->
-                <Grid Margin="0,10,1,0" DockPanel.Dock="Right">
+                <!--End: Side Nav-->
+
+            <GridSplitter Grid.Row="2"
+                          Grid.Column="1"
+                          Width="1"
+                          HorizontalAlignment="Stretch" />
+
+            <!--Content Container-->
+                <Grid Margin="0,10,1,0"
+                      Grid.Row="2"
+                      Grid.Column="2">
                     <ContentControl  Content="{Binding CurrentViewModel}" />
                 </Grid>
                 <!--End: Content container-->
 
-            </DockPanel>
+           
         </Grid>
     </Grid>
 </Window>
