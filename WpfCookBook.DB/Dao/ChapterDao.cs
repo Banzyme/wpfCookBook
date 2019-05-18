@@ -7,14 +7,24 @@ namespace WpfCookBook.DB.Dao
 {
     public class ChapterDao : INotifyPropertyChanged
     {
-        
+
 
         private string _title;
+        private ModuleDao _parentModule;
         private ICollection<TopicDao> _sectionTopics;
 
         [Key]
         public long ID { get; set; }
         public Guid SectionID { get; set; }
+        public ModuleDao ParentModule
+        {
+            get { return _parentModule; }
+            set
+            {
+                _parentModule = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("ParentModule"));
+            }
+        }
         public string Title
         {
             get { return _title; }

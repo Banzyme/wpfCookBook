@@ -17,73 +17,73 @@ insert ModuleDao(ModuleID, Name) values (NEWID(), 'FAQ');
 
 --Insert seed to module sections - Tree view header
 -- 1.BASICS
-insert ChapterDao(SectionID, Title, ModuleDao_ID)
+insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'Quick intro', 1);
 
-insert ChapterDao(SectionID, Title, ModuleDao_ID)
+insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'XAML fundamentals', 1);
 
-insert ChapterDao(SectionID, Title, ModuleDao_ID)
+insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'What is WPF?', 1);
 
-insert ChapterDao(SectionID, Title, ModuleDao_ID)
+insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'Real life WPF examples', 1);
 
-insert ChapterDao(SectionID, Title, ModuleDao_ID)
+insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'Tutorial - Self service insuarence', 1);
 
 
 --2.CONTROLS - Child item on tree view
-insert ChapterDao(SectionID, Title, ModuleDao_ID)
+insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'Intro to WPF controls', 2);
 
-insert ChapterDao(SectionID, Title, ModuleDao_ID)
+insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'Text controls', 2);
- insert ChapterDao(SectionID, Title, ModuleDao_ID)
+ insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'Buttons', 2);
- insert ChapterDao(SectionID, Title, ModuleDao_ID)
+ insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'Checkboxes and Radio Buttons', 2);
- insert ChapterDao(SectionID, Title, ModuleDao_ID)
+ insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'List Views', 2);
 
-  insert ChapterDao(SectionID, Title, ModuleDao_ID)
+  insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'Data Grid', 2);
 
-   insert ChapterDao(SectionID, Title, ModuleDao_ID)
+   insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'Tree View', 2);
 
- insert ChapterDao(SectionID, Title, ModuleDao_ID)
+ insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'Menus and Toolbars', 2);
- insert ChapterDao(SectionID, Title, ModuleDao_ID)
+ insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'HyperLinks', 2);
 
-  insert ChapterDao(SectionID, Title, ModuleDao_ID)
+  insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'Misc', 2);
 
 
 --3. Layouts
-insert ChapterDao(SectionID, Title, ModuleDao_ID)
+insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'WPF Layouts overview', 3);
 
-insert ChapterDao(SectionID, Title, ModuleDao_ID)
+insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'Grid Panel', 3);
 
-insert ChapterDao(SectionID, Title, ModuleDao_ID)
+insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'Stack Panel', 3);
 
-insert ChapterDao(SectionID, Title, ModuleDao_ID)
+insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'Dock Panel', 3);
 
-insert ChapterDao(SectionID, Title, ModuleDao_ID)
+insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'Canvas panel', 3);
 
-insert ChapterDao(SectionID, Title, ModuleDao_ID)
+insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'Wrap Panel', 3);
 
- insert ChapterDao(SectionID, Title, ModuleDao_ID)
+ insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'Nested Layouts', 3);
 
- insert ChapterDao(SectionID, Title, ModuleDao_ID)
+ insert ChapterDao(SectionID, Title, ParentModule_ID)
  values (NEWID(), 'Tabs', 3);
 
 

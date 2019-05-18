@@ -24,6 +24,7 @@ namespace WPFCookBook.forms
         }
 
         public event Action MasterRefresh = delegate { };
+        public event Action<ModuleDao> MasterRefreshByID = delegate { };
         public event Action NaivigateBackHome = delegate { };
         public RelayCommandAsync<object> UpdateModuleCommand { get; private set; }
         public RelayCommand CancelCommand { get; private set; }
@@ -44,7 +45,7 @@ namespace WPFCookBook.forms
             bool result = await _moduleService.UpdateModule(updated.ID, updated);
             if (result == true)
             {
-                MasterRefresh();
+                MasterRefreshByID(updated);
                 MessageBox.Show($"Successfullly updated module: {updated.Name}");
                 NaivigateBackHome();
             }

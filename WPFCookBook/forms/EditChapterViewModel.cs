@@ -7,6 +7,7 @@ using System.Windows;
 using WpfCookBook.DB.Dao;
 using WPFCookBook.Common;
 using WPFCookBook.DataService.Contracts;
+using WPFCookBook.Dto;
 
 namespace WPFCookBook.forms
 {
@@ -14,6 +15,7 @@ namespace WPFCookBook.forms
     {
         private ICourseSectionService _sectionService;
         private ChapterDao _selectedChapter;
+        private ChapterDto _modulesChapter;
 
         public EditChapterViewModel(ICourseSectionService sectService)
         {

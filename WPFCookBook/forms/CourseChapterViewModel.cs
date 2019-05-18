@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using WpfCookBook.DB.Dao;
 using WPFCookBook.Common;
 using WPFCookBook.DataService.Contracts;
+using WPFCookBook.Dto;
 
 namespace WPFCookBook.forms
 {
@@ -17,6 +18,8 @@ namespace WPFCookBook.forms
         private ICourseSectionService _chaptersRepo;
         private ICourseModuleService _modService;
         private ObservableCollection<ChapterDao> _chaptersList;
+        private ModuleDao _currentModule;
+        private ObservableCollection<ChapterDto> _chaptersWithModules;
 
         public CourseChapterFormViewModel(ICourseSectionService chaptersRepo, ICourseModuleService mods)
         {
@@ -72,9 +75,25 @@ namespace WPFCookBook.forms
         {
             var result = _chaptersRepo.GetAllSections();
             var modules = _modService.GetAllModules().ToList();
+
+            var test = _chaptersRepo.GetChaptersWithModuleIds();
+            //_currentModule = modules.SingleOrDefault(O => O.ID == 0);
+
+            //foreach (var chapter in result)
+            //{
+            //    ChapterDto currIndexItem = new ChapterDto()
+            //    {
+            //        Chapter =   chapter,
+            //        Module = null
+            //    };
+            //}
+
+
+
             _chaptersList = new ObservableCollection<ChapterDao>(result);
             ModulesList = new ObservableCollection<ModuleDao>(modules);
             NewChapterTitle = "";
+            
         }
 
         private void Refresh(string sectName)

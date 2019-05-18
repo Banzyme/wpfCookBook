@@ -26,6 +26,7 @@ namespace WpfCookBook.DB
 
             modelBuilder.Entity<ChapterDao>()
                    .HasMany(s => s.SectionTopics);
+
         }
 
 

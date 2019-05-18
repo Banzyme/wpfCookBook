@@ -67,7 +67,7 @@ namespace WPFCookBook.ViewModels.basics
         {
             _newTopic = new TopicDao();
             section = _sectionService.GetSectionByName("XAML Fundamentals");
-            _topicsList = new ObservableCollection<TopicDao>(section.SectionTopics.ToList());
+            _topicsList = section != null? new ObservableCollection<TopicDao>(section.SectionTopics.ToList()): null;
         }
 
         private async Task OnSaveChanges(FsRichTextBox EditBox)

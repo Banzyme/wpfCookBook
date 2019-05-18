@@ -99,6 +99,7 @@
     <Compile Include="DataService\CourseModulesService.cs" />
     <Compile Include="DataService\CourseSectionItemsService.cs" />
     <Compile Include="DataService\CourseSectionService.cs" />
+    <Compile Include="Dto\ChapterDto.cs" />
     <Compile Include="forms\CourseChapterForm.xaml.cs">
       <DependentUpon>CourseChapterForm.xaml</DependentUpon>
     </Compile>

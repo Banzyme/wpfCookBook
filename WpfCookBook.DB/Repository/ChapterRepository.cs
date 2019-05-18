@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WpfCookBook.DB.Dao;
+using WpfCookBook.DB.Models;
 using WpfCookBook.DB.Repository.Base;
 
 namespace WpfCookBook.DB.Repository
@@ -12,6 +13,7 @@ namespace WpfCookBook.DB.Repository
     {
         ChapterDao GetTopicsForChapter(string chapter);
         bool InsertSectionWithRawSql(long moduleId, string newChapter);
+        IEnumerable<ChapterModel> GetChaptersWithModuleIds();
     }
 
     public class ChapterRepository : RepositoryBase<ChapterDao>, IChapterRepository
@@ -28,7 +30,7 @@ namespace WpfCookBook.DB.Repository
         /// <returns>Chapter object with all associated topics</returns>
         public ChapterDao GetTopicsForChapter(string chapter)
         {
-            return _db.CourseSections.Include("SectionTopics").SingleOrDefault(x => x.Title.Contains(chapter));
+            return _db.CourseSections.Include("SectionTopics").Include("ParentModule").SingleOrDefault(x => x.Title.Contains(chapter));
         }
 
         /// <summary>
@@ -40,10 +42,19 @@ namespace WpfCookBook.DB.Repository
         public bool InsertSectionWithRawSql(long moduleId, string newChapter)
         {
             Guid randomGuid = new Guid();
-            string sql = "insert ChapterDao(SectionID, Title, ModuleDao_ID) values({0}, {1}, {2})";
+            string sql = "insert ChapterDao(SectionID, Title, ParentModule_ID) values({0}, {1}, {2})";
             int rowsAffected = _db.Database.ExecuteSqlCommand(sql, randomGuid, newChapter, moduleId);
 
             return rowsAffected == 0 ? false : true;
+        }
+
+        public IEnumerable<ChapterModel> GetChaptersWithModuleIds()
+        {
+            string sql = "select * from ChapterDao";
+            //var result = _db.Database.SqlQuery<IEnumerable<ChapterModel>>(sql).ToList();
+            var test = _db.CourseSections.ToList();
+
+            return null;
         }
 
     }

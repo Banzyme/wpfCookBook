@@ -72,6 +72,7 @@ namespace WPFCookBook.ViewModels
             moduleForm.MasterRefresh += RefreshMainWindowCollections;
             editModule.NaivigateBackHome += GotoIndexPage;
             editModule.MasterRefresh += RefreshMainWindowCollections;
+            editModule.MasterRefreshByID += RefreshMainWindowCollectionsByID;
 
             editChapter.NaivigateBackHome += GotoIndexPage;
             editChapter.MasterRefresh += RefreshMainWindowCollections;
@@ -150,6 +151,13 @@ namespace WPFCookBook.ViewModels
         public async void RefreshMainWindowCollections()
         {
             _modulesList = new ObservableCollection<ModuleDao>( await _modService.GetAllModulesAsync() );
+            OnPropertyChanged("ModulesList");
+        }
+
+        private void RefreshMainWindowCollectionsByID(ModuleDao updated)
+        {
+            var module = _modulesList.FirstOrDefault(x => x.ID == updated.ID);
+            if (module!= null) module.Name = updated.Name;
             OnPropertyChanged("ModulesList");
         }
 

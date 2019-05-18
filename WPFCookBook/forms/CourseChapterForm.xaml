@@ -108,24 +108,8 @@
                         <DataGrid.Columns>
 
 
-                            <DataGridTemplateColumn Header="Module">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <StackPanel>
-                                            <ComboBox x:Name="modulesCombo"
-                                                      Background="AliceBlue"
-                                                      ItemsSource="{Binding ElementName=ChapterViewGrid, Path=DataContext.ModulesList}">
-                                                <ComboBox.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <TextBox Text="{Binding Name}" />
-                                                    </DataTemplate>
-                                                </ComboBox.ItemTemplate>
-                                            </ComboBox>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-
+                            <DataGridTextColumn Header="Module"
+                                                Binding="{Binding ParentModule.Name}" />
 
                             <DataGridTextColumn x:Name="chapterTitleCol"
                                                 Header="Chapter Name"
