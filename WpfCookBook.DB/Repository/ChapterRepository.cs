@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WpfCookBook.DB.Dao;
-using WpfCookBook.DB.Models;
 using WpfCookBook.DB.Repository.Base;
 
 namespace WpfCookBook.DB.Repository
@@ -13,7 +12,7 @@ namespace WpfCookBook.DB.Repository
     {
         ChapterDao GetTopicsForChapter(string chapter);
         bool InsertSectionWithRawSql(long moduleId, string newChapter);
-        IEnumerable<ChapterModel> GetChaptersWithModuleIds();
+
     }
 
     public class ChapterRepository : RepositoryBase<ChapterDao>, IChapterRepository
@@ -48,14 +47,6 @@ namespace WpfCookBook.DB.Repository
             return rowsAffected == 0 ? false : true;
         }
 
-        public IEnumerable<ChapterModel> GetChaptersWithModuleIds()
-        {
-            string sql = "select * from ChapterDao";
-            //var result = _db.Database.SqlQuery<IEnumerable<ChapterModel>>(sql).ToList();
-            var test = _db.CourseSections.ToList();
-
-            return null;
-        }
 
     }
 }

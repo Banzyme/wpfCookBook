@@ -78,10 +78,7 @@ namespace WPFCookBook.DataService
             }
         }
 
-        public IEnumerable<object> GetChaptersWithModuleIds()
-        {
-            return _repo.GetChaptersWithModuleIds();
-        }
+
 
         public async Task<ChapterDao> GetSectionByID(long ID)
         {

@@ -76,20 +76,6 @@ namespace WPFCookBook.forms
             var result = _chaptersRepo.GetAllSections();
             var modules = _modService.GetAllModules().ToList();
 
-            var test = _chaptersRepo.GetChaptersWithModuleIds();
-            //_currentModule = modules.SingleOrDefault(O => O.ID == 0);
-
-            //foreach (var chapter in result)
-            //{
-            //    ChapterDto currIndexItem = new ChapterDto()
-            //    {
-            //        Chapter =   chapter,
-            //        Module = null
-            //    };
-            //}
-
-
-
             _chaptersList = new ObservableCollection<ChapterDao>(result);
             ModulesList = new ObservableCollection<ModuleDao>(modules);
             NewChapterTitle = "";

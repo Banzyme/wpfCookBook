@@ -10,7 +10,7 @@ namespace WPFCookBook.DataService.Contracts
     public interface ICourseSectionService
     {
         IEnumerable<ChapterDao> GetAllSections();
-        IEnumerable<object> GetChaptersWithModuleIds();
+      
         Task<ChapterDao> GetSectionByID(long ID);
         ChapterDao GetSectionByName(string searchStr);
         Task<bool> DeleteSection(long ID);
