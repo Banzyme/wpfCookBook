@@ -1,12 +1,13 @@
 ﻿<UserControl x:Class="WPFCookBook.forms.CourseModuleListView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:WPFCookBook.forms"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
     <UserControl.Resources>
         <Style x:Key="LightInputLabel"
                TargetType="Label">
@@ -18,23 +19,30 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
+        <!--Page header-->
         <StackPanel Grid.Row="0"
                     HorizontalAlignment="Stretch"
                     Height="100"
-                    Margin="10,10,0,0"
-                    Width="780">
+                    Margin="10,10,5,80"
+                    Width="Auto">
             <materialDesign:Card Padding="32"
                                  Margin="16">
-                <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}">Add a new module</TextBlock>
+                <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}">
+                    Add a new module<materialDesign:PackIcon Kind="Pencil" />
+                </TextBlock>
             </materialDesign:Card>
         </StackPanel>
-        <WrapPanel Orientation="Vertical"
+        <!--End: Page header-->
+
+        <!--Add module form-->
+        <WrapPanel Grid.Row="1"
+                   Orientation="Vertical"
                    HorizontalAlignment="Center"
-                   Grid.Row="1">
+                   Margin="0,0,0,80">
             <StackPanel Orientation="Horizontal">
                 <GroupBox>
                     <StackPanel>
@@ -45,7 +53,7 @@
                                  Width="300" />
                     </StackPanel>
                 </GroupBox>
-                
+
             </StackPanel>
             <Button x:Name="SaveChapterButton"
                     Command="{Binding AddModuleCommand}"
@@ -58,39 +66,54 @@
                     Content="Update chapter" />
 
         </WrapPanel>
-        <DataGrid Grid.Row="2"
-                  x:Name="chaptersDataGrid"
-                  HorizontalAlignment="Center"
-                  Height="550"
-                  IsReadOnly="True"
-                  AutoGenerateColumns="False"
-                  ItemsSource="{Binding ModulesList }">
 
-            <DataGrid.Columns>
+        <Separator Margin="0,0,0,30"
+                   Grid.Row="2"
+                   Width="80"
+                   HorizontalAlignment="Center"
+                   Background="#1F000000" />
 
-                <DataGridTextColumn x:Name="chapterTitleCol"
-                                    Header="Module"
-                                    Binding="{Binding Name}" />
+        <!--Existing modules-->
+        <TabControl  Grid.Row="3"
+                     Height="300"
+                     Margin="0,0,0,50">
 
-                <DataGridTemplateColumn Header="Actions">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel  Orientation="Horizontal">
-                                <Button Margin="3"
-                                        CommandParameter="{Binding}"
-                                        Command="{Binding ElementName=ModulesDataGrid, Path=DataContext.UpdateModuleCommand}"
-                                        Content="Update">
-                                </Button>
-                                <Button Content="Delete"
-                                        CommandParameter="{Binding ID}"
-                                        Command="{Binding ElementName=ModulesDataGrid, Path=DataContext.DeleteModuleCommand}" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
+            <TabItem Header="Existing modules">
+                <DataGrid HorizontalAlignment="Stretch"
+                          VerticalAlignment="Center"
+                          Height="Auto"
+                          Margin="0,5,0,100"
+                          Background="White"
+                          IsReadOnly="True"
+                          AutoGenerateColumns="False"
+                          ItemsSource="{Binding ModulesList }">
 
-        </DataGrid>
+                    <DataGrid.Columns>
 
+                        <DataGridTextColumn x:Name="chapterTitleCol"
+                                            Header="Module"
+                                            Binding="{Binding Name}" />
+
+                        <DataGridTemplateColumn Header="Actions">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel  Orientation="Horizontal">
+                                        <Button Margin="3"
+                                                CommandParameter="{Binding}"
+                                                Command="{Binding ElementName=ModulesDataGrid, Path=DataContext.UpdateModuleCommand}"
+                                                Content="Update">
+                                        </Button>
+                                        <Button Content="Delete"
+                                                CommandParameter="{Binding ID}"
+                                                Command="{Binding ElementName=ModulesDataGrid, Path=DataContext.DeleteModuleCommand}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </UserControl>

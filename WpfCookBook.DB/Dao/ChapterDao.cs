@@ -39,7 +39,7 @@ namespace WpfCookBook.DB.Dao
 
         public override string ToString()
         {
-            string chapter = $"Chapter: [ {ID}, \n {Title}, \n With topics: { string.Join(" / ", SectionTopics ) }";
+            string chapter = $"Chapter: [ {ID}, \n {Title}, \n With topics: { string.Join("\n", SectionTopics ) }";
             return chapter;
         }
     }

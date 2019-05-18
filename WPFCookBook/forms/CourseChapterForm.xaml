@@ -28,7 +28,7 @@
                     HorizontalAlignment="Stretch"
                     Height="100"
                     Margin="10,10,5,80"
-                    Width="780">
+                    Width="Auto">
             <materialDesign:Card Padding="32"
                                  Margin="16">
                 <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}">
@@ -39,10 +39,10 @@
         <!--End: Page header-->
 
         <!--add chapter form-->
-        <WrapPanel Grid.Row="1" Orientation="Vertical"
+        <WrapPanel Grid.Row="1"
+                   Orientation="Vertical"
                    HorizontalAlignment="Center"
-                   Margin="0,0,0,80"
-                  >
+                   Margin="0,0,0,80">
             <StackPanel Orientation="Horizontal">
                 <GroupBox>
                     <StackPanel>
@@ -81,79 +81,79 @@
         </WrapPanel>
         <!--End: add chapter form-->
 
-        <Separator Margin="0,0,0,100"
+        <Separator Margin="0,0,0,30"
                    Grid.Row="2"
                    Width="80"
                    HorizontalAlignment="Center"
-                   Background="#1F000000"
-                   />
-        
+                   Background="#1F000000" />
+
         <!--Existing chapters list-->
-        <TabControl Grid.Row="3" Margin="0,0,0,50">
-            
+        <TabControl Grid.Row="3"
+                    Height="300"
+                    Margin="0,0,0,50">
+
             <TabItem Header="Existing chapters">
                 <ScrollViewer Height="200">
 
-                    <DataGrid 
-                  x:Name="chaptersDataGrid"
-                  HorizontalAlignment="Stretch"
-                  VerticalAlignment="Center"
-                  Height="Auto"
-                  Margin="0,20,0,100"
-                    Background="White"
-                  IsReadOnly="True"
-                  AutoGenerateColumns="False"
-                  ItemsSource="{Binding ChaptersList }">
+                    <DataGrid x:Name="chaptersDataGrid"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Center"
+                              Height="Auto"
+                              Margin="0,5,0,100"
+                              Background="White"
+                              IsReadOnly="True"
+                              AutoGenerateColumns="False"
+                              ItemsSource="{Binding ChaptersList }">
 
-            <DataGrid.Columns>
-
-
-                <DataGridTemplateColumn Header="Module">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel>
-                                <ComboBox x:Name="modulesCombo"
-                                                  Background="AliceBlue"
-                                          ItemsSource="{Binding ElementName=ChapterViewGrid, Path=DataContext.ModulesList}">
-                                    <ComboBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBox Text="{Binding Name}" />
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>
-                                </ComboBox>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                        <DataGrid.Columns>
 
 
-                <DataGridTextColumn x:Name="chapterTitleCol"
-                                    Header="Chapter Name"
-                                    Binding="{Binding Title}" />
+                            <DataGridTemplateColumn Header="Module">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <ComboBox x:Name="modulesCombo"
+                                                      Background="AliceBlue"
+                                                      ItemsSource="{Binding ElementName=ChapterViewGrid, Path=DataContext.ModulesList}">
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBox Text="{Binding Name}" />
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+                                            </ComboBox>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="Actions">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel  Orientation="Horizontal">
-                                <Button Margin="3"
-                                        CommandParameter="{Binding}"
-                                        Command="{Binding ElementName=ChapterViewGrid, Path=DataContext.OnUpdateSectionCommand}"
-                                        Content="Update">
-                                </Button>
-                                <Button Content="Delete"
-                                        CommandParameter="{Binding ID}"
-                                        Command="{Binding ElementName=ChapterViewGrid, Path=DataContext.OnDeleteSectionCommand}" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
 
-        </DataGrid>
-        <!--End: Existing chapters list-->
+                            <DataGridTextColumn x:Name="chapterTitleCol"
+                                                Header="Chapter Name"
+                                                Binding="{Binding Title}" />
+
+                            <DataGridTemplateColumn Header="Actions">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel  Orientation="Horizontal">
+                                            <Button Margin="3"
+                                                    CommandParameter="{Binding}"
+                                                    Command="{Binding ElementName=ChapterViewGrid, Path=DataContext.OnUpdateSectionCommand}"
+                                                    Content="Update">
+                                            </Button>
+                                            <Button Content="Delete"
+                                                    CommandParameter="{Binding ID}"
+                                                    Command="{Binding ElementName=ChapterViewGrid, Path=DataContext.OnDeleteSectionCommand}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                    <!--End: Existing chapters list-->
                 </ScrollViewer>
             </TabItem>
-          
+
         </TabControl>
 
     </Grid>
