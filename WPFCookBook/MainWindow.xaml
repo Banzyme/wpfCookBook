@@ -121,13 +121,13 @@
                             Grid.Row="2"
                             Grid.Column="0">
 
-                    <ScrollViewer Height="800">
+                    <ScrollViewer Height="500">
                         <StackPanel>
                             <TreeView ScrollViewer.VerticalScrollBarVisibility="Auto"
                                       ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                                       x:Name="SideNavList"
                                       BorderThickness="0"
-                                      MaxHeight="720"
+                                      MaxHeight="800"
                                       TextSearch.TextPath="Name"
                                       ItemsSource="{Binding ModulesList}"
                                       SelectedValuePath="Name"
