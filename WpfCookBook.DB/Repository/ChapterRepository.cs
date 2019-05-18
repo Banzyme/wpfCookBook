@@ -13,6 +13,8 @@ namespace WpfCookBook.DB.Repository
         ChapterDao GetTopicsForChapter(string chapter);
         bool InsertSectionWithRawSql(long moduleId, string newChapter);
 
+        bool UpdateSectionParentID(ChapterDao newChapter);
+
     }
 
     public class ChapterRepository : RepositoryBase<ChapterDao>, IChapterRepository
@@ -52,6 +54,16 @@ namespace WpfCookBook.DB.Repository
             return rowsAffected == 0 ? false : true;
         }
 
+        public bool UpdateSectionParentID(ChapterDao newChapter)
+        {
+            string sqlQuery = @"update ChapterDao set
+                                Title={2},
+                                ParentModule_ID={1}
+                                where ID = {0}";
 
+            int rowsAffected = _db.Database.ExecuteSqlCommand(sqlQuery, newChapter.ID, newChapter.ParentModule.ID, newChapter.Title);
+
+            return rowsAffected == 0 ? false : true;
+        }
     }
 }

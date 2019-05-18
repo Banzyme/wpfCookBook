@@ -75,7 +75,7 @@ namespace WPFCookBook.ViewModels
             editModule.MasterRefreshByID += RefreshMainWindowCollectionsByID;
 
             editChapter.NaivigateBackHome += GotoIndexPage;
-            editChapter.MasterRefresh += RefreshMainWindowCollections;
+            editChapter.MasterRefresh += RefreshMasterListDirectly;
 
             // Commdands init
             NavigationCommand = new CommandTemplate<string>(OnNav);
@@ -158,6 +158,12 @@ namespace WPFCookBook.ViewModels
         {
             var module = _modulesList.FirstOrDefault(x => x.ID == updated.ID);
             if (module!= null) module.Name = updated.Name;
+            OnPropertyChanged("ModulesList");
+        }
+
+        private void RefreshMasterListDirectly(ObservableCollection<ModuleDao> updated)
+        {
+            _modulesList = updated;
             OnPropertyChanged("ModulesList");
         }
 

@@ -17,6 +17,7 @@ namespace WPFCookBook.forms
         private ICourseSectionService _sectionService;
         private ICourseModuleService _modService;
         private ChapterDao _selectedChapter;
+        private ModuleDao ParentModule;
         private int _selectedModuleIndex;
         private ObservableCollection<ModuleDao> _modulesList;
        
@@ -33,9 +34,9 @@ namespace WPFCookBook.forms
             var modulesResult = _modService.GetAllModules(); 
             _modulesList = new ObservableCollection<ModuleDao>(modulesResult);
 
-            var _selectedMod = _modulesList.Where(mod => mod.ID == _selectedChapter?.ParentModule.ID).SingleOrDefault();
-            _selectedModuleIndex = _modulesList.IndexOf(_selectedMod);
-        }
+            ParentModule = _modulesList.Where(mod => mod.ID == _selectedChapter?.ParentModule.ID).SingleOrDefault();
+            _selectedModuleIndex = _modulesList.IndexOf(ParentModule);
+        }       
 
         public ChapterDao CurrentChapter
         {
@@ -55,7 +56,7 @@ namespace WPFCookBook.forms
             set { SetProperty(ref _modulesList, value); }
         }
 
-        public event Action MasterRefresh = delegate { };
+        public event Action<ObservableCollection<ModuleDao>> MasterRefresh = delegate { };
 
         public event Action NaivigateBackHome = delegate { };
         public RelayCommandAsync<object> UpdateChapterCommand { get; private set; }
@@ -71,12 +72,22 @@ namespace WPFCookBook.forms
         private async Task SaveChanges(object param)
         {
             var updatedChapter = (ChapterDao)param;
-            bool result = await _sectionService.UpdateSection(updatedChapter);
+            bool result = _sectionService.UpdateChapterSql(updatedChapter);
 
             if (result==true)
             {
                 MessageBox.Show($"Successfully updated...: {updatedChapter.Title}");
-                MasterRefresh();
+
+                // Notify parent view about change
+                //var _selectedMod = _modulesList.Where(mod => mod.ID == _selectedChapter?.ParentModule.ID).SingleOrDefault();
+
+                //ChapterDao toUpdate = _selectedMod.ModuleSections.Where(o => o.ID == _selectedChapter.ID).SingleOrDefault();
+                //if (toUpdate == null) return;
+
+                //toUpdate.Title = updatedChapter.Title;
+                //toUpdate.ParentModule.Name = updatedChapter.ParentModule.Name;
+                _modulesList = new ObservableCollection<ModuleDao>(await _modService.GetAllModulesAsync());
+                MasterRefresh(_modulesList);
             }
             NaivigateBackHome();
         }

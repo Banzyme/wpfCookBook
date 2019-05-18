@@ -42,7 +42,7 @@ namespace WPFCookBook.forms
         private async Task OnUpdateModule(object param)
         {
             ModuleDao updated = (ModuleDao)param;
-            bool result = await _moduleService.UpdateModule(updated.ID, updated);
+            bool result = await _moduleService.UpdateModule(updated);
             if (result == true)
             {
                 MasterRefreshByID(updated);

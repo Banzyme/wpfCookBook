@@ -15,6 +15,7 @@ namespace WPFCookBook.DataService.Contracts
         ChapterDao GetSectionByName(string searchStr);
         Task<bool> DeleteSection(long ID);
         Task<bool> UpdateSection(ChapterDao updatedSection);
+        bool UpdateChapterSql(ChapterDao UpdatedSect);
         Task<bool> AddSection(ChapterDao sect);
         bool AddSectionWithRawSql(long moduleId, string sectionTitle);
     }

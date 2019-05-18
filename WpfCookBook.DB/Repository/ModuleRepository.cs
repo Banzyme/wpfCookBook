@@ -25,7 +25,7 @@ namespace WpfCookBook.DB.Repository
 
         public override async Task<List<ModuleDao>> GetAllAsync()
         {
-            return await _db.CourseModules.Include("ModuleSections").ToListAsync();
+            return await _db.CourseModules.Include("ModuleSections").AsNoTracking().ToListAsync();
         }
     }
 }

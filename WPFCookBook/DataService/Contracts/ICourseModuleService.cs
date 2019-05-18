@@ -14,7 +14,7 @@ namespace WPFCookBook.DataService.Contracts
         Task<ModuleDao> GetModuleByID(long ID);
         Task<ModuleDao> FindModuleByName(string searchStr);
         Task<bool> DeleteModule(long ID);
-        Task<bool> UpdateModule(long ID, ModuleDao sect);
+        Task<bool> UpdateModule(ModuleDao sect);
         Task<bool> AddModule(ModuleDao sect);
     }
 }

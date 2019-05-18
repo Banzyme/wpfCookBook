@@ -89,14 +89,11 @@ namespace WPFCookBook.DataService
             }
         }
 
-        public async Task<bool> UpdateModule(long ID, ModuleDao updater)
+        public async Task<bool> UpdateModule(ModuleDao updatedModule)
         {
             try
             {
-                var newMod =await GetModuleByID(ID);
-                newMod.Name = updater.Name;
-
-                await _modulesRepo.Update(newMod, ID);
+                await _modulesRepo.Update(updatedModule, updatedModule.ID);
                
                 return true;
             }

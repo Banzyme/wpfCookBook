@@ -111,5 +111,21 @@ namespace WPFCookBook.DataService
                 throw;
             }
         }
+
+        public bool UpdateChapterSql(ChapterDao UpdatedSect)
+        {
+            try
+            {
+                _repo.UpdateSectionParentID(UpdatedSect);
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
     }
 }
