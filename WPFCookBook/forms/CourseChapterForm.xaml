@@ -19,23 +19,30 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
+        <!--Page header-->
         <StackPanel Grid.Row="0"
                     HorizontalAlignment="Stretch"
                     Height="100"
-                    Margin="10,10,0,0"
+                    Margin="10,10,5,80"
                     Width="780">
             <materialDesign:Card Padding="32"
                                  Margin="16">
-                <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}">Add a new chapter</TextBlock>
+                <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}">
+                    Add a new chapter <materialDesign:PackIcon Kind="Pencil" />
+                </TextBlock>
             </materialDesign:Card>
         </StackPanel>
-        <WrapPanel Orientation="Vertical"
+        <!--End: Page header-->
+
+        <!--add chapter form-->
+        <WrapPanel Grid.Row="1" Orientation="Vertical"
                    HorizontalAlignment="Center"
-                   Grid.Row="1">
+                   Margin="0,0,0,80"
+                  >
             <StackPanel Orientation="Horizontal">
                 <GroupBox>
                     <StackPanel>
@@ -65,16 +72,35 @@
                     Command="{Binding OnSaveChapterCommand}"
                     CommandParameter="{Binding ElementName=modulesCombo, Path=SelectedValue}"
                     Content="Save" />
-            
-            <Button Visibility="Collapsed" x:Name="UpdateChapterButton"
+
+            <Button Visibility="Collapsed"
+                    x:Name="UpdateChapterButton"
                     Margin="0,5,0,20"
                     Content="Update chapter" />
 
         </WrapPanel>
-        <DataGrid Grid.Row="2"
+        <!--End: add chapter form-->
+
+        <Separator Margin="0,0,0,100"
+                   Grid.Row="2"
+                   Width="80"
+                   HorizontalAlignment="Center"
+                   Background="#1F000000"
+                   />
+        
+        <!--Existing chapters list-->
+        <TabControl Grid.Row="3" Margin="0,0,0,50">
+            
+            <TabItem Header="Existing chapters">
+                <ScrollViewer Height="200">
+
+                    <DataGrid 
                   x:Name="chaptersDataGrid"
-                  HorizontalAlignment="Center"
-                  Height="550"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Center"
+                  Height="Auto"
+                  Margin="0,20,0,100"
+                    Background="White"
                   IsReadOnly="True"
                   AutoGenerateColumns="False"
                   ItemsSource="{Binding ChaptersList }">
@@ -87,7 +113,7 @@
                         <DataTemplate>
                             <StackPanel>
                                 <ComboBox x:Name="modulesCombo"
-                                          Background="AliceBlue"
+                                                  Background="AliceBlue"
                                           ItemsSource="{Binding ElementName=ChapterViewGrid, Path=DataContext.ModulesList}">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
@@ -124,11 +150,11 @@
             </DataGrid.Columns>
 
         </DataGrid>
+        <!--End: Existing chapters list-->
+                </ScrollViewer>
+            </TabItem>
+          
+        </TabControl>
 
-        <WrapPanel x:Name="updateChapterForm" Visibility="Collapsed">
-            <GroupBox Header="Update chapter">
-                <TextBox Text="{Binding Title}" />
-            </GroupBox>
-        </WrapPanel>
     </Grid>
 </UserControl>

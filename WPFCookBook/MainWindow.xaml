@@ -1,4 +1,4 @@
-﻿<Window x:Class="WPFCookBook.MainWindow"
+﻿<Window xmlns:FsRichTextBox="clr-namespace:FsWpfControls.FsRichTextBox;assembly=FsRichTextBox"  x:Class="WPFCookBook.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -58,7 +58,7 @@
 
     </Window.Resources>
 
-    <Grid>
+    <Grid><FsRichTextBox:FsRichTextBox />
         <Grid x:Name="PageContentGrid"
               Background="White">
             <Grid.RowDefinitions>
@@ -178,7 +178,8 @@
 
                             </TreeView>
                             <Separator Width="100"
-                                       Foreground="DeepPink"
+                                   Background="#1F000000"
+                                   
                                        VerticalAlignment="Center" />
                             <StackPanel Margin="0,50,0,0"
                                         HorizontalAlignment="Center"
