@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows;
 using Unity;
 using WpfCookBook.DB.Dao;
 using WpfCookBook.DB.Repository;
@@ -91,8 +92,10 @@ namespace WPFCookBook.ViewModels
 
         private void LoadViewData()
         {
-            var modResults = _modService.GetAllModules().ToList();
-            _modulesList = new ObservableCollection<ModuleDao>(modResults);
+            if( DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+            {
+                _modulesList = new ObservableCollection<ModuleDao>(_modService.GetAllModules().ToList());
+            }           
         }
 
         #region Properties
