@@ -4,15 +4,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
         xmlns:entities="clr-namespace:WpfCookBook.DB.Dao;assembly=WpfCookBook.DB"
         xmlns:ViewModels="clr-namespace:WPFCookBook.ViewModels"
         xmlns:views="clr-namespace:WPFCookBook.Views"
-        xmlns:local="http://wpf.cook.org"
+        xmlns:forms="clr-namespace:WPFCookBook.forms"
+        
+        xmlns:content="http://wpf.cook.org/content"
         
 
-        xmlns:forms="clr-namespace:WPFCookBook.forms"
-        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        
+       
         
         Title="WPF Handbook For Humans"
         WindowStartupLocation="CenterScreen"
@@ -26,10 +29,13 @@
 
     <Window.Resources>
 
+        <!--Home page-->
         <DataTemplate DataType="{x:Type ViewModels:IndexViewModel}">
             <views:IndexView />
         </DataTemplate>
+        <!--/Home page-->
 
+        <!--Form views-->
         <DataTemplate DataType="{x:Type ViewModels:ErrorPageVieModel}">
             <views:ErrorPageView />
         </DataTemplate>
@@ -49,6 +55,13 @@
         <DataTemplate DataType="{x:Type forms:EditModuleViewModel}">
             <forms:EditModuleView />
         </DataTemplate>
+        <!--/Form views-->
+        
+        <!--Course content views-->
+        <DataTemplate x:Key="IntroToWPFView" DataType="{x:Type content:IntroToWPFViewModel}">
+            <content:IntroToWPFView />
+        </DataTemplate>
+        <!--/Course content views-->
 
     </Window.Resources>
 

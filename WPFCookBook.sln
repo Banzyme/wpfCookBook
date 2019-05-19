@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFCookBook.CustomControls"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFCookBook.CourseContent", "WPFCookBook.CourseContent\WPFCookBook.CourseContent.csproj", "{99F1C1AC-6FC5-4EEC-93ED-9BE144DC1064}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFCookBook.Common", "WPFCookBook.Common\WPFCookBook.Common.csproj", "{A09A943C-8195-4095-80EE-35C5BADEC2CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFCookBook.Shared", "WPFCookBook.Shared\WPFCookBook.Shared.csproj", "{7DC1B43C-945B-4DED-B782-63F546CD6801}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{99F1C1AC-6FC5-4EEC-93ED-9BE144DC1064}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99F1C1AC-6FC5-4EEC-93ED-9BE144DC1064}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99F1C1AC-6FC5-4EEC-93ED-9BE144DC1064}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A09A943C-8195-4095-80EE-35C5BADEC2CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A09A943C-8195-4095-80EE-35C5BADEC2CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A09A943C-8195-4095-80EE-35C5BADEC2CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A09A943C-8195-4095-80EE-35C5BADEC2CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DC1B43C-945B-4DED-B782-63F546CD6801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DC1B43C-945B-4DED-B782-63F546CD6801}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DC1B43C-945B-4DED-B782-63F546CD6801}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DC1B43C-945B-4DED-B782-63F546CD6801}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

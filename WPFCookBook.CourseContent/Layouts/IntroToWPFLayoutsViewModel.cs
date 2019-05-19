@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPFCookBook.CourseContent
+namespace WPFCookBook.CourseContent.Layouts
 {
-    public class Class1
+    class IntroToWPFLayoutsViewModel
     {
     }
 }

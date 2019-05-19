@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPFCookBook.Common
+namespace WPFCookBook.CourseContent.DataBinding
 {
-    public class Class1
+    class IntroToDataBindingViewModel
     {
     }
 }

@@ -92,10 +92,12 @@ namespace WPFCookBook.ViewModels
 
         private void LoadViewData()
         {
-            if( DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+            // NB: Only make db call if not in desgin mode
+            if( !DesignerProperties.GetIsInDesignMode(new DependencyObject()))
             {
                 _modulesList = new ObservableCollection<ModuleDao>(_modService.GetAllModules().ToList());
-            }           
+            }else {  // dummy data for designers
+            }          
         }
 
         #region Properties

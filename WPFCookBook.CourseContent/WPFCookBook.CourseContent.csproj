@@ -47,20 +47,105 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Basics\BasicsSummaryView.xaml.cs">
+      <DependentUpon>BasicsSummaryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Basics\BasicsSummaryViewModel.cs" />
+    <Compile Include="Basics\CsharpConceptsView.xaml.cs">
+      <DependentUpon>CsharpConceptsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Basics\CsharpConceptsViewModel.cs" />
+    <Compile Include="Basics\FirstTutorialView.xaml.cs">
+      <DependentUpon>FirstTutorialView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Basics\FirstTutorialViewModel.cs" />
+    <Compile Include="Basics\IntroToWPFView.xaml.cs">
+      <DependentUpon>IntroToWPFView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Basics\IntroToWPFViewModel.cs" />
+    <Compile Include="Basics\XAMLBootCampView.xaml.cs">
+      <DependentUpon>XAMLBootCampView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Basics\XAMLBootCampViewModel.cs" />
+    <Compile Include="ContentViewModelBase.cs" />
+    <Compile Include="Controls\ButtonControlView.xaml.cs">
+      <DependentUpon>ButtonControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ButtonControlViewModel.cs" />
+    <Compile Include="Controls\IntroToWPFControlsView.xaml.cs">
+      <DependentUpon>IntroToWPFControlsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IntroToWPFControlsViewModel.cs" />
+    <Compile Include="Controls\TextControlsView.xaml.cs">
+      <DependentUpon>TextControlsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TextControlsViewModel.cs" />
     <Compile Include="DataBinding\AsyncBindingView.xaml.cs">
       <DependentUpon>AsyncBindingView.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataBinding\AsyncBindingViewModel.cs" />
+    <Compile Include="DataBinding\IntroToDataBindingView.xaml.cs">
+      <DependentUpon>IntroToDataBindingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataBinding\IntroToDataBindingViewModel.cs" />
+    <Compile Include="Layouts\IntroToWPFLayoutsView.xaml.cs">
+      <DependentUpon>IntroToWPFLayoutsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\IntroToWPFLayoutsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Basics\" />
-    <Folder Include="Controls\" />
-    <Folder Include="Layouts\" />
+    <ProjectReference Include="..\..\..\..\Downloads\ricdhT-Test\FsRichTextBox\FsRichTextBox\FsRichTextBox.csproj">
+      <Project>{091ce5bc-d5c3-4752-a244-053664873941}</Project>
+      <Name>FsRichTextBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WPFCookBook.Shared\WPFCookBook.Shared.csproj">
+      <Project>{7dc1b43c-945b-4ded-b782-63f546cd6801}</Project>
+      <Name>WPFCookBook.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Basics\BasicsSummaryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Basics\CsharpConceptsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Basics\FirstTutorialView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Basics\IntroToWPFView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Basics\XAMLBootCampView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ButtonControlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\IntroToWPFControlsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TextControlsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DataBinding\AsyncBindingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataBinding\IntroToDataBindingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\IntroToWPFLayoutsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

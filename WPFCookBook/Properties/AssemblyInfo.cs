@@ -58,8 +58,12 @@ using System.Windows.Markup;
 /*
 Reusable namespaces references 
 */
+
+[assembly: XmlnsDefinition("http://wpf.cook.org/content", "WPFCookBook.CourseContent")]
+[assembly: XmlnsDefinition("http://wpf.cook.org/content", "WPFCookBook.CourseContent.Basics")]
+
 //[assembly: XmlnsDefinition("http://wpf.cook.org", "WPFCookBook")]
-[assembly: XmlnsDefinition("http://wpf.cook.org/viewmodels", "WPFCookBook.ViewModels")]
+
 //[assembly: XmlnsDefinition("http://wpf.cook.org/viewmodels", "WPFCookBook.ViewModels.basics")]
 //[assembly: XmlnsDefinition("http://wpf.cook.org/viewmodels", "WPFCookBook.ViewModels.layout")]
 //[assembly: XmlnsDefinition("http://wpf.cook.org/viewmodels", "WPFCookBook.ViewModels.controls")]
