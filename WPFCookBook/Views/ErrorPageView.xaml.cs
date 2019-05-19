@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WPFCookBook.Views
 {
     /// <summary>
-    /// Interaction logic for BasicsSection.xaml
+    /// Interaction logic for ErrorPageView.xaml
     /// </summary>
-    public partial class BasicsSection : UserControl
+    public partial class ErrorPageView : UserControl
     {
-        public BasicsSection()
+        public ErrorPageView()
         {
             InitializeComponent();
         }

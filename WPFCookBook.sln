@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FsRichTextBox", "..\..\..\D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCookBook.DB", "WpfCookBook.DB\WpfCookBook.DB.csproj", "{50184CA7-0D51-4D56-ABF0-59437C986930}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFCookBook.CustomControls", "WPFCookBook.CustomControls\WPFCookBook.CustomControls.csproj", "{0F64D522-FE56-4047-A3EF-B8A9206AC597}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{50184CA7-0D51-4D56-ABF0-59437C986930}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50184CA7-0D51-4D56-ABF0-59437C986930}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50184CA7-0D51-4D56-ABF0-59437C986930}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F64D522-FE56-4047-A3EF-B8A9206AC597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F64D522-FE56-4047-A3EF-B8A9206AC597}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F64D522-FE56-4047-A3EF-B8A9206AC597}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F64D522-FE56-4047-A3EF-B8A9206AC597}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

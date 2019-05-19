@@ -9,7 +9,6 @@ using System.Windows.Controls;
 using WpfCookBook.DB.Dao;
 using WPFCookBook.Common;
 using WPFCookBook.DataService.Contracts;
-using WPFCookBook.Dto;
 
 namespace WPFCookBook.forms
 {

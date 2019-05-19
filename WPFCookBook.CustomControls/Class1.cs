@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WPFCookBook.Common;
 
-namespace WPFCookBook.ViewModels
+namespace WPFCookBook.CustomControls
 {
-    public class BasicsViewModel: BindableBase
+    public class Class1
     {
     }
 }

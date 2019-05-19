@@ -99,7 +99,6 @@
     <Compile Include="DataService\CourseModulesService.cs" />
     <Compile Include="DataService\CourseSectionItemsService.cs" />
     <Compile Include="DataService\CourseSectionService.cs" />
-    <Compile Include="Dto\ChapterDto.cs" />
     <Compile Include="forms\CourseChapterForm.xaml.cs">
       <DependentUpon>CourseChapterForm.xaml</DependentUpon>
     </Compile>
@@ -117,18 +116,18 @@
     </Compile>
     <Compile Include="forms\EditModuleViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\BasicsViewModel.cs" />
+    <Compile Include="ViewModels\ErrorPageVieModel.cs" />
     <Compile Include="ViewModels\basics\IntroToXamlViewModel.cs" />
     <Compile Include="ViewModels\basics\XamlFundamentalsViewModel.cs" />
     <Compile Include="ViewModels\IndexViewModel.cs" />
-    <Compile Include="Views\BasicsSection.xaml.cs">
-      <DependentUpon>BasicsSection.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\basics\IntroToXaml.xaml.cs">
       <DependentUpon>IntroToXaml.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\basics\XamlFundamentals.xaml.cs">
       <DependentUpon>XamlFundamentals.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ErrorPageView.xaml.cs">
+      <DependentUpon>ErrorPageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\IndexView.xaml.cs">
       <DependentUpon>IndexView.xaml</DependentUpon>
@@ -161,15 +160,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\BasicsSection.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\basics\IntroToXaml.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\basics\XamlFundamentals.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ErrorPageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -208,7 +207,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BusinessLogic\" />
+    <Folder Include="CourseContent\" />
     <Folder Include="Views\controls\" />
     <Folder Include="Views\layout\" />
   </ItemGroup>

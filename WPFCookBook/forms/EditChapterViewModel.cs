@@ -8,7 +8,6 @@ using System.Windows;
 using WpfCookBook.DB.Dao;
 using WPFCookBook.Common;
 using WPFCookBook.DataService.Contracts;
-using WPFCookBook.Dto;
 
 namespace WPFCookBook.forms
 {
@@ -77,15 +76,6 @@ namespace WPFCookBook.forms
             if (result==true)
             {
                 MessageBox.Show($"Successfully updated...: {updatedChapter.Title}");
-
-                // Notify parent view about change
-                //var _selectedMod = _modulesList.Where(mod => mod.ID == _selectedChapter?.ParentModule.ID).SingleOrDefault();
-
-                //ChapterDao toUpdate = _selectedMod.ModuleSections.Where(o => o.ID == _selectedChapter.ID).SingleOrDefault();
-                //if (toUpdate == null) return;
-
-                //toUpdate.Title = updatedChapter.Title;
-                //toUpdate.ParentModule.Name = updatedChapter.ParentModule.Name;
                 _modulesList = new ObservableCollection<ModuleDao>(await _modService.GetAllModulesAsync());
                 MasterRefresh(_modulesList);
             }

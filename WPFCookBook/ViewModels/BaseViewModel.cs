@@ -25,7 +25,7 @@ namespace WPFCookBook.ViewModels
         private IndexViewModel IndexPage;
         private IntroToXamlViewModel basicsIntro;
         private XamlFundamentalsViewModel basicsFund;
-        private BasicsViewModel basicsModule;
+        private ErrorPageVieModel basicsModule;
         private CourseChapterFormViewModel chapterForm;
         private EditChapterViewModel editChapter;
         private CourseModuleListViewModel moduleForm;
@@ -49,7 +49,7 @@ namespace WPFCookBook.ViewModels
             IndexPage = container.Resolve<IndexViewModel>();
             basicsIntro = container.Resolve<IntroToXamlViewModel>();
             basicsFund = container.Resolve<XamlFundamentalsViewModel>();
-            basicsModule = container.Resolve<BasicsViewModel>();
+            basicsModule = container.Resolve<ErrorPageVieModel>();
             chapterForm = container.Resolve<CourseChapterFormViewModel>();
             editChapter = container.Resolve<EditChapterViewModel>();
             moduleForm = container.Resolve<CourseModuleListViewModel>();

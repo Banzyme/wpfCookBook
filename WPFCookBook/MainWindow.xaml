@@ -28,8 +28,8 @@
             <views:IndexView />
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type ViewModels:BasicsViewModel}">
-            <views:BasicsSection />
+        <DataTemplate DataType="{x:Type ViewModels:ErrorPageVieModel}">
+            <views:ErrorPageView />
         </DataTemplate>
 
         <DataTemplate DataType="{x:Type ViewModelsBasic:IntroToXamlViewModel}">
