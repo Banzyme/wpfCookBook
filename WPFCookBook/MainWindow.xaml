@@ -13,10 +13,6 @@
         
         xmlns:content="http://wpf.cook.org/content"
         
-
-        
-       
-        
         Title="WPF Handbook For Humans"
         WindowStartupLocation="CenterScreen"
         Height="Auto"
@@ -58,7 +54,7 @@
         <!--/Form views-->
         
         <!--Course content views-->
-        <DataTemplate x:Key="IntroToWPFView" DataType="{x:Type content:IntroToWPFViewModel}">
+        <DataTemplate DataType="{x:Type content:IntroToWPFViewModel}">
             <content:IntroToWPFView />
         </DataTemplate>
         <!--/Course content views-->

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -8,6 +9,8 @@ using Unity;
 using WpfCookBook.DB.Dao;
 using WpfCookBook.DB.Repository;
 using WPFCookBook.Common;
+using WPFCookBook.Shared;
+using WPFCookBook.CourseContent.Basics;
 using WPFCookBook.DataService;
 using WPFCookBook.DataService.Contracts;
 using WPFCookBook.forms;
@@ -30,28 +33,41 @@ namespace WPFCookBook.ViewModels
         private ErrorPageVieModel basicsModule;
         private GridLayoutChapterViewModel gridLayoutChapter;
 
-
+        #region form views
         private CourseChapterFormViewModel chapterForm;
         private EditChapterViewModel editChapter;
         private CourseModuleListViewModel moduleForm;
         private EditModuleViewModel editModule;
         #endregion
 
+        #region Course ontent views
+        private IntroToWPFViewModel _introToWPFViewModel;
+        #endregion
+
+        #endregion
+
         #region Constructor
         public BaseViewModel()
         {
             IUnityContainer container = new UnityContainer();
+            
             container.RegisterType<IModuleRepository, ModuleRepository>();
             container.RegisterType<IChapterRepository, ChapterRepository>();
             container.RegisterType<ITopicRepository, TopicRespository>();
 
             container.RegisterType<ICourseModuleService, CourseModulesService>();
+            _modService = container.Resolve<CourseModulesService>();
             container.RegisterType<ICourseSectionService, CourseSectionService>();
             container.RegisterType<ICourseSectionItemService, CourseSectionItemsService>();
 
-            
-            
             IndexPage = container.Resolve<IndexViewModel>();
+
+            #region Course content viewmodels
+            _introToWPFViewModel = container.Resolve<IntroToWPFViewModel>();
+            #endregion
+
+
+            
             basicsIntro = container.Resolve<IntroToXamlViewModel>();
             basicsFund = container.Resolve<XamlFundamentalsViewModel>();
             basicsModule = container.Resolve<ErrorPageVieModel>();
@@ -62,7 +78,7 @@ namespace WPFCookBook.ViewModels
             moduleForm = container.Resolve<CourseModuleListViewModel>();
             editModule = container.Resolve<EditModuleViewModel>();
 
-            _modService = container.Resolve<CourseModulesService>();
+           
 
 
             // Initial data load
@@ -127,6 +143,10 @@ namespace WPFCookBook.ViewModels
                 {
                     case "quick_intro":
                         CurrentViewModel = basicsIntro;
+                        break;
+
+                    case "1.1._introduction_to_wpf":
+                        CurrentViewModel = _introToWPFViewModel;
                         break;
 
                     case "xaml_fundamentals":

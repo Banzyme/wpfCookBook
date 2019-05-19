@@ -99,6 +99,14 @@
       <Project>{091ce5bc-d5c3-4752-a244-053664873941}</Project>
       <Name>FsRichTextBox</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WPFCookBook.CustomControls\WPFCookBook.CustomControls.csproj">
+      <Project>{0f64d522-fe56-4047-a3ef-b8a9206ac597}</Project>
+      <Name>WPFCookBook.CustomControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WpfCookBook.DB\WpfCookBook.DB.csproj">
+      <Project>{50184CA7-0D51-4D56-ABF0-59437C986930}</Project>
+      <Name>WpfCookBook.DB</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WPFCookBook.Shared\WPFCookBook.Shared.csproj">
       <Project>{7dc1b43c-945b-4ded-b782-63f546cd6801}</Project>
       <Name>WPFCookBook.Shared</Name>

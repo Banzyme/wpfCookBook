@@ -1,12 +1,26 @@
 ﻿<UserControl x:Class="WPFCookBook.CourseContent.Basics.IntroToWPFView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:WPFCookBook.CourseContent.Basics"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:customControls="clr-namespace:WPFCookBook.CustomControls.DocumentEditorControl;assembly=WPFCookBook.CustomControls"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
     <Grid>
-        <TextBox Text="IntroToWPFViewModel - WPF is quite amazing folks" />
+        <Grid HorizontalAlignment="Center"
+              VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition  Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBox Grid.Row="0"
+                     Text="IntroToWPFViewModel - WPF is quite amazing folks" />
+
+            <!--This custom control shares the same context as the current UserControl!!!-->
+            <customControls:DocumentEditorControl  Grid.Row="1" x:Name="topicContentPage" />
+        </Grid>
     </Grid>
 </UserControl>

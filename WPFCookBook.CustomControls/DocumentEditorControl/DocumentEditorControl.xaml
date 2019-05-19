@@ -1,0 +1,129 @@
+﻿<UserControl x:Class="WPFCookBook.CustomControls.DocumentEditorControl.DocumentEditorControl"
+             x:Name="TopicContentControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:WPFCookBook.CustomControls.DocumentEditorControl"
+             xmlns:shared="clr-namespace:WPFCookBook.Shared.Converters;assembly=WPFCookBook.Shared"
+             xmlns:fsc="clr-namespace:FsWpfControls.FsRichTextBox;assembly=FsRichTextBox"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <shared:DocumentToStringConverter x:Key="flowDocumentConverter" />
+
+        <DataTemplate x:Key="TabsBasicHeaderTemplate">
+            <Grid>
+                <Label FontWeight="Bold"
+                       Content="{Binding Title}" />
+            </Grid>
+        </DataTemplate>
+
+    </UserControl.Resources>
+
+
+    <Grid x:Name="fundamentalsGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TabControl  Grid.Row="1"
+                     x:Name="TopicsTabCtrl"
+                     ItemsSource="{Binding TopicsList}"
+                     ItemTemplate="{StaticResource TabsBasicHeaderTemplate}">
+
+            <TabControl.ContentTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                          MaxHeight="800">
+                                <fsc:FsRichTextBox x:Name="EditBox"
+                                                   Document="{Binding Path=Content, Converter={StaticResource flowDocumentConverter}, Mode=TwoWay}"
+                                                   MinHeight="400"
+                                                   Grid.Row="0"
+                                                   Margin="10,10,10,5"
+                                                   ToolbarBackground="WhiteSmoke"
+           
+                                                   ToolbarBorderThickness="1,1,1,0"
+                                                   CodeControlsVisibility="Collapsed" />
+                            </ScrollViewer>
+                        </StackPanel>
+
+                        <WrapPanel Orientation="Horizontal"
+                                   Grid.Row="1">
+                            <Button Margin="5"
+                                    Command="{Binding DataContext.OnSaveChangesCommand, ElementName=fundamentalsGrid}"
+                                    CommandParameter="{Binding ElementName=EditBox}"
+                                    Content="Save changes">
+
+
+
+                            </Button>
+                            <Button Margin="5"
+                                    Content="Discard" />
+                            <Button Command="{Binding DataContext.SaveTopicCommand, ElementName=fundamentalsGrid}"
+                                    HorizontalAlignment="Right"
+                                    CommandParameter="{Binding ElementName=AddTopicForm}"
+                                    Content="Add new page" />
+                        </WrapPanel>
+                    </Grid>
+                </DataTemplate>
+            </TabControl.ContentTemplate>
+
+        </TabControl>
+
+        <Grid x:Name="AddTopicForm"
+              HorizontalAlignment="Center"
+              Visibility="Visible"
+              DataContext="{Binding ElementName=fundamentalsGrid, Path=DataContext.NewTopic}"
+              Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <fsc:FsRichTextBox x:Name="EditBox"
+                               MinHeight="400"
+                               Grid.Row="0"
+                               Margin="10,10,10,5"
+                               ToolbarBackground="WhiteSmoke"
+                               ToolbarBorderThickness="1,1,1,0"
+                               CodeControlsVisibility="Collapsed" />
+            <TextBox Grid.Row="1" Text="{Binding Title}" />
+
+            <!--<StackPanel Grid.Row="0"
+                        Margin="10"
+                        Orientation="Horizontal">
+                <Label Content="Title: "></Label>
+                <TextBox Text="{Binding Title, Mode=TwoWay}"
+                         Width="100" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="1"
+                        Margin="10"
+                        Orientation="Horizontal">
+                <Label Content="Subtitle: "></Label>
+                <TextBox Text="{Binding Subtitle, Mode=TwoWay}"
+                         Width="100" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="2"
+                        Margin="0,25"
+                        Orientation="Horizontal">
+                <Button Content="Add topic"
+                        Command="{Binding DataContext.AddTabItemCommand, ElementName=fundamentalsGrid}"
+                        CommandParameter="{Binding}" />
+            </StackPanel>-->
+        </Grid>
+    </Grid>
+</UserControl>
