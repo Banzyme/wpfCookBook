@@ -7,11 +7,13 @@
         mc:Ignorable="d"
         xmlns:entities="clr-namespace:WpfCookBook.DB.Dao;assembly=WpfCookBook.DB"
         xmlns:ViewModels="clr-namespace:WPFCookBook.ViewModels"
-        xmlns:ViewModelsBasic="clr-namespace:WPFCookBook.ViewModels.basics"
         xmlns:views="clr-namespace:WPFCookBook.Views"
+        xmlns:local="http://wpf.cook.org"
+        
+
         xmlns:forms="clr-namespace:WPFCookBook.forms"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-        xmlns:viewsBasic="clr-namespace:WPFCookBook.Views.basics"
+        
         Title="WPF Handbook For Humans"
         WindowStartupLocation="CenterScreen"
         Height="Auto"
@@ -32,14 +34,6 @@
             <views:ErrorPageView />
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type ViewModelsBasic:IntroToXamlViewModel}">
-            <viewsBasic:IntroToXaml />
-        </DataTemplate>
-
-        <DataTemplate DataType="{x:Type ViewModelsBasic:XamlFundamentalsViewModel}">
-            <viewsBasic:XamlFundamentals />
-        </DataTemplate>
-
         <DataTemplate DataType="{x:Type forms:CourseChapterFormViewModel}">
             <forms:CourseChapterForm />
         </DataTemplate>
@@ -55,7 +49,6 @@
         <DataTemplate DataType="{x:Type forms:EditModuleViewModel}">
             <forms:EditModuleView />
         </DataTemplate>
-
 
     </Window.Resources>
 

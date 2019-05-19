@@ -116,21 +116,33 @@
     </Compile>
     <Compile Include="forms\EditModuleViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\controls\ButtonsChapterViewModel.cs" />
+    <Compile Include="ViewModels\controls\TextControlsChaoterView.cs" />
     <Compile Include="ViewModels\ErrorPageVieModel.cs" />
     <Compile Include="ViewModels\basics\IntroToXamlViewModel.cs" />
     <Compile Include="ViewModels\basics\XamlFundamentalsViewModel.cs" />
     <Compile Include="ViewModels\IndexViewModel.cs" />
+    <Compile Include="ViewModels\layout\GridLayoutChapterViewModel.cs" />
     <Compile Include="Views\basics\IntroToXaml.xaml.cs">
       <DependentUpon>IntroToXaml.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\basics\XamlFundamentals.xaml.cs">
       <DependentUpon>XamlFundamentals.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\controls\ButtonsChapterView.xaml.cs">
+      <DependentUpon>ButtonsChapterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\controls\TextControlsChapterView.xaml.cs">
+      <DependentUpon>TextControlsChapterView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ErrorPageView.xaml.cs">
       <DependentUpon>ErrorPageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\IndexView.xaml.cs">
       <DependentUpon>IndexView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\layout\GridLayoutChapterViewModel.xaml.cs">
+      <DependentUpon>GridLayoutChapterViewModel.xaml</DependentUpon>
     </Compile>
     <Page Include="forms\CourseChapterForm.xaml">
       <SubType>Designer</SubType>
@@ -168,11 +180,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\controls\ButtonsChapterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\controls\TextControlsChapterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ErrorPageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\IndexView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\layout\GridLayoutChapterViewModel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -206,11 +230,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CourseContent\" />
-    <Folder Include="Views\controls\" />
-    <Folder Include="Views\layout\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Assets\icon\notebook.ico" />
   </ItemGroup>

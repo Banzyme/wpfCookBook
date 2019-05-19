@@ -11,6 +11,7 @@ using WPFCookBook.DataService;
 using WPFCookBook.DataService.Contracts;
 using WPFCookBook.forms;
 using WPFCookBook.ViewModels.basics;
+using WPFCookBook.ViewModels.layout;
 
 namespace WPFCookBook.ViewModels
 {
@@ -26,6 +27,9 @@ namespace WPFCookBook.ViewModels
         private IntroToXamlViewModel basicsIntro;
         private XamlFundamentalsViewModel basicsFund;
         private ErrorPageVieModel basicsModule;
+        private GridLayoutChapterViewModel gridLayoutChapter;
+
+
         private CourseChapterFormViewModel chapterForm;
         private EditChapterViewModel editChapter;
         private CourseModuleListViewModel moduleForm;
@@ -50,6 +54,8 @@ namespace WPFCookBook.ViewModels
             basicsIntro = container.Resolve<IntroToXamlViewModel>();
             basicsFund = container.Resolve<XamlFundamentalsViewModel>();
             basicsModule = container.Resolve<ErrorPageVieModel>();
+            gridLayoutChapter = container.Resolve<GridLayoutChapterViewModel>();
+
             chapterForm = container.Resolve<CourseChapterFormViewModel>();
             editChapter = container.Resolve<EditChapterViewModel>();
             moduleForm = container.Resolve<CourseModuleListViewModel>();
@@ -106,7 +112,6 @@ namespace WPFCookBook.ViewModels
         #endregion
 
 
-
         #region Private methods
         private void OnNav(string treeItem)
         {
@@ -119,10 +124,12 @@ namespace WPFCookBook.ViewModels
                         CurrentViewModel = basicsIntro;
                         break;
 
-
-
                     case "xaml_fundamentals":
                         CurrentViewModel = basicsFund;
+                        break;
+
+                    case "grid_panel":
+                        CurrentViewModel = gridLayoutChapter;
                         break;
 
                     case "add_chapter_form":
