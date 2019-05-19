@@ -9,7 +9,6 @@ namespace WpfCookBook.DB.Repository
 {
     public interface IModuleRepository: IRepositoryBase<ModuleDao>
     {
-        Task<List<ModuleDao>> GetAllAsync();
     }
 
     public class ModuleRepository : RepositoryBase<ModuleDao>, IModuleRepository
