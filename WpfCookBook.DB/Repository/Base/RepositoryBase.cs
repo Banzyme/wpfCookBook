@@ -30,7 +30,7 @@ namespace WpfCookBook.DB.Repository.Base
 
         public async Task<T> FindItemByCondition(System.Linq.Expressions.Expression<Func<T, bool>> expression)
         {
-            return _db.Set<T>().Where(expression).First();
+            return await _db.Set<T>().Where(expression).FirstAsync();
         }
 
         public IEnumerable<T> FindItemsByCondition(System.Linq.Expressions.Expression<Func<T, bool>> expression)
