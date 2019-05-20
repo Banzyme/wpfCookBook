@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using WpfCookBook.DB.Dao;
 using WPFCookBook.Common;
-using WPFCookBook.DataService.Contracts;
+using WPFCookBook.Services.DataService.Contracts;
 using WPFCookBook.Shared;
 
 namespace WPFCookBook.forms

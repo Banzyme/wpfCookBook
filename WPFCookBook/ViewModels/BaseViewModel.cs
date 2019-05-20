@@ -11,8 +11,9 @@ using WpfCookBook.DB.Repository;
 using WPFCookBook.Common;
 using WPFCookBook.Shared;
 using WPFCookBook.CourseContent.Basics;
-using WPFCookBook.DataService;
-using WPFCookBook.DataService.Contracts;
+using WPFCookBook.Services.DataService;
+using WPFCookBook.Services.DataService.Contracts;
+
 using WPFCookBook.forms;
 using WPFCookBook.ViewModels.basics;
 using WPFCookBook.ViewModels.layout;

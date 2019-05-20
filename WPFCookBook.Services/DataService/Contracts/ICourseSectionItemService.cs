@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using WpfCookBook.DB.Dao;
 
-namespace WPFCookBook.DataService.Contracts
+namespace WPFCookBook.Services.DataService.Contracts
 {
     public interface ICourseSectionItemService
     {

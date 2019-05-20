@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using WpfCookBook.DB.Dao;
 using WpfCookBook.DB.Repository;
-using WPFCookBook.DataService.Contracts;
+using WPFCookBook.Services.DataService.Contracts;
 
-namespace WPFCookBook.DataService
+namespace WPFCookBook.Services.DataService
 {
     public class CourseSectionItemsService : ICourseSectionItemService
     {

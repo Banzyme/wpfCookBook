@@ -92,12 +92,6 @@
     <Compile Include="Common\SaveFlowDocCommand.cs" />
     <Compile Include="Common\WpfCookBookUtils.cs" />
     <Compile Include="Common\XamlToFlowDocMapper.cs" />
-    <Compile Include="DataService\Contracts\ICourseModuleService.cs" />
-    <Compile Include="DataService\Contracts\ICourseSectionItemService.cs" />
-    <Compile Include="DataService\Contracts\ICourseSectionService.cs" />
-    <Compile Include="DataService\CourseModulesService.cs" />
-    <Compile Include="DataService\CourseSectionItemsService.cs" />
-    <Compile Include="DataService\CourseSectionService.cs" />
     <Compile Include="forms\CourseChapterForm.xaml.cs">
       <DependentUpon>CourseChapterForm.xaml</DependentUpon>
     </Compile>
@@ -249,6 +243,10 @@
     <ProjectReference Include="..\WpfCookBook.DB\WpfCookBook.DB.csproj">
       <Project>{50184ca7-0d51-4d56-abf0-59437c986930}</Project>
       <Name>WpfCookBook.DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WPFCookBook.Services\WPFCookBook.Services.csproj">
+      <Project>{4cd72f72-9768-4a68-977e-a733d344e92e}</Project>
+      <Name>WPFCookBook.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\WPFCookBook.Shared\WPFCookBook.Shared.csproj">
       <Project>{7dc1b43c-945b-4ded-b782-63f546cd6801}</Project>

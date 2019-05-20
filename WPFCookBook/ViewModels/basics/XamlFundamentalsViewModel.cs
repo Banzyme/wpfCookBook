@@ -11,7 +11,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using WpfCookBook.DB.Dao;
 using WPFCookBook.Common;
-using WPFCookBook.DataService.Contracts;
+using WPFCookBook.Services.DataService.Contracts;
 using WPFCookBook.Shared;
 
 namespace WPFCookBook.ViewModels.basics

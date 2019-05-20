@@ -9,15 +9,12 @@
              d:DesignHeight="450"
              d:DesignWidth="800">
     <Grid>
-        <Grid HorizontalAlignment="Center"
+        <Grid 
               VerticalAlignment="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition  Height="*"/>
             </Grid.RowDefinitions>
-
-            <TextBox Grid.Row="0"
-                     Text="IntroToWPFViewModel - WPF is quite amazing folks" />
 
             <!--This custom control shares the same context as the current UserControl!!!-->
             <customControls:DocumentEditorControl  Grid.Row="1" x:Name="topicContentPage" />

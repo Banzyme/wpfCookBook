@@ -70,7 +70,7 @@
                             </Button>
                             <Button Margin="5"
                                     Content="Discard" />
-                            <Button Command="{Binding DataContext.SaveTopicCommand, ElementName=fundamentalsGrid}"
+                            <Button Command="{Binding DataContext.ShowTopicFormCommand, ElementName=fundamentalsGrid}"
                                     HorizontalAlignment="Right"
                                     CommandParameter="{Binding ElementName=AddTopicForm}"
                                     Content="Add new page" />
@@ -83,7 +83,7 @@
 
         <Grid x:Name="AddTopicForm"
               HorizontalAlignment="Center"
-              Visibility="Visible"
+              Visibility="Collapsed"
               DataContext="{Binding ElementName=fundamentalsGrid, Path=DataContext.NewTopic}"
               Grid.Row="0">
             <Grid.RowDefinitions>
@@ -92,16 +92,7 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
 
-            <fsc:FsRichTextBox x:Name="EditBox"
-                               MinHeight="400"
-                               Grid.Row="0"
-                               Margin="10,10,10,5"
-                               ToolbarBackground="WhiteSmoke"
-                               ToolbarBorderThickness="1,1,1,0"
-                               CodeControlsVisibility="Collapsed" />
-            <TextBox Grid.Row="1" Text="{Binding Title}" />
-
-            <!--<StackPanel Grid.Row="0"
+            <StackPanel Grid.Row="0"
                         Margin="10"
                         Orientation="Horizontal">
                 <Label Content="Title: "></Label>
@@ -121,9 +112,9 @@
                         Margin="0,25"
                         Orientation="Horizontal">
                 <Button Content="Add topic"
-                        Command="{Binding DataContext.AddTabItemCommand, ElementName=fundamentalsGrid}"
+                        Command="{Binding DataContext.SaveNewTopicCommand , ElementName=fundamentalsGrid}"
                         CommandParameter="{Binding}" />
-            </StackPanel>-->
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

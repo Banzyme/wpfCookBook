@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Markup;
@@ -25,7 +26,17 @@ namespace WPFCookBook.Shared.Converters
             FlowDocument flowDoc = new FlowDocument();
             if (value == null) return flowDoc;
 
-            flowDoc = (FlowDocument)XamlReader.Parse((string)value);
+            try
+            {
+                string stringValue = (string)value;
+                flowDoc = (FlowDocument)XamlReader.Parse(stringValue);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Failed to parse flow document: {e.Message} \n\n {e.InnerException}");
+
+            }
+
 
             return flowDoc;
         }

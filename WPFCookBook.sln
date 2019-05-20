@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28809.33
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFCookBook", "WPFCookBook\WPFCookBook.csproj", "{8A95DBEF-A0DE-4103-BB80-CCF0BA923D16}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFCookBook.Desktop", "WPFCookBook\WPFCookBook.Desktop.csproj", "{8A95DBEF-A0DE-4103-BB80-CCF0BA923D16}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FsRichTextBox", "..\..\..\Downloads\ricdhT-Test\FsRichTextBox\FsRichTextBox\FsRichTextBox.csproj", "{091CE5BC-D5C3-4752-A244-053664873941}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFCookBook.CourseContent", "WPFCookBook.CourseContent\WPFCookBook.CourseContent.csproj", "{99F1C1AC-6FC5-4EEC-93ED-9BE144DC1064}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFCookBook.Shared", "WPFCookBook.Shared\WPFCookBook.Shared.csproj", "{7DC1B43C-945B-4DED-B782-63F546CD6801}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFCookBook.Services", "WPFCookBook.Services\WPFCookBook.Services.csproj", "{4CD72F72-9768-4A68-977E-A733D344E92E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{7DC1B43C-945B-4DED-B782-63F546CD6801}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DC1B43C-945B-4DED-B782-63F546CD6801}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DC1B43C-945B-4DED-B782-63F546CD6801}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CD72F72-9768-4A68-977E-A733D344E92E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CD72F72-9768-4A68-977E-A733D344E92E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CD72F72-9768-4A68-977E-A733D344E92E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CD72F72-9768-4A68-977E-A733D344E92E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

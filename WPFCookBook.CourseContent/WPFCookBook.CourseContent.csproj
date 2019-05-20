@@ -107,6 +107,10 @@
       <Project>{50184CA7-0D51-4D56-ABF0-59437C986930}</Project>
       <Name>WpfCookBook.DB</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WPFCookBook.Services\WPFCookBook.Services.csproj">
+      <Project>{4CD72F72-9768-4A68-977E-A733D344E92E}</Project>
+      <Name>WPFCookBook.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WPFCookBook.Shared\WPFCookBook.Shared.csproj">
       <Project>{7dc1b43c-945b-4ded-b782-63f546cd6801}</Project>
       <Name>WPFCookBook.Shared</Name>
