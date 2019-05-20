@@ -223,7 +223,11 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Assets\diagrams\sampleWpfApp.svg" />
+    <Resource Include="Assets\diagrams\wpf_mvvm_sample.png" />
+    <Resource Include="Assets\diagrams\wpf_sample_app.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\icon\notebook.ico" />
   </ItemGroup>
