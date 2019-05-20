@@ -17,6 +17,7 @@ using WPFCookBook.Services.DataService.Contracts;
 using WPFCookBook.forms;
 using WPFCookBook.ViewModels.basics;
 using WPFCookBook.ViewModels.layout;
+using WPFCookBook.CourseContent;
 
 namespace WPFCookBook.ViewModels
 {
@@ -33,6 +34,7 @@ namespace WPFCookBook.ViewModels
         private XamlFundamentalsViewModel basicsFund;
         private ErrorPageVieModel basicsModule;
         private GridLayoutChapterViewModel gridLayoutChapter;
+        private ContentViewModelBase contentBase;
 
         #region form views
         private CourseChapterFormViewModel chapterForm;
@@ -64,7 +66,9 @@ namespace WPFCookBook.ViewModels
             IndexPage = container.Resolve<IndexViewModel>();
 
             #region Course content viewmodels
+            //contentBase = container.Resolve<ContentViewModelBase>();
             _introToWPFViewModel = container.Resolve<IntroToWPFViewModel>();
+
             #endregion
 
 

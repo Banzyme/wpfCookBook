@@ -33,6 +33,7 @@
         <TabControl  Grid.Row="1"
                      x:Name="TopicsTabCtrl"
                      ItemsSource="{Binding TopicsList}"
+                     SelectedIndex="0"
                      ItemTemplate="{StaticResource TabsBasicHeaderTemplate}">
 
             <TabControl.ContentTemplate>
@@ -69,7 +70,9 @@
 
                             </Button>
                             <Button Margin="5"
-                                    Content="Discard" />
+                                    Background="Red"
+                                    BorderBrush="Red"
+                                    Content="Delete" />
                             <Button Command="{Binding DataContext.ShowTopicFormCommand, ElementName=fundamentalsGrid}"
                                     HorizontalAlignment="Right"
                                     CommandParameter="{Binding ElementName=AddTopicForm}"
