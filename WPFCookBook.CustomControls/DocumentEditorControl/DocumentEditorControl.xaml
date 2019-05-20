@@ -72,6 +72,8 @@
                             <Button Margin="5"
                                     Background="Red"
                                     BorderBrush="Red"
+                                    CommandParameter="{Binding ElementName=EditBox, Path=DataContext.ID}"
+                                    Command="{Binding  DataContext.DeleteTopicCommand, ElementName=fundamentalsGrid}"
                                     Content="Delete" />
                             <Button Command="{Binding DataContext.ShowTopicFormCommand, ElementName=fundamentalsGrid}"
                                     HorizontalAlignment="Right"

@@ -12,6 +12,7 @@ using WPFCookBook.Services.DataService.Contracts;
 using WPFCookBook.Shared;
 using WPFCookBook.Shared.Commands;
 using WPFCookBook.Shared.Constants;
+using WPFCookBook.Shared.Utilities;
 
 namespace WPFCookBook.CourseContent
 {
@@ -38,6 +39,7 @@ namespace WPFCookBook.CourseContent
             OnSaveChangesCommand = new RelayCommandAsync<FsRichTextBox>(OnSaveChanges);
             SaveNewTopicCommand = new RelayCommandAsync<object>(OnAddTabItem);
             ShowTopicFormCommand = new RelayCommand(ShowAddTopicForm);
+            DeleteTopicCommand = new RelayCommandAsync<object>(OnDeleteTopic, o => true);
         }
         #endregion
 
@@ -46,6 +48,8 @@ namespace WPFCookBook.CourseContent
         public RelayCommandAsync<FsRichTextBox> OnSaveChangesCommand { get; protected set; }
         public RelayCommandAsync<object> SaveNewTopicCommand { get; protected set; }
         public RelayCommand ShowTopicFormCommand { get; protected set; }
+        public RelayCommandAsync<object> DeleteTopicCommand { get; protected set; }
+        
 
         public TopicDao NewTopic
         {
@@ -141,6 +145,23 @@ namespace WPFCookBook.CourseContent
         {
             _topicList.Add(NewEntry);
             OnPropertyChanged("TopicsList");
+        }
+
+        protected async Task OnDeleteTopic(object ID)
+        {
+            long topicId = (long)ID;
+            var res = MessageBox.Show("Are you sure you want to delete this topic?", "Confirm delete", MessageBoxButton.YesNo);
+
+            if (res == MessageBoxResult.Yes)
+            {
+                bool result = await _topicService.DeleteSectionItem(topicId);
+                if (result == true)
+                {
+                    CollectionHelpers.RemoveEntryFromCollection(_topicList, (item) => item.ID == topicId);
+                }
+            }
+
+
         }
         #endregion
     }

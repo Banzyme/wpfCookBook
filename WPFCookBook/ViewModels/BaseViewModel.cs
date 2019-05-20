@@ -34,7 +34,6 @@ namespace WPFCookBook.ViewModels
         private XamlFundamentalsViewModel basicsFund;
         private ErrorPageVieModel basicsModule;
         private GridLayoutChapterViewModel gridLayoutChapter;
-        private ContentViewModelBase contentBase;
 
         #region form views
         private CourseChapterFormViewModel chapterForm;
