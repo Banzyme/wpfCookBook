@@ -15,8 +15,6 @@ using WPFCookBook.Services.DataService;
 using WPFCookBook.Services.DataService.Contracts;
 
 using WPFCookBook.forms;
-using WPFCookBook.ViewModels.basics;
-using WPFCookBook.ViewModels.layout;
 using WPFCookBook.CourseContent.DataBinding;
 using WPFCookBook.CourseContent.Layouts;
 using WPFCookBook.CourseContent.Controls;

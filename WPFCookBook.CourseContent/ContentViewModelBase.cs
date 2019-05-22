@@ -78,6 +78,11 @@ namespace WPFCookBook.CourseContent
         {
             // TODO: Hard coded strings ? REALLY??
             CurrentChapter = _chapterService.GetSectionByName(currentSection);
+            if(CurrentChapter == null)
+            {
+                MessageBox.Show($"The chapter: {currentSection} is not part of the Catalog, please add it and try running again");
+                return;
+            }
             if (CurrentChapter != null & CurrentChapter.SectionTopics.Count == 0)
             {
                 // Add default page and return updated topic

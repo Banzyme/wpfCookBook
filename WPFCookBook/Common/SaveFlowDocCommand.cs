@@ -5,17 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using WPFCookBook.ViewModels.basics;
 
 namespace WPFCookBook.Common
 {
     public class SaveFlowDocCommand  : ICommand
     {
-        private XamlFundamentalsViewModel _viewModel;
-        public SaveFlowDocCommand(XamlFundamentalsViewModel viewModel)
-        {
-            _viewModel = viewModel;
-        }
+        //private XamlFundamentalsViewModel _viewModel;
+        //public SaveFlowDocCommand(XamlFundamentalsViewModel viewModel)
+        //{
+        //    _viewModel = viewModel;
+        //}
 
        
         public event EventHandler CanExecuteChanged
