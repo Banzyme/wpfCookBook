@@ -36,7 +36,13 @@ namespace WPFCookBook.CourseContent.Basics
         {
             // TODO: Hard coded strings ? REALLY??
             CurrentChapter = _chapterService.GetSectionByName("1.1. Introduction to WPF");
-            _topicList = new ObservableCollection<TopicDao>(_topicService.GetAllSectionItems());
+            if (CurrentChapter != null & CurrentChapter.SectionTopics.Count == 0)
+            {
+                // Add default page and return updated topic
+                var result = CreateDefaultPageForChapter(CurrentChapter);
+                if (result == true) CurrentChapter = _chapterService.GetSectionByName("1.1. Introduction to WPF");
+            }
+            _topicList = new ObservableCollection<TopicDao>(CurrentChapter.SectionTopics );
         }
 
         #endregion

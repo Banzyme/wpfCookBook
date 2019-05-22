@@ -74,6 +74,19 @@ namespace WPFCookBook.CourseContent
 
 
         #region protected methods
+        protected virtual bool CreateDefaultPageForChapter(ChapterDao parentChapter)
+        {
+            TopicDao defaultTopic = new TopicDao()
+            {
+                Title = "Introduction",
+                Subtitle = "What you will learn in this section",
+                Content = DefaultStrings.DEFAULT_TOPIC_CONTENT
+            };
+            bool res = _topicService.AddTopicToChapterSql(defaultTopic, parentChapter.ID);
+            return res;
+        }
+
+
         protected async Task<bool> PersistTwoWayPropToDB(long ID, TopicDao topic)
         {
             // Todo: Add loader / progress bar
