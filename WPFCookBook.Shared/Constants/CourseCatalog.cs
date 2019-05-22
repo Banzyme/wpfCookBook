@@ -8,6 +8,18 @@ namespace WPFCookBook.Shared.Constants
 {
     public static class CourseCatalog
     {
+        #region Data Input forms
+        public static readonly string ADD_CHAPTER_FORM = "add_chapter_form";
+        public static readonly string ADD_MODULE_FORM = "add_modules_form";
+        #endregion
+
+        #region Basics
+        public static readonly string INTRO_TO_WPF = "1.1. Introduction to WPF";
+        public static readonly string XAML_BOOTCAMP = "1.2. XAML Bootcamp";
+        public static readonly string CSHARP_CONCEPTS = "1.3. C# Concepts";
+        public static readonly string FIRST_TUTORIAL = "1.4. Your first WPF application";
+        public static readonly string BASICS_SUMMARY = "1.5. Basics Summary";
+        #endregion
 
         #region Data binding
         public static readonly string INTRO_TO_DATA_BINDING = "Introuction to Data Binding";
