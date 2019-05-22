@@ -74,6 +74,20 @@ namespace WPFCookBook.CourseContent
 
 
         #region protected methods
+        protected virtual void LoadInitialChildData(string currentSection)
+        {
+            // TODO: Hard coded strings ? REALLY??
+            CurrentChapter = _chapterService.GetSectionByName(currentSection);
+            if (CurrentChapter != null & CurrentChapter.SectionTopics.Count == 0)
+            {
+                // Add default page and return updated topic
+                var result = CreateDefaultPageForChapter(CurrentChapter);
+                if (result == true) CurrentChapter = _chapterService.GetSectionByName(currentSection);
+            }
+            _topicList = new ObservableCollection<TopicDao>(CurrentChapter.SectionTopics);
+        }
+
+
         protected virtual bool CreateDefaultPageForChapter(ChapterDao parentChapter)
         {
             TopicDao defaultTopic = new TopicDao()

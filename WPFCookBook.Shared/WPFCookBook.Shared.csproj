@@ -46,6 +46,7 @@
     <Compile Include="BindableBase.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Commands\RelayCommandAsync.cs" />
+    <Compile Include="Constants\CourseCatalog.cs" />
     <Compile Include="Constants\DefaultStrings.cs" />
     <Compile Include="Converters\DocumentToStringConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

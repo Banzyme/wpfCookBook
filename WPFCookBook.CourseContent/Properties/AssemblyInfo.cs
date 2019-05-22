@@ -37,5 +37,9 @@ using System.Windows.Markup;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 
-
+[assembly: XmlnsDefinition("http://wpf.cook.org/content", "WPFCookBook.CourseContent")]
+[assembly: XmlnsDefinition("http://wpf.cook.org/content", "WPFCookBook.CourseContent.Layouts")]
 [assembly: XmlnsDefinition("http://wpf.cook.org/content", "WPFCookBook.CourseContent.Basics")]
+[assembly: XmlnsDefinition("http://wpf.cook.org/content", "WPFCookBook.CourseContent.Controls")]
+[assembly: XmlnsDefinition("http://wpf.cook.org/content", "WPFCookBook.CourseContent.DataBinding")]
+[assembly: XmlnsDefinition("http://wpf.cook.org/content", "WPFCookBook.CourseContent.Layouts")]

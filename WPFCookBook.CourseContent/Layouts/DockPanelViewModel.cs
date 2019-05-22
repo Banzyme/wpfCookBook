@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -10,9 +11,9 @@ using WPFCookBook.Shared.Constants;
 
 namespace WPFCookBook.CourseContent.Layouts
 {
-    public class IntroToWPFLayoutsViewModel: ContentViewModelBase
+    public class DockPanelViewModel: ContentViewModelBase
     {
-        public IntroToWPFLayoutsViewModel(ICourseSectionService sectionService, ICourseSectionItemService topics) : base(sectionService, topics)
+        public DockPanelViewModel(ICourseSectionService sectionService, ICourseSectionItemService topics) : base(sectionService, topics)
         {
             LoadInitialData();
         }
@@ -20,15 +21,14 @@ namespace WPFCookBook.CourseContent.Layouts
         private void LoadInitialData()
         {
             // TODO: Hard coded strings ? REALLY??
-            CurrentChapter = _chapterService.GetSectionByName( CourseCatalog.LAYOUTS_OVERVIEW );
+            CurrentChapter = _chapterService.GetSectionByName( CourseCatalog.DOCK_PANEL );
             if (CurrentChapter != null & CurrentChapter.SectionTopics.Count == 0)
             {
                 // Add default page and return updated topic
                 var result = CreateDefaultPageForChapter(CurrentChapter);
-                if (result == true) CurrentChapter = _chapterService.GetSectionByName(CourseCatalog.LAYOUTS_OVERVIEW);
+                if (result == true) CurrentChapter = _chapterService.GetSectionByName( CourseCatalog.DOCK_PANEL);
             }
             _topicList = new ObservableCollection<TopicDao>(CurrentChapter.SectionTopics);
         }
-
     }
 }

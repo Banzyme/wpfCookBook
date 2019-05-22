@@ -116,6 +116,7 @@
     <Compile Include="ViewModels\basics\XamlFundamentalsViewModel.cs" />
     <Compile Include="ViewModels\IndexViewModel.cs" />
     <Compile Include="ViewModels\layout\GridLayoutChapterViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\basics\IntroToXaml.xaml.cs">
       <DependentUpon>IntroToXaml.xaml</DependentUpon>
     </Compile>

@@ -74,6 +74,14 @@
             <content:CsharpConceptsView />
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type content:IntroToDataBindingViewModel}">
+            <content:IntroToDataBindingView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type content:AsyncBindingViewModel}">
+            <content:AsyncBindingView />
+        </DataTemplate>
+
         <!--/Course content views-->
 
     </Window.Resources>

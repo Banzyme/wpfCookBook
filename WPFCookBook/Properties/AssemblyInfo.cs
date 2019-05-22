@@ -61,6 +61,11 @@ Reusable namespaces references
 
 [assembly: XmlnsDefinition("http://wpf.cook.org/content", "WPFCookBook.CourseContent")]
 [assembly: XmlnsDefinition("http://wpf.cook.org/content", "WPFCookBook.CourseContent.Basics")]
+[assembly: XmlnsDefinition("http://wpf.cook.org/content", "WPFCookBook.CourseContent.Controls")]
+[assembly: XmlnsDefinition("http://wpf.cook.org/content", "WPFCookBook.CourseContent.DataBinding")]
+[assembly: XmlnsDefinition("http://wpf.cook.org/content", "WPFCookBook.CourseContent.Layouts")]
+
+
 
 //[assembly: XmlnsDefinition("http://wpf.cook.org", "WPFCookBook")]
 

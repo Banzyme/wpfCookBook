@@ -115,9 +115,11 @@
     <Compile Include="Layouts\DockPanelView.xaml.cs">
       <DependentUpon>DockPanelView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Layouts\DockPanelViewModel.cs" />
     <Compile Include="Layouts\GridPanelView.xaml.cs">
       <DependentUpon>GridPanelView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Layouts\GridPanelViewModel.cs" />
     <Compile Include="Layouts\IntroToWPFLayoutsView.xaml.cs">
       <DependentUpon>IntroToWPFLayoutsView.xaml</DependentUpon>
     </Compile>
@@ -125,9 +127,11 @@
     <Compile Include="Layouts\StackPanelView.xaml.cs">
       <DependentUpon>StackPanelView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Layouts\StackPanelViewModel.cs" />
     <Compile Include="Layouts\WrapPanelView.xaml.cs">
       <DependentUpon>WrapPanelView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Layouts\WrapPanelViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

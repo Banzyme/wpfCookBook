@@ -17,17 +17,19 @@ using WPFCookBook.Services.DataService.Contracts;
 using WPFCookBook.forms;
 using WPFCookBook.ViewModels.basics;
 using WPFCookBook.ViewModels.layout;
-using WPFCookBook.CourseContent;
+using WPFCookBook.CourseContent.DataBinding;
+using WPFCookBook.Shared.Constants;
 
 namespace WPFCookBook.ViewModels
 {
 
-    public class BaseViewModel : BindableBase
+    public partial  class BaseViewModel : BindableBase
     {
         #region Private fields
         private BindableBase _CurrentViewModel;
         public ObservableCollection<ModuleDao> _modulesList;
         private ICourseModuleService _modService;
+        private IDictionary<string, BindableBase> WPFCookBookRouteMaps = new Dictionary<string, BindableBase>();
 
         private IndexViewModel IndexPage;
         private IntroToXamlViewModel basicsIntro;
@@ -48,6 +50,9 @@ namespace WPFCookBook.ViewModels
         private XAMLBootCampViewModel _xamlBootViewModel;
         private CsharpConceptsViewModel _csharpConceptsViewModel;
         private BasicsSummaryViewModel _basicsSummaryViewModel;
+
+        protected AsyncBindingViewModel _asyncBindingViewModel;
+        protected IntroToDataBindingViewModel _introToDataBindingViewModel;
         #endregion
 
         #endregion
@@ -74,6 +79,9 @@ namespace WPFCookBook.ViewModels
             _xamlBootViewModel = container.Resolve<XAMLBootCampViewModel>();
             _csharpConceptsViewModel = container.Resolve<CsharpConceptsViewModel>();
             _basicsSummaryViewModel = container.Resolve<BasicsSummaryViewModel>();
+
+            _introToDataBindingViewModel = container.Resolve<IntroToDataBindingViewModel>();
+            _asyncBindingViewModel = container.Resolve<AsyncBindingViewModel>();
             #endregion
 
 
@@ -91,8 +99,9 @@ namespace WPFCookBook.ViewModels
            
 
 
-            // Initial data load
+            // Initial data load and Load Route Maps
             LoadViewData();
+            InitialiseRoutes();
             
 
             //Setup default window content
@@ -146,66 +155,68 @@ namespace WPFCookBook.ViewModels
         #region Private methods
         private void OnNav(string treeItem)
         {
+            var nextView = WPFCookBookRouteMaps[FormatRouteName(treeItem) ];
 
-            try
-            {
-                string searchString = treeItem.Replace(' ', '_').ToLower();
-                switch ( searchString )
-                {
-                    case "quick_intro":
-                        CurrentViewModel = basicsIntro;
-                        break;
+            CurrentViewModel = nextView;
 
-                    case "1.1._introduction_to_wpf":
-                        CurrentViewModel = _introToWPFViewModel;
-                        break;
+            //try
+            //{
+            //    string searchString = treeItem.Replace(' ', '_').ToLower();
+            //    switch ( searchString )
+            //    {
+            //        case "quick_intro":
+            //            CurrentViewModel = basicsIntro;
+            //            break;
 
-                    case "1.2._xaml_bootcamp":
-                        CurrentViewModel = _xamlBootViewModel;
-                        break;
+            //        case "1.1._introduction_to_wpf":
+            //            CurrentViewModel = _introToWPFViewModel;
+            //            break;
 
-                    case "1.3._c#_concepts":
-                        CurrentViewModel = _csharpConceptsViewModel;
-                        break;
+            //        case "1.2._xaml_bootcamp":
+            //            CurrentViewModel = _xamlBootViewModel;
+            //            break;
 
-                    case "1.4._your_first_wpf_application":
-                        CurrentViewModel = _firstTutorialViewModel;
-                        break;
+            //        case "1.3._c#_concepts":
+            //            CurrentViewModel = _csharpConceptsViewModel;
+            //            break;
 
-                    case "1.5._basics_summary":
-                        CurrentViewModel = _basicsSummaryViewModel;
-                        break;
+            //        case "1.4._your_first_wpf_application":
+            //            CurrentViewModel = _firstTutorialViewModel;
+            //            break;
+
+            //        case "1.5._basics_summary":
+            //            CurrentViewModel = _basicsSummaryViewModel;
+            //            break;
+
+            //        case "xaml_fundamentals":
+            //            CurrentViewModel = basicsFund;
+            //            break;
+
+            //        case "grid_panel":
+            //            CurrentViewModel = gridLayoutChapter;
+            //            break;
+
+            //        case "add_chapter_form":
+            //            CurrentViewModel = chapterForm;
+            //            break;
+
+            //        case "add_modules_form":
+            //            CurrentViewModel = moduleForm;
+            //            break;
 
 
-                    case "xaml_fundamentals":
-                        CurrentViewModel = basicsFund;
-                        break;
+            //        default:
+            //            CurrentViewModel = basicsModule;
+            //            break;
+            //    }
 
-                    case "grid_panel":
-                        CurrentViewModel = gridLayoutChapter;
-                        break;
+            //    //MessageBox.Show("Nav command: " + treeItem);
+            //}
+            //catch (Exception)
+            //{
+            //    // Skip
 
-                    case "add_chapter_form":
-                        CurrentViewModel = chapterForm;
-                        break;
-
-                    case "add_modules_form":
-                        CurrentViewModel = moduleForm;
-                        break;
-
-
-                    default:
-                        CurrentViewModel = basicsModule;
-                        break;
-                }
-
-                //MessageBox.Show("Nav command: " + treeItem);
-            }
-            catch (Exception)
-            {
-                // Skip
-
-            }
+            //}
         }
 
         public async void RefreshMainWindowCollections()
