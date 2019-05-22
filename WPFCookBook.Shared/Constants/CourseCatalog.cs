@@ -31,6 +31,7 @@ namespace WPFCookBook.Shared.Constants
         public static readonly string SELECTION_CONTROLS = "2.4. Selection Controls";
         public static readonly string DATA_DISPLAY = "2.5. Data Disaplay Controls";
         public static readonly string MENUS = "2.6. Menu Controls";
+        public static readonly string MEDIA_CONTROLS = "2.11. Media Controls";
         public static readonly string LAYOUTS = "2.7. Layout Controls";
         public static readonly string DIALOGS = "2.8. Dialog Controls";
         public static readonly string NOTIFICATIONS = "2.9. Notifications Control";

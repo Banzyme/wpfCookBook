@@ -155,9 +155,18 @@ namespace WPFCookBook.ViewModels
         #region Private methods
         private void OnNav(string treeItem)
         {
-            var nextView = WPFCookBookRouteMaps[FormatRouteName(treeItem) ];
 
-            CurrentViewModel = nextView;
+            try
+            {
+                var nextView = WPFCookBookRouteMaps[FormatRouteName(treeItem)];
+                CurrentViewModel = nextView;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show($"Route /{treeItem} is not defined.");
+                CurrentViewModel = IndexPage;
+            }
+            
 
             //try
             //{

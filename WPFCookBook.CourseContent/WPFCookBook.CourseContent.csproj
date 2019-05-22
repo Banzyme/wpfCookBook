@@ -79,9 +79,11 @@
     <Compile Include="Controls\DialogControlsView.xaml.cs">
       <DependentUpon>DialogControlsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\DialogControlViewModel.cs" />
     <Compile Include="Controls\InputControlsView.xaml.cs">
       <DependentUpon>InputControlsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\InputControlsViewModel.cs" />
     <Compile Include="Controls\IntroToWPFControlsView.xaml.cs">
       <DependentUpon>IntroToWPFControlsView.xaml</DependentUpon>
     </Compile>
@@ -89,21 +91,27 @@
     <Compile Include="Controls\LayoutControlsView.xaml.cs">
       <DependentUpon>LayoutControlsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\LayoutControlsViewModel.cs" />
     <Compile Include="Controls\MediaControlsView.xaml.cs">
       <DependentUpon>MediaControlsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MediaControlsViewModel.cs" />
     <Compile Include="Controls\MenusView.xaml.cs">
       <DependentUpon>MenusView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MenusViewModel.cs" />
     <Compile Include="Controls\NavigationControlsView.xaml.cs">
       <DependentUpon>NavigationControlsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\NavigationControlsViewModel.cs" />
     <Compile Include="Controls\NotificationControlsView.xaml.cs">
       <DependentUpon>NotificationControlsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\NotificationControlsViewModel.cs" />
     <Compile Include="Controls\SelectionControlsView.xaml.cs">
       <DependentUpon>SelectionControlsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SelectionControlsViewModel.cs" />
     <Compile Include="DataBinding\AsyncBindingView.xaml.cs">
       <DependentUpon>AsyncBindingView.xaml</DependentUpon>
     </Compile>
