@@ -42,8 +42,12 @@ namespace WPFCookBook.ViewModels
         private EditModuleViewModel editModule;
         #endregion
 
-        #region Course ontent views
+        #region Course content viewModels
         private IntroToWPFViewModel _introToWPFViewModel;
+        private FirstTutorialViewModel _firstTutorialViewModel;
+        private XAMLBootCampViewModel _xamlBootViewModel;
+        private CsharpConceptsViewModel _csharpConceptsViewModel;
+        private BasicsSummaryViewModel _basicsSummaryViewModel;
         #endregion
 
         #endregion
@@ -65,13 +69,15 @@ namespace WPFCookBook.ViewModels
             IndexPage = container.Resolve<IndexViewModel>();
 
             #region Course content viewmodels
-            //contentBase = container.Resolve<ContentViewModelBase>();
             _introToWPFViewModel = container.Resolve<IntroToWPFViewModel>();
-
+            _firstTutorialViewModel = container.Resolve<FirstTutorialViewModel>();
+            _xamlBootViewModel = container.Resolve<XAMLBootCampViewModel>();
+            _csharpConceptsViewModel = container.Resolve<CsharpConceptsViewModel>();
+            _basicsSummaryViewModel = container.Resolve<BasicsSummaryViewModel>();
             #endregion
 
 
-            
+
             basicsIntro = container.Resolve<IntroToXamlViewModel>();
             basicsFund = container.Resolve<XamlFundamentalsViewModel>();
             basicsModule = container.Resolve<ErrorPageVieModel>();
@@ -143,7 +149,8 @@ namespace WPFCookBook.ViewModels
 
             try
             {
-                switch (treeItem.Replace(' ', '_').ToLower())
+                string searchString = treeItem.Replace(' ', '_').ToLower();
+                switch ( searchString )
                 {
                     case "quick_intro":
                         CurrentViewModel = basicsIntro;
@@ -152,6 +159,23 @@ namespace WPFCookBook.ViewModels
                     case "1.1._introduction_to_wpf":
                         CurrentViewModel = _introToWPFViewModel;
                         break;
+
+                    case "1.2._xaml_bootcamp":
+                        CurrentViewModel = _xamlBootViewModel;
+                        break;
+
+                    case "1.3._c#_concepts":
+                        CurrentViewModel = _csharpConceptsViewModel;
+                        break;
+
+                    case "1.4._your_first_wpf_application":
+                        CurrentViewModel = _firstTutorialViewModel;
+                        break;
+
+                    case "1.5._basics_summary":
+                        CurrentViewModel = _basicsSummaryViewModel;
+                        break;
+
 
                     case "xaml_fundamentals":
                         CurrentViewModel = basicsFund;

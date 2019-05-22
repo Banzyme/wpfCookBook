@@ -57,6 +57,23 @@
         <DataTemplate DataType="{x:Type content:IntroToWPFViewModel}">
             <content:IntroToWPFView />
         </DataTemplate>
+
+        <DataTemplate DataType="{x:Type content:FirstTutorialViewModel}">
+            <content:FirstTutorialView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type content:XAMLBootCampViewModel}">
+            <content:XAMLBootCampView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type content:BasicsSummaryViewModel}">
+            <content:BasicsSummaryView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type content:CsharpConceptsViewModel}">
+            <content:CsharpConceptsView />
+        </DataTemplate>
+
         <!--/Course content views-->
 
     </Window.Resources>
