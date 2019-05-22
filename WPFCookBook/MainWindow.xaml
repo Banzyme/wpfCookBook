@@ -70,6 +70,68 @@
             <content:CsharpConceptsView />
         </DataTemplate>
 
+
+        <DataTemplate DataType="{x:Type content:ButtonControlViewModel}">
+            <content:ButtonControlView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type content:DataDisplayControlsViewModel}">
+            <content:DataDisplayControlsView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type content:DialogControlViewModel}">
+            <content:DialogControlsView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type content:InputControlsViewModel}">
+            <content:InputControlsView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type content:IntroToWPFControlsViewModel}">
+            <content:IntroToWPFControlsView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type content:LayoutControlsViewModel}">
+            <content:LayoutControlsView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type content:MediaControlsViewModel}">
+            <content:MediaControls />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type content:MenusViewModel}">
+            <content:MenusView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type content:NavigationControlsViewModel}">
+            <content:NavigationControlsView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type content:NotificationControlsViewModel}">
+            <content:NotificationControlsView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type content:SelectionControlsViewModel}">
+            <content:SelectionControls />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type content:GridPanelViewModel}">
+            <content:GridPanelView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type content:StackPanelViewModel}">
+            <content:StackPanelView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type content:WrapPanelViewModel}">
+            <content:WrapPanelView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type content:IntroToWPFLayoutsViewModel}">
+            <content:IntroToWPFLayoutsView />
+        </DataTemplate>
+
+
         <DataTemplate DataType="{x:Type content:IntroToDataBindingViewModel}">
             <content:IntroToDataBindingView />
         </DataTemplate>
