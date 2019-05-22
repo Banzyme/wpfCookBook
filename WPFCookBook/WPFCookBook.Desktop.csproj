@@ -92,6 +92,15 @@
     <Compile Include="Common\SaveFlowDocCommand.cs" />
     <Compile Include="Common\WpfCookBookUtils.cs" />
     <Compile Include="Common\XamlToFlowDocMapper.cs" />
+    <Compile Include="Controls\WPFCookBookHeaderControl.xaml.cs">
+      <DependentUpon>WPFCookBookHeaderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WPFCookBookMainLayout.xaml.cs">
+      <DependentUpon>WPFCookBookMainLayout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WPFCookBookTreeNavigationControl.xaml.cs">
+      <DependentUpon>WPFCookBookTreeNavigationControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="forms\CourseChapterForm.xaml.cs">
       <DependentUpon>CourseChapterForm.xaml</DependentUpon>
     </Compile>
@@ -138,6 +147,18 @@
     <Compile Include="Views\layout\GridLayoutChapterViewModel.xaml.cs">
       <DependentUpon>GridLayoutChapterViewModel.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\WPFCookBookHeaderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WPFCookBookMainLayout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WPFCookBookTreeNavigationControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="forms\CourseChapterForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

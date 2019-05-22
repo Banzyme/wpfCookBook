@@ -1,18 +1,14 @@
-﻿<Window xmlns:FsRichTextBox="clr-namespace:FsWpfControls.FsRichTextBox;assembly=FsRichTextBox"
-        x:Class="WPFCookBook.MainWindow"
+﻿<Window x:Class="WPFCookBook.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
-        xmlns:entities="clr-namespace:WpfCookBook.DB.Dao;assembly=WpfCookBook.DB"
+        xmlns:controls="clr-namespace:WPFCookBook.Controls"
         xmlns:ViewModels="clr-namespace:WPFCookBook.ViewModels"
         xmlns:views="clr-namespace:WPFCookBook.Views"
         xmlns:forms="clr-namespace:WPFCookBook.forms"
-        
         xmlns:content="http://wpf.cook.org/content"
-        
         Title="WPF Handbook For Humans"
         WindowStartupLocation="CenterScreen"
         Height="Auto"
@@ -52,7 +48,7 @@
             <forms:EditModuleView />
         </DataTemplate>
         <!--/Form views-->
-        
+
         <!--Course content views-->
         <DataTemplate DataType="{x:Type content:IntroToWPFViewModel}">
             <content:IntroToWPFView />
@@ -87,156 +83,6 @@
     </Window.Resources>
 
     <Grid>
-        <Grid x:Name="PageContentGrid"
-              Background="White">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="2" />
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="2" />
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-
-            <!--Window header-->
-            <WrapPanel Orientation="Vertical"
-                       Grid.Row="0"
-                       Grid.ColumnSpan="3"
-                       Background="White"
-                       HorizontalAlignment="Center"
-                       Height="100"
-                       Margin="0, 30, 0, 2">
-                <TextBlock Background="White"
-                           HorizontalAlignment="Center"
-                           FontStretch="Expanded"
-                           FontWeight="ExtraBlack"
-                           FontSize="24"
-                           TextWrapping="Wrap"
-                           Foreground="{DynamicResource PrimaryHueMidBrush}"
-                           FontFamily="Lucida Sans"
-                           Text="WPF - The Essential Guide" />
-
-
-                <StackPanel Orientation="Horizontal"
-                            HorizontalAlignment="Center"
-                            Margin="1, 10,1,10">
-                    <TextBox Text=""
-                             Padding="50, 5,50, 5"
-                             HorizontalAlignment="Center" />
-                    <Button Style="{DynamicResource MaterialDesignToolButton}"
-                            Margin="5,15,0,0"
-                            Content="Search"
-                            HorizontalAlignment="Center" />
-                </StackPanel>
-
-
-            </WrapPanel>
-            <!--End: Window header-->
-
-            <GridSplitter Grid.Row="1"
-                          Height="2"
-                          Grid.ColumnSpan="3"
-                          HorizontalAlignment="Stretch" />
-
-            <!--Side Nav-->
-            <StackPanel Margin="0, 10, 1,2"
-                        Width="Auto"
-                        Orientation="Vertical"
-                        MinHeight="900"
-                        Grid.Row="2"
-                        Grid.Column="0">
-
-                <ScrollViewer Height="500">
-                    <StackPanel>
-                        <TreeView ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                                  ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                                  x:Name="SideNavList"
-                                  BorderThickness="0"
-                                  MaxHeight="800"
-                                  ItemsSource="{Binding ModulesList}"
-                                  Padding="1, 15, 1, 15">
-
-                            <TreeView.Resources>
-                                <HierarchicalDataTemplate DataType="{x:Type entities:ModuleDao}"
-                                                          ItemsSource="{Binding ModuleSections}">
-                                    <StackPanel  Orientation="Horizontal">
-
-                                        <Image Margin="0,0,5,0" />
-                                        <TextBlock FontSize="20"
-                                                   Text="{Binding Name}" />
-                                        <TextBlock Text=" ["
-                                                   Foreground="Blue" />
-                                        <TextBlock Text="{Binding ModuleSections.Count}"
-                                                   Foreground="Blue" />
-                                        <TextBlock Text="]"
-                                                   Foreground="Blue" />
-
-                                    </StackPanel>
-                                </HierarchicalDataTemplate>
-
-                                <DataTemplate x:Name="allSections"
-                                              DataType="{x:Type entities:ChapterDao}">
-                                    
-                                    <StackPanel Orientation="Horizontal">
-                                            <i:Interaction.Triggers>
-                                                <i:EventTrigger EventName="MouseDown">
-                                                    <i:InvokeCommandAction
-                                                        Command="{Binding DataContext.NavigationCommand,
-                                                                          RelativeSource={RelativeSource FindAncestor,
-                                                                          AncestorType={x:Type Window}}}"
-                                                        CommandParameter="{Binding ElementName=SectionTitle, Path=Text}" />
-                                                </i:EventTrigger>
-                                            </i:Interaction.Triggers>
-
-                                        <TextBlock  x:Name="SectionTitle"
-                                                    FontSize="14"
-                                                    Text="{Binding Title}" />
-                                    </StackPanel>
-
-                                </DataTemplate>
-
-                            </TreeView.Resources>
-
-                        </TreeView>
-                        <Separator Width="100"
-                                   Background="#1F000000"
-                                   VerticalAlignment="Center" />
-                        <StackPanel Margin="0,50,0,0"
-                                    HorizontalAlignment="Center"
-                                    Orientation="Vertical">
-                            <Button  Content="Add module"
-                                     Command="{Binding NavigationCommand}"
-                                     CommandParameter="add_modules_form"
-                                     Style="{DynamicResource MaterialDesignRaisedDarkButton}" />
-                            <Button Content="Add Chapter"
-                                    Margin="10"
-                                    Command="{Binding NavigationCommand}"
-                                    CommandParameter="add_chapter_form"
-                                    Style="{DynamicResource MaterialDesignRaisedDarkButton}" />
-                        </StackPanel>
-                    </StackPanel>
-                </ScrollViewer>
-
-            </StackPanel>
-            <!--End: Side Nav-->
-
-            <GridSplitter Grid.Row="2"
-                          Grid.Column="1"
-                          Width="1"
-                          HorizontalAlignment="Stretch" />
-
-            <!--Content Container-->
-            <Grid Margin="0,10,1,0"
-                  Grid.Row="2"
-                  Grid.Column="2">
-                <ContentControl  Content="{Binding CurrentViewModel}" />
-            </Grid>
-            <!--End: Content container-->
-
-
-        </Grid>
+        <controls:WPFCookBookMainLayout />
     </Grid>
 </Window>
