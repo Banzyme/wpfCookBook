@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WPFCookBook.CourseContent.Controls
 {
     /// <summary>
-    /// Interaction logic for TextControlsView.xaml
+    /// Interaction logic for MediaControls.xaml
     /// </summary>
-    public partial class TextControlsView : UserControl
+    public partial class MediaControls : UserControl
     {
-        public TextControlsView()
+        public MediaControls()
         {
             InitializeComponent();
         }

@@ -72,14 +72,38 @@
       <DependentUpon>ButtonControlView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ButtonControlViewModel.cs" />
+    <Compile Include="Controls\DataDisplayControlsView.xaml.cs">
+      <DependentUpon>DataDisplayControlsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DataDisplayControlsViewModel.cs" />
+    <Compile Include="Controls\DialogControlsView.xaml.cs">
+      <DependentUpon>DialogControlsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\InputControlsView.xaml.cs">
+      <DependentUpon>InputControlsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\IntroToWPFControlsView.xaml.cs">
       <DependentUpon>IntroToWPFControlsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\IntroToWPFControlsViewModel.cs" />
-    <Compile Include="Controls\TextControlsView.xaml.cs">
-      <DependentUpon>TextControlsView.xaml</DependentUpon>
+    <Compile Include="Controls\LayoutControlsView.xaml.cs">
+      <DependentUpon>LayoutControlsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\TextControlsViewModel.cs" />
+    <Compile Include="Controls\MediaControlsView.xaml.cs">
+      <DependentUpon>MediaControlsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MenusView.xaml.cs">
+      <DependentUpon>MenusView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NavigationControlsView.xaml.cs">
+      <DependentUpon>NavigationControlsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NotificationControlsView.xaml.cs">
+      <DependentUpon>NotificationControlsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SelectionControlsView.xaml.cs">
+      <DependentUpon>SelectionControlsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DataBinding\AsyncBindingView.xaml.cs">
       <DependentUpon>AsyncBindingView.xaml</DependentUpon>
     </Compile>
@@ -88,10 +112,22 @@
       <DependentUpon>IntroToDataBindingView.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataBinding\IntroToDataBindingViewModel.cs" />
+    <Compile Include="Layouts\DockPanelView.xaml.cs">
+      <DependentUpon>DockPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\GridPanelView.xaml.cs">
+      <DependentUpon>GridPanelView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Layouts\IntroToWPFLayoutsView.xaml.cs">
       <DependentUpon>IntroToWPFLayoutsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Layouts\IntroToWPFLayoutsViewModel.cs" />
+    <Compile Include="Layouts\StackPanelView.xaml.cs">
+      <DependentUpon>StackPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\WrapPanelView.xaml.cs">
+      <DependentUpon>WrapPanelView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -141,11 +177,43 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\DataDisplayControlsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DialogControlsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\InputControlsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\IntroToWPFControlsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\TextControlsView.xaml">
+    <Page Include="Controls\LayoutControlsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MediaControlsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MenusView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NavigationControlsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NotificationControlsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SelectionControlsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -157,7 +225,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Layouts\DockPanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\GridPanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Layouts\IntroToWPFLayoutsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\StackPanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\WrapPanelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

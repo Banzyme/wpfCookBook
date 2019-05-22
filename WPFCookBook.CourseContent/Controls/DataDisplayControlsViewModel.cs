@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WPFCookBook.CourseContent.Controls
 {
-    class TextControlsViewModel
+    class DataDisplayControlsViewModel
     {
     }
 }
