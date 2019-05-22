@@ -109,8 +109,8 @@ namespace WPFCookBook.CourseContent
             currentTopic = (TopicDao)EditBox.DataContext;
 
             var result = await PersistTwoWayPropToDB(this.currentTopic.ID, this.currentTopic);
-            if (result == true)
-                MessageBox.Show($"Updating changes:...{currentTopic}");
+            if (result == false)
+                MessageBox.Show($"Failed to update page, please try again later.");
         }
 
         protected void ShowAddTopicForm(object arg)
