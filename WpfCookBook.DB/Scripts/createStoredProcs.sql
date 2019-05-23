@@ -1,0 +1,77 @@
+USE WpfForHumansDevDB;
+
+GO
+
+
+
+--CRUD METHODS FOR MODULE DAO
+DROP PROCEDURE IF EXISTS dbo.GetAllModules;
+GO
+CREATE PROCEDURE  dbo.GetAllModules
+AS
+BEGIN;
+	SELECT * FROM ModuleDao;
+END; 
+
+GO
+
+DROP PROCEDURE IF EXISTS dbo.GetAllModuleByID;
+GO
+CREATE PROCEDURE  dbo.GetAllModuleByID
+AS
+BEGIN;
+	SELECT * FROM ModuleDao;
+END; 
+
+GO
+
+DROP PROCEDURE IF EXISTS dbo.CreateModule;
+GO
+CREATE PROCEDURE  dbo.CreateModule
+(
+	@Name NVARCHAR(max)
+)
+AS
+BEGIN;
+
+DECLARE @ModuleIdentifier UNIQUEIDENTIFIER;
+DECLARE @NewID BIGINT;
+
+SELECT @ModuleIdentifier = NEWID();
+
+INSERT INTO dbo.ModuleDao (ModuleID, Name)
+VALUES(@ModuleIdentifier, @Name);
+
+SELECT @NewID = SCOPE_IDENTITY();
+SELECT * FROM dbo.ModuleDao WHERE ID=@NewID;
+
+END; 
+
+
+GO
+
+DROP PROCEDURE IF EXISTS dbo.UpdateModule;
+GO
+CREATE PROCEDURE  dbo.UpdateModule
+(
+	@ID BIGINT,
+	@Name NVARCHAR(max)
+)
+AS
+BEGIN;
+UPDATE dbo.ModuleDao
+	SET Name = @Name WHERE ID=@ID;
+
+SELECT * FROM dbo.ModuleDao WHERE ID=@ID;
+END; 
+
+GO
+
+DROP PROCEDURE IF EXISTS dbo.DeleteModule;
+GO
+CREATE PROCEDURE  dbo.DeleteModule
+(@ID BIGINT)
+AS
+BEGIN;
+	DELETE dbo.ModuleDao WHERE ID=@ID;
+END; 

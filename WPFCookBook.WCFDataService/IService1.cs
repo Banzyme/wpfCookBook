@@ -12,7 +12,7 @@ namespace WPFCookBook.WCFDataService
     public interface IService1
     {
         [OperationContract]
-        string GetData(int value);
+        ModuleDao GetData(long id);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
