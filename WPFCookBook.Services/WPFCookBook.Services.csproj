@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="DataService\Contracts\ICourseModuleService.cs" />
     <Compile Include="DataService\Contracts\ICourseSectionItemService.cs" />
     <Compile Include="DataService\Contracts\ICourseSectionService.cs" />
