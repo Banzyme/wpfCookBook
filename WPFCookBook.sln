@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28809.33
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFCookBook.Desktop", "WPFCookBook\WPFCookBook.Desktop.csproj", "{8A95DBEF-A0DE-4103-BB80-CCF0BA923D16}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFCookBook.Shared", "WPFCookBook.Shared\WPFCookBook.Shared.csproj", "{7DC1B43C-945B-4DED-B782-63F546CD6801}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFCookBook.Services", "WPFCookBook.Services\WPFCookBook.Services.csproj", "{4CD72F72-9768-4A68-977E-A733D344E92E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFCookBook.WCFDataService", "WPFCookBook.WCFDataService\WPFCookBook.WCFDataService.csproj", "{7497333A-593C-4BBE-B083-7164F6E6EA46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{4CD72F72-9768-4A68-977E-A733D344E92E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CD72F72-9768-4A68-977E-A733D344E92E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CD72F72-9768-4A68-977E-A733D344E92E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7497333A-593C-4BBE-B083-7164F6E6EA46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7497333A-593C-4BBE-B083-7164F6E6EA46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7497333A-593C-4BBE-B083-7164F6E6EA46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7497333A-593C-4BBE-B083-7164F6E6EA46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
